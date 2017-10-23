@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.MainActivity">
+
+    <RadioGroup
+        android:id="@+id/bottom_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/gray"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="10dp" >
+
+        <RadioButton
+            android:id="@+id/body_building_rb0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/ic_tab_body_building"
+            android:gravity="center"
+            android:text="@string/body_building"
+            android:textColor="@drawable/ic_tab_text_color" />
+
+        <RadioButton
+            android:id="@+id/sports_rb1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/ic_tab_sports"
+            android:gravity="center"
+            android:text="@string/sports"
+            android:textColor="@drawable/ic_tab_text_color" />
+
+        <RadioButton
+            android:id="@+id/community_rb2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/ic_tab_community"
+            android:gravity="center"
+            android:text="@string/community"
+            android:textColor="@drawable/ic_tab_text_color" />
+
+        <RadioButton
+            android:id="@+id/mine_rb3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/ic_tab_mine"
+            android:gravity="center"
+            android:text="@string/mine"
+            android:textColor="@drawable/ic_tab_text_color" />
+    </RadioGroup>
+
+    <!--包揽RadioButton之上的界面-->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_bar" >
+    </android.support.v4.view.ViewPager>
+
+</RelativeLayout>

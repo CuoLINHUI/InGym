@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+ >
+
+    <LinearLayout
+        android:id="@+id/title_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <include layout="@layout/title_content"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/title_content"
+        android:layout_above="@+id/bottom_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+     <RelativeLayout
+            android:id="@+id/third"
+            android:layout_below="@+id/second"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:id="@+id/date_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:hint="@string/date_create"
+                />
+
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:gravity="end"
+             android:layout_gravity="end"
+             android:layout_alignParentRight="true"
+             android:layout_marginRight="10dp">
+             <Button
+                 android:id="@+id/level_content"
+                 android:layout_width="18dp"
+                 android:layout_height="18dp"
+                 android:layout_marginTop="2dp"
+                 android:layout_marginLeft="2dp"
+                 android:layout_marginRight="2dp"
+                 />
+         </LinearLayout>
+     </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+        <TextView
+            android:layout_alignParentLeft="true"
+            android:id="@+id/location_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:layout_marginLeft="10dp"
+            android:hint="@string/location_create"
+
+            />
+
+        <TextView
+            android:layout_alignParentRight="true"
+            android:id="@+id/numberFollow_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_marginRight="10dp"
+            android:hint="@string/number_create"
+            />
+        </RelativeLayout>
+
+        <jp.wasabeef.richeditor.RichEditor
+            android:layout_marginTop="14dp"
+            android:scrollbars="vertical"
+            android:id="@+id/editor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:gravity="top"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <include layout="@layout/bottom_content"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
+

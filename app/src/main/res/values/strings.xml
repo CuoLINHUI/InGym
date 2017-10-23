@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">InGym</string>
+    <string name="startButton">开始体验</string>
+    <string name="body_building">健身</string>
+    <string name="sports">运动</string>
+    <string name="community">社区</string>
+    <string name="mine">我的</string>
+    <string name="pic_title">图片标题 </string>
+    <string name="account_login">账户登陆</string>
+    <string name="quick_login">快速登录</string>
+    <string name="hint_account_login">用户名/邮箱/手机号</string>
+    <string name="hint_login_password">密码</string>
+    <string name="get_validation_code">获取验证码</string>
+    <string name="login">登录</string>
+    <string name="forgot_password">忘记密码？</string>
+    <string name="third_party_login">你也可以点击下方的第三方登录</string>
+    <string name="hint_count_name"> 请输入用户名 </string>
+    <string name="hint_register_password"> 请输入密码 </string>
+    <string name="hint_confilmPwd"> 请输入确认密码 </string>
+    <string name="hint_eamil"> 请输入邮箱 </string>
+    <string name="register">注册</string>
+    <string name="reset">重置</string>
+    <string name="modify_pwd">修改登录密码</string>
+    <string name="set_pay_pwd">设置支付密码</string>
+    <string name="bind_phone">已绑定手机号</string>
+    <string name="manage_address">管理收获地址</string>
+    <string name="back_login">退出登录</string>
+    <string name="account_editor"> 账号编辑</string>
+    <string name="edit_save">保存 </string>
+    <string name="please_login">您还没有登录哦~</string>
+    <string name="login_now">马上登录</string>
+    <string name="your_name">你的名字</string>
+    <string name="mine_collection">收藏</string>
+    <string name="mine_memorandum">备忘录</string>
+    <string name="recent_browse">最近浏览</string>
+    <string name="mine_setting">设置</string>
+    <string name="mine_about">关于InGym</string>
+    <string name="about_version">Version:1.1.1</string>
+
+    <string name="memorandum_title"> 备忘录</string>
+    <string name="title_des">第一次使用Simple备忘录</string>
+    <string name="content_des">相逢是缘,谢谢你的使用,哈哈!</string>
+    <string name="title_create">标题</string>
+    <string name="content_share">分享</string>
+    <string name="date_create">时间</string>
+    <string name="number_create">字数</string>
+    <string name="location_create">未定位</string>
+    <string name="done_create">完成</string>
+    <string name="all_nav">全部</string>
+    <string name="other_nav">其他</string>
+    <string name="folder_nav">所有分类</string>
+    <string name="recycle_nav">最近删除</string>
+    <string name="security_nav">隐私安全</string>
+    <string name="about_nav">关于</string>
+    <string name="exit_nav">退出 SimpleNote</string>
+    <string name="msg">消息提示</string>
+    <string name="hint">something</string>
+    <string name="no_btn">取消</string>
+    <string name="yes_btn">确认</string>
+    <string name="share">分享</string>
+    <string name="shareFrom">分享自SimpleNote(Simple备忘录)</string>
+    <string name="shareApp">我发现了个好玩的应用,你也来下载试试吧</string>
+    <string name="shareTo">分享你的内容到....</string>
+    <string name="shareImg">将内容截图分享给....</string>
+    <string name="howShare">你想怎样分享你的备忘录</string>
+    <string name="imgShare">截图分享</string>
+    <string name="textShare">文字分享</string>
+    <string name="search_txv_main">搜索</string>
+    <string name="move_recycle">已移至 最近删除</string>
+    <string name="location">正在获取定位..</string>
+    <string name="main_empty_info">您还没有任何备忘录</string>
+    <string name="hint_quick">突然想写点什么..</string>
+    <string name="location_quick">你在哪里?</string>
+
+    <string name="live">LIVE</string>
+    <string name="live_title">播出你的美</string>
+    <string name="live_notice">通知：施瓦辛格直播手把手教健身了！！！有瓜的赶紧备好瓜，没瓜的带上瓜子，赶紧围观！！！</string>
+    <string name="live_person">施瓦辛格</string>
+
+
+    <!--计步器部分-->
+    <string name="pedometer_name">Pedometer</string>
+    <string name="pedometer_chinese_name">计步器</string>
+    <string name="navigation_drawer_open" translatable="false">开启导航</string>
+    <string name="navigation_drawer_close" translatable="false">关闭导航</string>
+
+    <!-- Menu Items-->
+    <string name="action_help">帮助</string>
+    <string name="action_about">关于</string>
+    <string name="action_settings">设置</string>
+    <string name="action_main">计步</string>
+    <string name="action_training">训练</string>
+
+    <!-- ReportFragment -->
+    <string name="month">月</string>
+    <string name="week">周</string>
+    <string name="day">日</string>
+
+    <string name="calories">卡路里</string>
+    <string name="activity_summary_subtitle">运动统计</string>
+    <string name="activity_chart_summary_subtitle">你的活动曲线统计</string>
+    <string name="summary_card_kilocalories">千卡</string>
+    <string name="summary_card_calories">卡</string>
+    <string name="correct_steps">修正步数</string>
+    <string name="correct_steps_dialog_title">修正步数</string>
+    <string name="correct_steps_dialog_message">请提供你行走的新步数。</string>
+    <string name="hint_steps">步数</string>
+    <string name="pause_step_detection">停止步数检测</string>
+    <string name="continue_step_detection">继续步数检测</string>
+
+    <!-- Preferences -->
+    <!-- general settings -->
+    <!--<string name="pref_header_general">General</string>-->
+    <!--<string name="pref_group_title_personal_settings">Personalization</string>-->
+    <string name="pref_header_general">通用</string>
+    <string name="pref_group_title_personal_settings">个性化</string>
+
+    <string name="pref_step_counter_enabled" translatable="false">com.stefan.pedometer.pref.step_counter_enabled</string>
+    <string name="pref_title_step_counter_enabled">持续记步</string>
+    <string name="pref_summary_step_counter_enabled">程序在后台为您持续记步。</string>
+
+    <string name="pref_use_wake_lock" translatable="false">com.stefan.pedometer.pref.use_wake_lock</string>
+    <string name="pref_title_use_wake_lock">保持处理器唤醒状态</string>
+    <string name="pref_summary_use_wake_lock">在某些设备上，处理器会进入休眠状态，并阻止计数步骤。在计算步骤的时候让处理器保持唤醒状态，这可能会耗尽你电池的电量！</string>
+
+    <string name="pref_use_wake_lock_during_training" translatable="false">com.stefan.pedometer.pref.use_wake_lock_during_training</string>
+    <string name="pref_title_use_wake_lock_during_training">训练状态时唤醒锁</string>
+    <string name="pref_summary_use_wake_lock_during_training">为了在训练模式下获得更好的效果，保持处理器的唤醒状态。如果应用程序在任何时候都能让处理器保持唤醒状态，那么这种情况就会自动发生。</string>
+
+    <string name="pref_show_velocity" translatable="false">com.stefan.pedometer.pref.show_velocity</string>
+    <string name="pref_title_show_velocity">显示当前速度</string>
+    <string name="pref_summary_show_velocity">该应用程序会在日常报告中显示您当前的速度。精确的速度计算需要允许访问您的位置信息。</string>
+
+    <string name="pref_default_daily_step_goal" translatable="false">10000</string>
+    <string name="pref_title_daily_step_goal">个人日常步数目标</string>
+    <string name="pref_unit_of_length" translatable="false">com.stefan.pedometer.pref.unit_of_length</string>
+    <string name="pref_title_unit_of_length">长度单位</string>
+    <string-array name="pref_keys_unit_of_length">
+        <item>kilometers</item>
+        <item>miles</item>
+    </string-array>
+    <string-array name="pref_values_unit_of_length" translatable="false">
+        <item>km</item>
+        <item>mi</item>
+    </string-array>
+
+    <string name="unit_of_length_km">1|km|kilometers|km/h|1000|m</string><!-- 1km = 1km -->
+    <string name="unit_of_length_mi">0.621371|mi|miles|mph|5280|ft</string><!-- 1km = 0.621371 miles -->
+    <string name="pref_unit_of_energy" translatable="false">com.stefan.pedometer.pref.unit_of_energy</string>
+    <string name="pref_title_unit_of_energy">能量单位</string>
+    <string-array name="pref_keys_unit_of_energy">
+        <item>calories</item>
+        <item>joules</item>
+    </string-array>
+    <string-array name="pref_values_unit_of_energy" translatable="false">
+        <item>cal</item>
+        <item>J</item>
+    </string-array>
+
+    <string-array name="pref_keys_accelerometer_threshold">
+        <item>贼高</item>
+        <item>较高</item>
+        <item>高</item>
+        <item>正常</item>
+        <item>低</item>
+        <item>较低</item>
+        <item>贼低</item>
+    </string-array>
+
+    <string-array name="pref_values_accelerometer_threshold" translatable="false">
+        <item>0.125</item>
+        <item>0.25</item>
+        <item>0.50</item>
+        <item>0.75</item>
+        <item>1.00</item>
+        <item>1.25</item>
+        <item>1.50</item>
+    </string-array>
+
+    <string name="pref_accelerometer_threshold" translatable="false">com.stefan.pedometer.pref.accelerometer_threshold</string>
+    <string name="pref_title_accelerometer_threshold">灵敏性</string>
+    <string name="pref_accelerometer_steps_threshold" translatable="false">com.stefan.pedometer.pref.accelerometer_step_threshold</string>
+    <string name="pref_title_accelerometer_steps_threshold">计算开始前记步</string>
+    <string name="pref_default_accelerometer_steps_threshold" translatable="false">10</string>
+
+    <string name="pref_explanation_weight_and_gender">为了提高卡路里计算的精确度，请设定你的体重和性别。</string>
+    <string name="pref_summary_notification_permanent">当应用程序在后台计算你的步数时，会持续显示你的步数情况。你可以自定义应用程序应该显示的内容。</string>
+    <string name="pref_summary_accelerometer_threshold">这款应用使用了你的设备的加速度计。为了优化步骤检测，请调整灵敏度。</string>
+
+    <string name="pref_weight" translatable="false">com.stefan.pedometer.pref.weight</string>
+    <string name="pref_title_weight">重量 (kg)</string>
+    <string name="pref_default_weight" translatable="false">65.0</string>
+
+    <string name="pref_gender" translatable="false">com.stefan.pedometer.pref.gender</string>
+    <string name="pref_title_gender">性别</string>
+
+    <string-array name="pref_keys_gender">
+        <item>女</item>
+        <item>男</item>
+    </string-array>
+
+    <string-array name="pref_values_gender" translatable="false">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <string name="pref_notification_motivation_alert_enabled" translatable="false">com.stefan.pedometer.pref.motivation_alert_enabled</string>
+    <string name="pref_title_notification_motivation_alert_enabled">开启动机警报</string>
+    <string name="pref_notification_motivation_alert_time" translatable="false">com.stefan.pedometer.pref.motivation_alert_time</string>
+    <string name="pref_title_notification_motivation_alert_time">动机警报时间</string>
+    <string name="pref_notification_motivation_alert_texts" translatable="false">com.stefan.pedometer.pref.motivation_alert_texts</string>
+    <string name="pref_title_notification_motivation_alert_texts">动机通知文本</string>
+    <string name="pref_notification_motivation_alert_criterion" translatable="false">com.stefan.pedometer.pref.motivation_alert_criterion</string>
+    <string name="pref_title_notification_motivation_alert_criterion">动机警戒标准</string>
+
+    <string-array name="pref_keys_notification_motivation_alert_criterion">
+        <item>less than 90&#65285; of daily step goal</item>
+        <item>less than 70&#65285; of daily step goal</item>
+        <item>less than 50&#65285; of daily step goal</item>
+    </string-array>
+
+    <string-array name="pref_values_notification_motivation_alert_criterion" translatable="false">
+        <item>90</item>
+        <item>70</item>
+        <item>50</item>
+    </string-array>
+
+    <!-- notification settings -->
+    <string name="pref_notification_permanent_show_steps" translatable="false">com.stefan.pedometer.pref.permanent_notification_show_steps</string>
+    <string name="pref_title_notification_permanent_show_steps">显示今天行走的步数</string>
+    <string name="pref_notification_permanent_show_distance" translatable="false">com.stefan.pedometer.pref.permanent_notification_show_distance</string>
+    <string name="pref_title_notification_permanent_show_distance">显示今天行走的距离</string>
+    <string name="pref_notification_permanent_show_calories" translatable="false">com.stefan.pedometer.pref.permanent_notification_show_calories</string>
+    <string name="pref_title_notification_permanent_show_calories">显示今天消耗的卡路里</string>
+    <!-- /notification settings -->
+
+    <string name="pref_header_notifications">通知</string>
+    <string name="pref_group_title_permanent_notification">稳定通知</string>
+    <string name="pref_group_title_motivation_alert">动机警报</string>
+
+    <!-- /notification settings -->
+    <string name="pref_header_walking_modes">步行模式</string>
+    <string name="pref_widget_data_set" translatable="false">com.stefan.pedometer.pref.widget_data_set_</string>
+    <string name="pref_distance_measurement_start_timestamp" translatable="false">com.stefan.pedometer.pref.distance_measurement_start_timestamp</string>
+    <string name="pref_hw_steps_on_last_save" translatable="false">com.stefan.pedometer.pref.hw_steps_on_last_save</string>
+    <!-- /Preferences -->
+
+    <!-- Will be removed on next update -->
+    <string name="pref_daily_step_goal" translatable="false">com.stefan.pedometer.pref.daily_step_goal</string>
+    <string name="notification_text_steps">今天走了 %1$s of %2$s 步。</string>
+    <string name="notification_text_distance">今天移动了 %1$.2f %2$s 的距离。</string>
+    <string name="notification_text_calories">今天燃烧了 %.2f 千卡的卡路里。</string>
+    <string name="notification_text_default">计步器已激活。</string>
+    <!-- /Will be removed on next update -->
+
+    <string name="training_overview_empty">看起来你还没有使用过训练功能。是时候开始你的训练了！</string>
+    <string name="training_input_message" />
+    <string name="training_input_title">训练期</string>
+    <string name="activity_title_training">训练</string>
+    <string name="hint_training_description">类型</string>
+    <string name="hint_training_title">标题</string>
+    <string name="hint_training_feeling">感受:</string>
+    <string name="training_card_calories">千卡</string>
+    <string name="training_card_distance_km">km</string>
+    <string name="training_card_duration">h</string>
+    <string name="training_velocity">km/h</string>
+    <string name="training_stop_button">结束训练</string>
+    <string name="training_default_title">%1$s %4$02d.%3$02d.%2$04d</string>
+    <string name="activity_summary_chart_legend_stepgoal">步数目标</string>
+    <string name="widget_config_data_set_title">应该显示那些数据？</string>
+    <string name="action_distance_measurement">距离测量</string>
+    <string name="distance_measurement_start_button">开始距离测量</string>
+    <string name="distance_measurement_stop_button">停止距离测量</string>
+    <string name="joules">J</string>
+    <string name="kilojoules">kJ</string>
+
+    <!-- others -->
+    <string name="action_calories">卡路里</string>
+    <string name="action_distance">距离</string>
+    <string name="action_steps">步数</string>
+    <string name="set">设置</string>
+    <string name="save">保存</string>
+    <string name="edit">编辑</string>
+    <string name="delete">删除</string>
+    <string name="operation_failed">操作失败</string>
+    <string name="steps">步</string>
+    <string name="since">从</string>
+    <string name="okay">Okay</string>
+    <!-- /others -->
+
+    <!-- walking modes -->
+    <string name="activity_title_walking_modes">步行模式</string>
+    <string name="walking_mode_input_title">步行模式</string>
+    <string name="walking_mode_input_message">设置自定义的行走模式:</string>
+    <string name="walking_mode_at_least_one_is_required">至少需要一个行走模式。</string>
+    <string name="walking_mode_cannot_delete_active_one">不能删除激活的行走模式。</string>
+    <string name="walking_mode_set_active">设置为启用</string>
+    <string name="walking_mode_menu_learn">学习</string>
+    <string name="walking_mode_learning_distance_description">行走距离:</string>
+    <string name="walking_mode_learning_steps_description">已走距离:</string>
+    <string name="walking_mode_learning_stop">结束学习模式</string>
+    <string name="walking_mode_learning_description">应用程序可以了解每一步的距离。如果你完成了，请走到指定的距离，并按结束。</string>
+    <string name="pref_walking_mode_learning_active" translatable="false">com.stefan.pedometer.pref.walking_mode_learning_active</string>
+    <string name="step_length">步长:</string>
+    <string name="walking_mode_active_ext"> (激活)</string>
+    <string name="walking_mode_input_empty">名称和步长是必需的。请填写!</string>
+    <string name="hint_walking_mode_name">名字</string>
+    <string name="hint_walking_mode_step_length">步长 (米)</string>
+    <string-array name="pref_default_walking_mode_names">
+        <item>步行模式</item>
+        <item>奔跑模式</item>
+    </string-array>
+    <string-array name="pref_default_walking_mode_step_lenghts" translatable="false">
+        <item>0.5</item><!-- step length in meters -->
+        <item>0.7</item>
+    </string-array>
+
+    <!-- motivation alert -->
+    <string-array name="pref_default_notification_motivation_alert_messages">
+        <item>Come on, it\'s time to walk!</item>
+    </string-array>
+    <string name="motivation_alert_empty">当你的日常目标的实现有危险时，设置自定义的警告信息。\n\n如果没有消息，就没有警报。</string>
+    <string name="motivation_alert_input_title">设置动机警告信息</string>
+    <string name="motivation_alert_input_message">设置你自己的自定义动机提醒。这款应用会随机地通知你一篇文章。</string>
+    <string name="motivation_alert_input_empty">空的动机警告是无用的，不是吗？</string>
+    <string name="activity_title_motivation_alerts">动机警报</string>
+    <string name="motivation_alert_notification_title">步数统计</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

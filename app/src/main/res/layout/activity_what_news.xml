@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_what_news"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.WhatNewsActivity">
+
+    <!-- 这个组件，注意这个组件是用来显示左右滑动的界面的，如果不加载xml布局文件，它是不会显示内容的。 -->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="100dp"
+        android:background="@mipmap/click_app"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="@string/startButton"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+
+</RelativeLayout>

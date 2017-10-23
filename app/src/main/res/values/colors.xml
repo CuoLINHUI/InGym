@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#E84C3B</color>
+    <color name="colorPrimaryDark">#E84C3B</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#ffffff</color>
+    <color name="gray">#565151</color>
+    <color name="starry_sky">#053043</color>
+
+    <color name="colorWhite">#FFF</color>
+    <color name="transparent">#0000</color>
+    <color name="text_dark">#0b0b0b</color>
+    <color name="text_black">#737373</color>
+    <color name="text_grey">#9DA0A3</color>
+    <color name="divider">#e6e6e6</color>
+
+    <color name="item_pressed">#ffffe4d2</color>
+    <color name="app_white">#fff1f1f2</color>
+    <color name="orange">#ffff6900</color>
+    <color name="bg_corners_pressed_a">#ffd8d8d8</color>
+    <color name="bg_corners_border">#FFbababa</color>
+    <color name="login_unable_bg">#ffcdced0</color>
+    <color name="reset">#4aaed6</color>
+    <color name="skyblue">#87ceeb</color>
+
+    <color name="item_0">#38AD54</color>
+    <color name="item_1">#54B0E4</color>
+    <color name="item_2">#4AB0B1</color>
+    <color name="item_3">#53AFE4</color>
+    <color name="item_4">#43B15E</color>
+    <color name="item_5">#FF8888</color>
+    <color name="item_6">#3BA4E0</color>
+    <color name="item_7">#FF8E8E</color>
+    <color name="item_8">#FFAE45</color>
+
+    <color name="black">#000000</color>
+    <color name="minBlack">#ff333333</color>
+
+    <color name="blue">#38ADFF</color>
+    <color name="light_blue">#5bc0de</color>
+    <color name="green">#5cb85c</color>
+    <color name="red">#d9534f</color>
+    <color name="deep_red">#FF4040</color>
+    <color name="live_color">#E0454B</color>
+
+    <!--计步器部分-->
+    <color name="darkgrey">#757575</color>
+    <color name="middlegrey">#A8A8A8</color>
+    <color name="yellow">#f6d126</color>
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen">#026499</color>
+    <!-- dots active colors -->
+    <color name="dot_light_screen">#448bb2</color>
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen</item>
+        <item>@color/dot_light_screen</item>
+        <item>@color/dot_light_screen</item>
+        <item>@color/dot_light_screen</item>
+        <item>@color/dot_light_screen</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen</item>
+        <item>@color/dot_dark_screen</item>
+        <item>@color/dot_dark_screen</item>
+        <item>@color/dot_dark_screen</item>
+        <item>@color/dot_dark_screen</item>
+    </array>
+
+
+</resources>

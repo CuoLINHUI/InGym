@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_account"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.Mine.AccountActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_mine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="right"
+            >
+
+            <!--设置返回点击事件-->
+            <TextView
+                android:id="@+id/tv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="@string/account_editor"
+                android:textSize="20sp"
+                android:textColor="@color/app_white"
+                android:background="@drawable/btn_activate_bg"
+                android:drawableLeft="@mipmap/modify_cancel"
+                android:gravity="center_vertical" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <!--点击响应注册事件-->
+            <TextView
+                android:id="@+id/tv_save"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginRight="15dp"
+                android:text="@string/edit_save"
+                android:drawableRight="@mipmap/modify_save"
+                android:textSize="20sp"
+                android:textColor="@color/app_white"
+                android:background="@drawable/btn_activate_bg"
+                android:gravity="center_vertical" />
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <RelativeLayout
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_mine_head_img"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@mipmap/user_icon" />
+
+        <RelativeLayout
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true">
+
+            <View
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/fill_color" />
+
+            <ImageView
+                android:layout_width="15sp"
+                android:layout_height="15sp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/ic_camera" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/modify_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@mipmap/ico_setting_modify"
+        android:drawablePadding="20dp"
+        android:drawableRight="@mipmap/arrow_right_my_gray"
+        android:padding="10dp"
+        android:text="@string/modify_pwd" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@mipmap/filter_line" />
+
+    <TextView
+        android:id="@+id/set_pay_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@mipmap/ico_setting_lock"
+        android:drawablePadding="20dp"
+        android:drawableRight="@mipmap/arrow_right_my_gray"
+        android:padding="10dp"
+        android:text="@string/set_pay_pwd" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@mipmap/filter_line" />
+
+    <TextView
+        android:id="@+id/bind_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@mipmap/ico_setting_tel"
+        android:drawablePadding="20dp"
+        android:drawableRight="@mipmap/arrow_right_my_gray"
+        android:padding="10dp"
+        android:text="@string/bind_phone" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@mipmap/filter_line" />
+
+    <TextView
+        android:id="@+id/manage_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:drawableLeft="@mipmap/ico_setting_bus"
+        android:drawablePadding="20dp"
+        android:drawableRight="@mipmap/arrow_right_my_gray"
+        android:padding="10dp"
+        android:text="@string/manage_address" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@mipmap/filter_line" />
+
+    <Button
+        android:id="@+id/btn_exit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/btn_login_bg"
+        android:text="@string/back_login"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+</LinearLayout>
