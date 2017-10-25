@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#E84C3B</color>
     <color name="colorPrimaryDark">#E84C3B</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#E84C3B</color>
     <color name="white">#ffffff</color>
     <color name="gray">#565151</color>
     <color name="starry_sky">#053043</color>

@@ -19,14 +19,17 @@
         </android.support.v7.widget.Toolbar>
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
 
             <TextView
                 android:layout_centerVertical="true"
                 android:id="@+id/toolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center|center_vertical"
+                android:text="标题"
                 android:textSize="18sp"
                 android:textColor="#FFF"
                 android:layout_centerHorizontal="true"/>
@@ -36,7 +39,10 @@
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center|center_vertical"
+                android:gravity="right"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
                 android:src="@android:drawable/ic_media_pause"/>
 
             <ImageView
@@ -44,8 +50,13 @@
                 android:id="@+id/menu_continue_step_detection"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/menu_pause_step_detection"
+                android:layout_gravity="center|center_vertical"
+                android:gravity="right"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
                 android:src="@android:drawable/ic_media_play"/>
+
+
         </RelativeLayout>
     </FrameLayout>
 </android.support.design.widget.AppBarLayout>

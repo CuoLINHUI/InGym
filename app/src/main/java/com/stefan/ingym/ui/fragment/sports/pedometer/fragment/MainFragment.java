@@ -26,6 +26,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -59,6 +61,12 @@ public class MainFragment extends Fragment implements SharedPreferences.OnShared
 
         StepDetectionServiceHelper.startAllIfEnabled(true, getActivity().getApplicationContext());
 
+        /*ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (actionBar != null) {
+            //actionBar.setSubtitle(R.string.action_main);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }*/
+
         container.removeAllViews();
 
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.pager);
@@ -66,7 +74,6 @@ public class MainFragment extends Fragment implements SharedPreferences.OnShared
 
         TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-
 
         return view;
     }

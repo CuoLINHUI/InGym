@@ -30,8 +30,8 @@ import com.stefan.ingym.ui.fragment.sports.pedometer.utils.StepDetectionServiceH
 
 public class FragmentSports extends PedometerBaseFragment implements DailyReportFragment.OnFragmentInteractionListener, WeeklyReportFragment.OnFragmentInteractionListener, MonthlyReportFragment.OnFragmentInteractionListener, View.OnClickListener {
     private static final String TAG = FragmentSports.class.getSimpleName();
-    private Toolbar toolbar;
-
+    private View continueBtn;
+    private View pauseBtn;
     @Override
     public void onClick(View view) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -42,13 +42,16 @@ public class FragmentSports extends PedometerBaseFragment implements DailyReport
                 editor.putBoolean(getString(R.string.pref_step_counter_enabled), false);
                 editor.apply();
                 StepDetectionServiceHelper.stopAllIfNotRequired(getActivity().getApplicationContext());
+                break;
             case R.id.menu_continue_step_detection:
                 Log.d(TAG, "开始计数");
                 editor.putBoolean(getString(R.string.pref_step_counter_enabled), true);
                 editor.apply();
                 StepDetectionServiceHelper.startAllIfEnabled(true, getActivity().getApplicationContext());
+                break;
             default:
         }
+        setPauseContinueMenuItemVisibility();
     }
 
     @Override
@@ -69,18 +72,18 @@ public class FragmentSports extends PedometerBaseFragment implements DailyReport
         StepDetectionServiceHelper.startAllIfEnabled(getContext());
         //Log.i(LOG_TAG, "MainActivity initialized");
 
-        ((TextView)view.findViewById(R.id.toolbar_title)).setText("运动栏目");
+        ((TextView)view.findViewById(R.id.toolbar_title)).setText("Sports");
 
-        view.findViewById(R.id.menu_continue_step_detection).setOnClickListener(this);
-        view.findViewById(R.id.menu_pause_step_detection).setOnClickListener(this);
+        continueBtn = view.findViewById(R.id.menu_continue_step_detection);
+        continueBtn.setOnClickListener(this);
+        pauseBtn = view.findViewById(R.id.menu_pause_step_detection);
+        pauseBtn.setOnClickListener(this);
 
-        setHasOptionsMenu(true);
-
+//        setHasOptionsMenu(true);
+        setPauseContinueMenuItemVisibility();
 
         return view;
     }
-
-
 
 
     @Override
@@ -94,23 +97,18 @@ public class FragmentSports extends PedometerBaseFragment implements DailyReport
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        setPauseContinueMenuItemVisibility(menu);
+//        setPauseContinueMenuItemVisibility(menu);
     }
-    /**
-     * Sets the visibility of pause and continue buttons in given menu
-     * @param menu
-     */
-    private void setPauseContinueMenuItemVisibility(Menu menu){
+
+    private void setPauseContinueMenuItemVisibility(){
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this.getContext());
         boolean isStepCounterEnabled = sharedPref.getBoolean(getString(R.string.pref_step_counter_enabled), true);
-        MenuItem continueStepDetectionMenuItem = menu.findItem(R.id.menu_continue_step_detection);
-        MenuItem pauseStepDetectionMenuItem = menu.findItem(R.id.menu_pause_step_detection);
         if(isStepCounterEnabled){
-            continueStepDetectionMenuItem.setVisible(false);
-            pauseStepDetectionMenuItem.setVisible(true);
+            continueBtn.setVisibility(View.GONE);
+            pauseBtn.setVisibility(View.VISIBLE);
         }else {
-            continueStepDetectionMenuItem.setVisible(true);
-            pauseStepDetectionMenuItem.setVisible(false);
+            continueBtn.setVisibility(View.VISIBLE);
+            pauseBtn.setVisibility(View.GONE);
         }
     }
     /*

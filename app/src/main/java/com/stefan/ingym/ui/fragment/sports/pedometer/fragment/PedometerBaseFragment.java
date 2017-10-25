@@ -191,6 +191,7 @@ public class PedometerBaseFragment extends Fragment implements NavigationView.On
         mDrawerLayout = (DrawerLayout) view.findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 getActivity(), mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+
         mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 

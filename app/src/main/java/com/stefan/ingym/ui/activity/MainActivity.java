@@ -132,6 +132,9 @@ public class MainActivity extends AppCompatActivity implements DailyReportFragme
                     fragment = new FragmentIndex();
                     break;
             }
+
+//            getSupportFragmentManager().beginTransaction().show(fragment).commit();
+//            getSupportFragmentManager().beginTransaction().hide(fragment).commit();
             // 返回相应的Fragment
             return fragment;
         }
