@@ -3,7 +3,6 @@ package com.stefan.ingym.ui.fragment;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.ColorRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -31,8 +30,6 @@ import java.util.concurrent.TimeUnit;
 
 import cn.bingoogolapple.refreshlayout.BGAMeiTuanRefreshViewHolder;
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
-
-import static com.umeng.analytics.pro.x.an;
 
 /**
  * @ClassName: FragmentIndex
@@ -121,6 +118,7 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
     @Override
     public void setMenuVisibility(boolean menuVisible) {
         super.setMenuVisibility(menuVisible);
+        System.out.println("FragmentIndex - menuVisible" + menuVisible);
         if (this.getView() != null)
             this.getView().setVisibility(menuVisible ? View.VISIBLE:View.GONE);
     }
@@ -266,6 +264,8 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
      * 图片轮播的相关代码结束
      */
 
+
+
     /**
      * 实例化ToolBar相关数据
      */
@@ -289,7 +289,10 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         //加载菜单文件
-        ((AppCompatActivity) getActivity()).getMenuInflater().inflate(R.menu.menu_main, menu);
+        // menu.clear();
+        inflater.inflate(R.menu.menu_main, menu);
+        System.out.println("FragmentIndex - onCreateOptionsMenu");
+
     }
 
     @Override
@@ -302,6 +305,7 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
         return true;
     }
 
+
     /**
      * 点击搜索按钮之后执行操作的方法
      * @param keyword   搜索关键词
@@ -310,6 +314,7 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
     public void OnSearchClick(String keyword) {
 //        searchInfo.setText(keyword);    // 显示搜索关键词
     }
+
 
 
     /**
@@ -439,5 +444,6 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
     /**
      * 下拉刷新上拉加载更多控件相关数据结束
      */
+
 
 }

@@ -14,12 +14,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.stefan.ingym.R;
 import com.stefan.ingym.ui.activity.MainActivity;
@@ -180,7 +177,7 @@ public class PedometerBaseFragment extends Fragment implements NavigationView.On
                 mainContent.animate().alpha(1).setDuration(MAIN_CONTENT_FADEIN_DURATION);
             }
 
-            selectNavigationItem(getNavigationDrawerID());
+            // selectNavigationItem(getNavigationDrawerID());
         }
     }
 
@@ -190,9 +187,6 @@ public class PedometerBaseFragment extends Fragment implements NavigationView.On
         super.onActivityCreated(savedInstanceState);
 
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        if (((AppCompatActivity)getActivity()).getSupportActionBar() == null) {
-            ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        }
 
         mDrawerLayout = (DrawerLayout) view.findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

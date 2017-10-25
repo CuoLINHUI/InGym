@@ -26,11 +26,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,11 +59,6 @@ public class MainFragment extends Fragment implements SharedPreferences.OnShared
 
         StepDetectionServiceHelper.startAllIfEnabled(true, getActivity().getApplicationContext());
 
-        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        if (actionBar != null) {
-            //actionBar.setSubtitle(R.string.action_main);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
         container.removeAllViews();
 
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.pager);
@@ -76,7 +67,6 @@ public class MainFragment extends Fragment implements SharedPreferences.OnShared
         TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-        setHasOptionsMenu(true);
 
         return view;
     }
@@ -104,18 +94,6 @@ public class MainFragment extends Fragment implements SharedPreferences.OnShared
         viewPager.setAdapter(adapter);
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_options_overview, menu);
-    }
-
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        super.onPrepareOptionsMenu(menu);
-
-        setPauseContinueMenuItemVisibility(menu);
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -134,24 +112,6 @@ public class MainFragment extends Fragment implements SharedPreferences.OnShared
                 return true;
             default:
                 return false;
-        }
-    }
-
-    /**
-     * Sets the visibility of pause and continue buttons in given menu
-     * @param menu
-     */
-    private void setPauseContinueMenuItemVisibility(Menu menu){
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this.getContext());
-        boolean isStepCounterEnabled = sharedPref.getBoolean(getString(R.string.pref_step_counter_enabled), true);
-        MenuItem continueStepDetectionMenuItem = menu.findItem(R.id.menu_continue_step_detection);
-        MenuItem pauseStepDetectionMenuItem = menu.findItem(R.id.menu_pause_step_detection);
-        if(isStepCounterEnabled){
-            continueStepDetectionMenuItem.setVisible(false);
-            pauseStepDetectionMenuItem.setVisible(true);
-        }else {
-            continueStepDetectionMenuItem.setVisible(true);
-            pauseStepDetectionMenuItem.setVisible(false);
         }
     }
 
