@@ -21,7 +21,6 @@
             android:text=" 商品列表"
             android:textSize="20sp"
             android:textColor="@color/app_white"
-            android:background="@drawable/btn_activate_bg"
             android:drawableLeft="@mipmap/back"
             android:gravity="center_vertical" />
 

@@ -167,19 +167,19 @@ public class PedometerBaseFragment extends Fragment implements NavigationView.On
         }
     }
 
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if(isVisibleToUser){
-            View mainContent = view.findViewById(R.id.main_content);
-            if (mainContent != null && mainContent.getAlpha() != 1.0f) {
-                mainContent.setAlpha(0);
-                mainContent.animate().alpha(1).setDuration(MAIN_CONTENT_FADEIN_DURATION);
-            }
-
-            // selectNavigationItem(getNavigationDrawerID());
-        }
-    }
+//    @Override
+//    public void setUserVisibleHint(boolean isVisibleToUser) {
+//        super.setUserVisibleHint(isVisibleToUser);
+//        if(isVisibleToUser){
+//            View mainContent = view.findViewById(R.id.main_content);
+//            if (mainContent != null && mainContent.getAlpha() != 1.0f) {
+//                mainContent.setAlpha(0);
+//                mainContent.animate().alpha(1).setDuration(MAIN_CONTENT_FADEIN_DURATION);
+//            }
+//
+//            // selectNavigationItem(getNavigationDrawerID());
+//        }
+//    }
 
 
     @Override

@@ -259,11 +259,9 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
     public void onStop() {
         super.onStop();
     }
-
     /**
      * 图片轮播的相关代码结束
      */
-
 
 
     /**
@@ -360,8 +358,6 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
 
 
 
-
-
 //
 //        if (mIsNetworkEnabled) {
 //            // 如果网络可用，则加载网络数据
@@ -444,6 +440,5 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
     /**
      * 下拉刷新上拉加载更多控件相关数据结束
      */
-
 
 }

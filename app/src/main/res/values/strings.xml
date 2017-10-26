@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">InGym</string>
+    <string name="index_title">Hi 健身</string>
     <string name="startButton">开始体验</string>
     <string name="body_building">健身</string>
     <string name="sports">运动</string>
     <string name="community">社区</string>
     <string name="mine">我的</string>
     <string name="pic_title">图片标题 </string>
-    <string name="account_login">账户登陆</string>
+    <string name="account_login">账户登陆</string>f
     <string name="quick_login">快速登录</string>
     <string name="hint_account_login">用户名/邮箱/手机号</string>
     <string name="hint_login_password">密码</string>

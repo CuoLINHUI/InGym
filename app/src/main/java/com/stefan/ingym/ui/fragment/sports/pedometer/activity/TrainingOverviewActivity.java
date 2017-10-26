@@ -36,6 +36,8 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 
+import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.stefan.ingym.R;
 import com.stefan.ingym.ui.fragment.sports.pedometer.adapter.TrainingOverviewAdapter;
 import com.stefan.ingym.ui.fragment.sports.pedometer.model.Training;
@@ -72,6 +74,9 @@ public class TrainingOverviewActivity extends AppCompatActivity implements Train
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_training_overview);
+
+        // 初始化，自动将框架与变量绑定
+        ViewUtils.inject(this);
 
         if(TrainingPersistenceHelper.getActiveItem(this) != null){
             // show current training session if there is one.
@@ -113,6 +118,18 @@ public class TrainingOverviewActivity extends AppCompatActivity implements Train
         mAdapter.setRecyclerView(mRecyclerView);
         showTrainings();
         mRecyclerView.setAdapter(mAdapter);
+    }
+
+    /**
+     * 设置用户点击监听事件
+     */
+    @OnClick({R.id.tv_back})
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_back:  //用户点击了回退按钮
+                finish();
+                break;
+        }
     }
 
     @Override

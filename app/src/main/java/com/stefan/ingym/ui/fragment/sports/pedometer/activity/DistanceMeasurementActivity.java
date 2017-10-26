@@ -36,6 +36,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
+import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.stefan.ingym.R;
 import com.stefan.ingym.ui.fragment.sports.pedometer.Factory;
 import com.stefan.ingym.ui.fragment.sports.pedometer.model.StepCount;
@@ -93,6 +95,8 @@ public class DistanceMeasurementActivity extends AppCompatActivity implements Vi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_distance_measurement);
+
+        ViewUtils.inject(this);
 
         mTextViewDistance = (TextView) findViewById(R.id.distance);
         mTextViewDistanceTitle = (TextView) findViewById(R.id.distance_title);
@@ -163,6 +167,26 @@ public class DistanceMeasurementActivity extends AppCompatActivity implements Vi
         }
         LocalBroadcastManager.getInstance(this).unregisterReceiver(broadcastReceiver);
         super.onDestroy();
+    }
+
+    /**
+     * 设置用户点击监听事件
+     */
+    @OnClick({R.id.tv_back, R.id.stop_button, R.id.start_button})
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_back:  //用户点击了回退按钮
+                finish();
+                break;
+            case R.id.stop_button:
+                stopDistanceMeasurement();
+                break;
+            case R.id.start_button:
+                this.start_after_storing_steps = true;
+                // Start persistence service and wait for it before start counting steps
+                StepDetectionServiceHelper.startPersistenceService(this);
+                break;
+        }
     }
 
     /**
@@ -261,20 +285,6 @@ public class DistanceMeasurementActivity extends AppCompatActivity implements Vi
         WalkingMode walkingMode = menuWalkingModes.get(item.getItemId());
         WalkingModePersistenceHelper.setActiveMode(walkingMode, this);
         return true;
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.stop_button:
-                stopDistanceMeasurement();
-                break;
-            case R.id.start_button:
-                this.start_after_storing_steps = true;
-                // Start persistence service and wait for it before start counting steps
-                StepDetectionServiceHelper.startPersistenceService(this);
-                break;
-        }
     }
 
     public class BroadcastReceiver extends android.content.BroadcastReceiver {

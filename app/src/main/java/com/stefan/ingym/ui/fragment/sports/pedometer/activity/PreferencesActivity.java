@@ -79,7 +79,6 @@ public class PreferencesActivity extends AppCompatPreferenceActivity {
                         index >= 0
                                 ? (((additionalSummaryText != null) ? additionalSummaryText : "") + listPreference.getEntries()[index])
                                 : null);
-
             } else {
                 // For all other preferences, set the summary to the value's
                 // simple string representation.

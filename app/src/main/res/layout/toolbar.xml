@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|center_vertical"
                 android:text="标题"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textColor="#FFF"
                 android:layout_centerHorizontal="true"/>
 
@@ -55,7 +55,6 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
                 android:src="@android:drawable/ic_media_play"/>
-
 
         </RelativeLayout>
     </FrameLayout>
