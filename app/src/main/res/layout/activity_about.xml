@@ -37,78 +37,77 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:orientation="vertical"
-            android:background="@mipmap/about_bg"
-            android:scaleType="centerCrop"
-            >
-
             <LinearLayout
-                android:id="@+id/to_login_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|center_vertical"
-                android:layout_marginTop="33dp"
-                android:clickable="true"
-                android:gravity="center|center_vertical"
-                android:orientation="vertical" >
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:background="@mipmap/about_bg"
+                android:scaleType="centerCrop"
+                >
 
-                <ImageView
-                    android:id="@+id/btn_login"
+                <LinearLayout
+                    android:id="@+id/to_login_group"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="3dp"
-                    android:paddingLeft="40dp"
-                    android:paddingRight="40dp"
-                    android:paddingTop="3dp"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:src="@drawable/app_about"
-                    />
+                    android:layout_gravity="center|center_vertical"
+                    android:layout_marginTop="33dp"
+                    android:clickable="true"
+                    android:gravity="center|center_vertical"
+                    android:orientation="vertical" >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="3dp"
-                    android:text="@string/about_version"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"
-                    />
+                    <ImageView
+                        android:id="@+id/btn_login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="40dp"
+                        android:paddingRight="40dp"
+                        android:paddingTop="3dp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:src="@drawable/app_about"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="3dp"
+                        android:text="@string/about_version"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="Author:"
+                android:textSize="20sp"
+                android:textColor="@color/text_black"
+                android:id="@+id/textView" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="STEFAN CHEN"
+                android:textSize="20sp"
+                android:textColor="@color/text_black"
+                />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:text="Author:"
-            android:textSize="20sp"
-            android:textColor="@color/text_black"
-            android:id="@+id/textView" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="STEFAN CHEN"
-            android:textSize="20sp"
-            android:textColor="@color/text_black"
-            />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
-            android:background="@mipmap/about_parting_line" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@mipmap/about_parting_line" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -152,95 +151,95 @@
                 android:textColor="@color/text_black"
                 />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:text="This is my graduation project."
-            android:textSize="17sp"
-            android:textColor="@color/text_black"
-            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="This is my graduation project."
+                android:textSize="17sp"
+                android:textColor="@color/text_black"
+                />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="It was my pleasure to meet you!"
-            android:textSize="17sp"
-            android:textColor="@color/text_black"
-            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="It was my pleasure to meet you!"
+                android:textSize="17sp"
+                android:textColor="@color/text_black"
+                />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
-            android:background="@mipmap/about_parting_line" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@mipmap/about_parting_line" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:text="If you have any better Suggestions "
-            android:textSize="17sp"
-            android:textColor="@color/text_black"
-            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="If you have any better Suggestions "
+                android:textSize="17sp"
+                android:textColor="@color/text_black"
+                />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="and improvements, or find bugs, "
-            android:textSize="17sp"
-            android:textColor="@color/text_black"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="please contact me!"
-            android:textSize="17sp"
-            android:textColor="@color/text_black"
-            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="and improvements, or find bugs, "
+                android:textSize="17sp"
+                android:textColor="@color/text_black"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="please contact me!"
+                android:textSize="17sp"
+                android:textColor="@color/text_black"
+                />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
-            android:background="@mipmap/about_parting_line" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@mipmap/about_parting_line" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:text="Email:"
-            android:textSize="20sp"
-            android:textColor="@color/text_black"
-            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="Email:"
+                android:textSize="20sp"
+                android:textColor="@color/text_black"
+                />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="xxxxxxxxxx@xxx.com"
-            android:textSize="20sp"
-            android:textColor="@color/text_black"
-            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="xxxxxxxxxx@xxx.com"
+                android:textSize="20sp"
+                android:textColor="@color/text_black"
+                />
 
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
-            android:background="@mipmap/about_parting_line" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@mipmap/about_parting_line" />
 
         </LinearLayout>
     </ScrollView>

@@ -8,7 +8,7 @@
         android:normalScreens="true"
         android:resizeable="true"
         android:smallScreens="true"
-        android:xlargeScreens="true"/>
+        android:xlargeScreens="true" />
 
     <!-- 允许程序打开网络套接字 -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -42,11 +42,9 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <!-- 用于申请获取使用相机 -->
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
-
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
@@ -87,19 +85,19 @@
         <!-- 关于activity -->
         <activity android:name=".ui.activity.Mine.AboutActivity" />
 
-        <!--备忘录部分activity-->
+        <!-- 备忘录部分activity -->
         <activity android:name=".ui.fragment.mine.memorandum.MemorandumActivity" />
-        <activity android:name=".ui.fragment.mine.memorandum.activity.BaseActivity"/>
-        <activity android:name=".ui.fragment.mine.memorandum.activity.ContentActivity"/>
-        <activity android:name=".ui.fragment.mine.memorandum.activity.CreateActivity"/>
-        <activity android:name=".ui.fragment.mine.memorandum.activity.FilesActivity"/>
-        <activity android:name=".ui.fragment.mine.memorandum.activity.QuickCreateActivity"/>
+        <activity android:name=".ui.fragment.mine.memorandum.activity.BaseActivity" />
+        <activity android:name=".ui.fragment.mine.memorandum.activity.ContentActivity" />
+        <activity android:name=".ui.fragment.mine.memorandum.activity.CreateActivity" />
+        <activity android:name=".ui.fragment.mine.memorandum.activity.FilesActivity" />
+        <activity android:name=".ui.fragment.mine.memorandum.activity.QuickCreateActivity" />
 
-        <!--直播部分activity-->
-        <activity android:name=".ui.fragment.community.live.activity.LiveActivity"/>
-        <activity android:name=".ui.fragment.community.live.activity.LiveWatchActivity"/>
+        <!-- 直播部分activity -->
+        <activity android:name=".ui.fragment.community.live.activity.LiveActivity" />
+        <activity android:name=".ui.fragment.community.live.activity.LiveWatchActivity" />
 
-        <!--计步器部分-->
+        <!-- 计步器部分 -->
         <activity
             android:name=".ui.fragment.sports.pedometer.activity.DistanceMeasurementActivity"
             android:label="@string/action_distance_measurement"
@@ -108,9 +106,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.activity.MainActivity" />
         </activity>
-
-        <activity android:name=".ui.fragment.sports.pedometer.activity.PreferencesActivity"/>
-
+        <activity android:name=".ui.fragment.sports.pedometer.activity.PreferencesActivity" />
         <activity
             android:name=".ui.fragment.sports.pedometer.activity.TrainingActivity"
             android:label="@string/activity_title_training"
@@ -119,7 +115,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.fragment.sports.pedometer.activity.TrainingOverviewActivity" />
         </activity>
-
         <activity
             android:name=".ui.fragment.sports.pedometer.activity.TrainingOverviewActivity"
             android:label="@string/activity_title_training"
@@ -129,18 +124,18 @@
                 android:value=".ui.activity.MainActivity" />
         </activity>
 
-        <!--<activity android:name=".activity.WalkingModesActivity"/>-->
+        <!-- <activity android:name=".activity.WalkingModesActivity"/> -->
         <activity
             android:name=".ui.fragment.sports.pedometer.activity.WalkingModesActivity"
-            android:label="@string/activity_title_walking_modes"
             android:configChanges="orientation|screenSize|keyboard"
+            android:label="@string/activity_title_walking_modes"
             android:parentActivityName=".ui.fragment.sports.pedometer.activity.PreferencesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.fragment.sports.pedometer.activity.PreferencesActivity" />
         </activity>
 
-        <!--<activity android:name=".activity.WalkingModeLearningActivity"/>-->
+        <!-- <activity android:name=".activity.WalkingModeLearningActivity"/> -->
         <activity
             android:name=".ui.fragment.sports.pedometer.activity.WalkingModeLearningActivity"
             android:label="@string/activity_title_walking_modes"
@@ -150,11 +145,10 @@
                 android:value=".ui.fragment.sports.pedometer.activity.WalkingModesActivity" />
         </activity>
 
-
-        <service android:name=".ui.fragment.sports.pedometer.service.AccelerometerStepDetectorService"/>
-        <service android:name=".ui.fragment.sports.pedometer.service.HardwareStepCounterService"/>
-        <service android:name=".ui.fragment.sports.pedometer.service.MovementSpeedService"/>
-        <!--防止杀害该service-->
+        <service android:name=".ui.fragment.sports.pedometer.service.AccelerometerStepDetectorService" />
+        <service android:name=".ui.fragment.sports.pedometer.service.HardwareStepCounterService" />
+        <service android:name=".ui.fragment.sports.pedometer.service.MovementSpeedService" />
+        <!-- 防止杀害该service -->
         <service
             android:name=".ui.fragment.sports.pedometer.service.HardwareStepDetectorService"
             android:stopWithTask="false" />
@@ -167,19 +161,17 @@
                 <action android:name="com.stefan.pedometer.WALKING_MODE_CHANGED" />
             </intent-filter>
         </receiver>
-
-        <receiver
-            android:name=".ui.fragment.sports.pedometer.receiver.WidgetReceiver" >
+        <receiver android:name=".ui.fragment.sports.pedometer.receiver.WidgetReceiver">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider"
+
+            <meta-data
+                android:name="android.appwidget.provider"
                 android:resource="@xml/appwidget_provider" />
         </receiver>
-
-        <receiver android:name=".ui.fragment.sports.pedometer.receiver.MotivationAlertReceiver"/>
-        <receiver android:name=".ui.fragment.sports.pedometer.receiver.HardwareStepCountReceiver"/>
-
+        <receiver android:name=".ui.fragment.sports.pedometer.receiver.MotivationAlertReceiver" />
+        <receiver android:name=".ui.fragment.sports.pedometer.receiver.HardwareStepCountReceiver" />
 
         <!-- 友盟统计的Key -->
         <meta-data
@@ -190,10 +182,11 @@
             android:value="U_InGym" />
         <!-- 友盟自动更新 -->
 
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <activity android:name=".ui.fragment.sports.pedometer.activity.PedometerAboutActivity"></activity>
     </application>
 
 </manifest>

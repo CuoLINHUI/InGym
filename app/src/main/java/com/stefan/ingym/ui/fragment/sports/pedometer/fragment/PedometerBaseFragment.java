@@ -21,6 +21,7 @@ import android.view.View;
 import com.stefan.ingym.R;
 import com.stefan.ingym.ui.activity.MainActivity;
 import com.stefan.ingym.ui.fragment.sports.pedometer.activity.DistanceMeasurementActivity;
+import com.stefan.ingym.ui.fragment.sports.pedometer.activity.PedometerAboutActivity;
 import com.stefan.ingym.ui.fragment.sports.pedometer.activity.PreferencesActivity;
 import com.stefan.ingym.ui.fragment.sports.pedometer.activity.TrainingOverviewActivity;
 
@@ -151,10 +152,11 @@ public class PedometerBaseFragment extends Fragment implements NavigationView.On
                 intent = new Intent(getContext(), DistanceMeasurementActivity.class);
                 createBackStack(intent);
                 break;
-//            case R.id.menu_about:
-//                intent = new Intent(this, AboutActivity.class);
+            case R.id.menu_about:
+                intent = new Intent(getContext(), PedometerAboutActivity.class);
 //                createBackStack(intent);
-//                break;
+                startActivity(intent);
+                break;
 //            case R.id.menu_help:
 //                intent = new Intent(this, HelpActivity.class);
 //                createBackStack(intent);

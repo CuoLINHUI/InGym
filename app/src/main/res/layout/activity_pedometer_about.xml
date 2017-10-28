@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_pedometer_about"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.stefan.ingym.ui.fragment.sports.pedometer.activity.PedometerAboutActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+        <!--设置返回点击事件-->
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text=" 关于"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:drawableLeft="@mipmap/back"
+            android:gravity="center_vertical" />
+    </android.support.v7.widget.Toolbar>
+
+    <!-- scrollbars="none" 滚动条隐藏 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="该系统的“运动”模块中的所有功能"
+                android:textSize="20sp"
+                android:textColor="@color/text_black"
+                android:id="@+id/textView" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="都是基于GitHub上的开源项目"
+                android:textSize="20sp"
+                android:textColor="@color/text_black"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="“privacy-friendly-pedometer-master”"
+                android:textSize="20sp"
+                android:textColor="@color/text_black"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="改编而来。"
+                android:textSize="20sp"
+                android:textColor="@color/text_black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@mipmap/about_parting_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
+                android:text="感谢Darmstadt大学的"
+                android:textSize="20sp"
+                android:textColor="@color/text_black"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="The Privacy Friendly Apps 程序组，"
+                android:textSize="20sp"
+                android:textColor="@color/text_black"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="感谢Privacy Friendly Pedometer的作者"
+                android:textSize="20sp"
+                android:textColor="@color/text_black"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Tobias和Neidig，以及相关的支持者。"
+                android:textSize="20sp"
+                android:textColor="@color/text_black"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="因为有你们，"
+                android:textSize="20sp"
+                android:textColor="@color/text_black"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="使得我能顺利完成毕业设计系统中的"
+                android:textSize="20sp"
+                android:textColor="@color/text_black"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="“运动”模块。"
+                android:textSize="20sp"
+                android:textColor="@color/text_black"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@mipmap/about_parting_line" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

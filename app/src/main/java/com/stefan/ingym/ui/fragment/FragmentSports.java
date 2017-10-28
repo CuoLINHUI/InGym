@@ -64,7 +64,8 @@ public class FragmentSports extends PedometerBaseFragment implements DailyReport
         PreferenceManager.setDefaultValues(getContext(), R.xml.pref_notification, false);
 
         // Load first view
-        final android.support.v4.app.FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+//        final android.support.v4.app.FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        final android.support.v4.app.FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.content_frame, new MainFragment(), "MainFragment");
         fragmentTransaction.commit();
 
@@ -72,7 +73,7 @@ public class FragmentSports extends PedometerBaseFragment implements DailyReport
         StepDetectionServiceHelper.startAllIfEnabled(getContext());
         //Log.i(LOG_TAG, "MainActivity initialized");
 
-        ((TextView)view.findViewById(R.id.toolbar_title)).setText("Sports");
+        ((TextView)view.findViewById(R.id.toolbar_title)).setText(getResources().getString(R.string.sports_title));
 
         continueBtn = view.findViewById(R.id.menu_continue_step_detection);
         continueBtn.setOnClickListener(this);

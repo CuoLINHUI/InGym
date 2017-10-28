@@ -86,7 +86,7 @@ public class FragmentCommunity extends Fragment {
         };
         // 为选项卡控件设置相关属性
         mCoordinatorTabLayout.setTransulcentStatusBar(getActivity())
-                .setTitle("       Community")      // 设置标题
+                .setTitle(getResources().getString(R.string.community_title))      // 设置标题
                 .setBackEnable(false)       // 是否设置返回箭头
                 .setImageArray(mImageArray, mColorArray)
                 .setupWithViewPager(mViewPager);

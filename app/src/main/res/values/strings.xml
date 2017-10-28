@@ -2,6 +2,8 @@
 <resources>
     <string name="app_name">InGym</string>
     <string name="index_title">Hi 健身</string>
+    <string name="sports_title">立即去动</string>
+    <string name="community_title">社区</string>
     <string name="startButton">开始体验</string>
     <string name="body_building">健身</string>
     <string name="sports">运动</string>
