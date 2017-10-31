@@ -8,19 +8,18 @@
     tools:context=".ui.activity.Mine.RegisterActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_register"
+        android:id="@+id/register_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary">
 
-        <!--记得设置返回点击事件-->
         <TextView
-            android:id="@+id/tv_back"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:background="@drawable/btn_activate_bg"
-            android:drawableLeft="@mipmap/back"
-            android:drawableRight="@mipmap/text_register"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/register"
+            android:textSize="20sp"
+            android:textColor="@color/app_white"
             android:gravity="center_vertical" />
 
     </android.support.v7.widget.Toolbar>

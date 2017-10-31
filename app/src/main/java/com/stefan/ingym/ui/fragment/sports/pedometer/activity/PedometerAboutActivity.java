@@ -2,6 +2,7 @@ package com.stefan.ingym.ui.fragment.sports.pedometer.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.lidroid.xutils.ViewUtils;
@@ -15,18 +16,23 @@ public class PedometerAboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedometer_about);
         ViewUtils.inject(this);
+        // 初始化Toolbar
+        init_toolbar();
     }
 
     /**
-     * 用户点击事件的监听
+     * toolbar初始化
      */
-    @OnClick({R.id.tv_back})
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.tv_back:    // 用户点击了返回按钮
-                finish();
-                break;
-        }
+    private void init_toolbar(){
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.about_toolbar);
+        mToolbar.setNavigationIcon(R.mipmap.back);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+                overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
+            }
+        });
     }
 
 }

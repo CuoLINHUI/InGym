@@ -7,20 +7,19 @@
 
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_register"
+        android:id="@+id/distance_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary">
 
         <!--设置返回点击事件-->
         <TextView
-            android:id="@+id/tv_back"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="@string/action_distance_measurement"
             android:textSize="20sp"
             android:textColor="@color/app_white"
-            android:drawableLeft="@mipmap/back"
             android:gravity="center_vertical" />
     </android.support.v7.widget.Toolbar>
 

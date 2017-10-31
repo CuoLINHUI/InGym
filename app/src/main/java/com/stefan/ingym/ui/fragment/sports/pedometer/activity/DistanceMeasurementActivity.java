@@ -28,6 +28,7 @@ import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -98,6 +99,9 @@ public class DistanceMeasurementActivity extends AppCompatActivity implements Vi
 
         ViewUtils.inject(this);
 
+        // 初始化Toolbar
+        init_toolbar();
+
         mTextViewDistance = (TextView) findViewById(R.id.distance);
         mTextViewDistanceTitle = (TextView) findViewById(R.id.distance_title);
         buttonStop = (Button) findViewById(R.id.stop_button);
@@ -126,6 +130,23 @@ public class DistanceMeasurementActivity extends AppCompatActivity implements Vi
         this.getStepCounts();
         this.updateData();
         this.updateView();
+    }
+
+    /**
+     * toolbar初始化
+     */
+    private void init_toolbar(){
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.distance_toolbar);
+
+        mToolbar.setNavigationIcon(R.mipmap.back);
+
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+                overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
+            }
+        });
     }
 
     @Override
@@ -172,12 +193,9 @@ public class DistanceMeasurementActivity extends AppCompatActivity implements Vi
     /**
      * 设置用户点击监听事件
      */
-    @OnClick({R.id.tv_back, R.id.stop_button, R.id.start_button})
+    @OnClick({R.id.stop_button, R.id.start_button})
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.tv_back:  //用户点击了回退按钮
-                finish();
-                break;
             case R.id.stop_button:
                 stopDistanceMeasurement();
                 break;

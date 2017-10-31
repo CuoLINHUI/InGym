@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
@@ -22,8 +23,6 @@ import com.stefan.ingym.R;
  */
 public class SettingActivity extends AppCompatActivity {
 
-    @ViewInject(R.id.tv_back)           // 返回按钮
-    private TextView tv_back;
     @ViewInject(R.id.current_verison)   //当前版本
     private TextView current_verison;
     @ViewInject(R.id.ingym_tel)         // InGym客服电话
@@ -33,24 +32,36 @@ public class SettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-
         // 初始化，自动将框架与这些变量绑定，相当省略书写findViewById(id)方法
         ViewUtils.inject(this);
-
+        // 初始化Toolbar
+        init_toolbar();
         // 设置上当前版本信息
-        current_verison.setText("当前版本：V" + getVersion());
+        current_verison.setText(getResources().getString(R.string.current_version) + getVersion());
 
+    }
+
+    /**
+     * toolbar初始化
+     */
+    private void init_toolbar(){
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.ingym_setting_toolbar);
+        mToolbar.setNavigationIcon(R.mipmap.back);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+                overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
+            }
+        });
     }
 
     /**
      * 设置用户点击监听事件
      */
-    @OnClick({R.id.tv_back, R.id.check_update, R.id.feedback, R.id.custom_service})
+    @OnClick({R.id.check_update, R.id.feedback, R.id.custom_service})
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.tv_back:       // 用户点击了回退按钮
-                finish();
-                break;
             case R.id.check_update:  // 用户点击了检查更新
 
                 break;

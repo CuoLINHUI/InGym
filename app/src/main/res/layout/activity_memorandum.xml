@@ -7,7 +7,7 @@
     >
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_about"
+        android:id="@+id/memorandum_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary">
@@ -15,8 +15,8 @@
         <TextView
             android:id="@+id/tv_back"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:drawableLeft="@mipmap/back2"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:gravity="center_vertical"
             android:text="@string/memorandum_title"
             android:textColor="@color/white"

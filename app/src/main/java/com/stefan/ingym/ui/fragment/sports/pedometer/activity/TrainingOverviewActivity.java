@@ -25,6 +25,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -78,6 +79,9 @@ public class TrainingOverviewActivity extends AppCompatActivity implements Train
         // 初始化，自动将框架与变量绑定
         ViewUtils.inject(this);
 
+        // 初始化Toolbar
+        init_toolbar();
+
         if(TrainingPersistenceHelper.getActiveItem(this) != null){
             // show current training session if there is one.
             Log.w(LOG_CLASS, "Found active training session");
@@ -121,15 +125,20 @@ public class TrainingOverviewActivity extends AppCompatActivity implements Train
     }
 
     /**
-     * 设置用户点击监听事件
+     * toolbar初始化
      */
-    @OnClick({R.id.tv_back})
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.tv_back:  //用户点击了回退按钮
-                finish();
-                break;
-        }
+    private void init_toolbar(){
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        mToolbar.setNavigationIcon(R.mipmap.back);
+
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+                overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
+            }
+        });
     }
 
     @Override

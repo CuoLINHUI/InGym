@@ -29,4 +29,9 @@ public class ConstantValue {
      */
     public static final String USER_ACCOUNT_LOGIN = HOST + "/user/account_login";
 
+    /**
+     * 用户请求资讯时访问服务器端的访问地址
+     */
+    public static final String HI_ARTICLE = HOST + "/article/hi_article";
+
 }

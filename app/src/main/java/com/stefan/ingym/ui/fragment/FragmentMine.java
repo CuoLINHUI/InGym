@@ -4,6 +4,7 @@ package com.stefan.ingym.ui.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -130,7 +131,7 @@ public class FragmentMine extends Fragment {
             user_info_group.setVisibility(View.VISIBLE);	        // 设置用户信息条目可见
             tv_username.setText(user.getUsername());			    // 给条目设置上用户名数据
             if (user.getIntegral() != null) {
-                tv_integral.setText(user.getIntegral());	// 给条目设置上积分数据
+                tv_integral.setText(user.getIntegral());	        // 给条目设置上积分数据
             } else {
                 tv_integral.setText("0");
             }

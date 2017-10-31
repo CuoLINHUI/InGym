@@ -3,6 +3,7 @@ package com.stefan.ingym.ui.fragment.mine.memorandum;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.RelativeLayout;
@@ -53,8 +54,25 @@ public class MemorandumActivity extends AppCompatActivity {
         setContentView(R.layout.activity_memorandum);
         // 注入框架
         ViewUtils.inject(this);
+        // 初始化Toolbar
+        init_toolbar();
         // 调用初始化UI方法
         initUI();
+    }
+
+    /**
+     * toolbar初始化
+     */
+    private void init_toolbar(){
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.memorandum_toolbar);
+        mToolbar.setNavigationIcon(R.mipmap.back);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+                overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
+            }
+        });
     }
 
     /**

@@ -1,8 +1,10 @@
 package com.stefan.ingym.ui.fragment;
 
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -15,21 +17,42 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.stefan.ingym.R;
+import com.stefan.ingym.adapter.index.ArticleAdapter;
+import com.stefan.ingym.adapter.index.SwipeAdapterViewAdapter;
 import com.stefan.ingym.custom.IOnSearchClickListener;
+import com.stefan.ingym.pojo.ResponseObject;
+import com.stefan.ingym.pojo.index.Article;
+import com.stefan.ingym.util.ConstantValue;
+import com.stefan.ingym.util.HttpUtils;
+import com.stefan.ingym.util.ToastUtil;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import cn.bingoogolapple.refreshlayout.BGAMeiTuanRefreshViewHolder;
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
+import static android.os.Build.VERSION_CODES.M;
+import static com.stefan.ingym.R.id.lv_listview_data;
 
 /**
  * @ClassName: FragmentIndex
@@ -82,6 +105,18 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
     @ViewInject(R.id.rl_modulename_refresh)
     private BGARefreshLayout mRefreshLayout;
 
+    // 当前页码，获取多少条数据， 多少页
+    private int page = 1, size = 10, pageCount = 1;
+
+    // 定义集合
+    private List<Article> mList = null;
+
+    // 定义数据适配器
+    private SwipeAdapterViewAdapter mAdapter;
+
+    // 资讯item
+    @ViewInject(R.id.lv_listview_data)
+    private ListView listView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -107,6 +142,13 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
 
         // 初始化下拉刷新，下拉加载更多控件
         initRefreshLayout();
+
+        mList = new ArrayList<>();
+
+        mAdapter = new SwipeAdapterViewAdapter(getContext());
+
+        // 为资讯item设置上数据适配器
+        listView.setAdapter(mAdapter);
 
         // 返回布局文件
         return view;
@@ -187,14 +229,9 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
             }
 
             @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-
-            }
-
+            public void onPageScrolled(int arg0, float arg1, int arg2) {}
             @Override
-            public void onPageScrollStateChanged(int arg0) {
-
-            }
+            public void onPageScrollStateChanged(int arg0) {}
         });
     }
 
@@ -348,44 +385,85 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
         // 可选配置  -------------END
     }
 
+   /* private List<Article> mockData(int page, int size){
+        List<Article> articles = new ArrayList<>();
+        for(int i = 0; i < 10; ++i){
+            Article article = new Article();
+            article.setId(page * size + i + "");
+            article.setAgree_number(new Random().nextInt());
+            article.setBrowse_times(new Random().nextInt());
+            article.setComments_number(new Random().nextInt());
+            article.setDetail("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            article.setPictureURL("http://img2.imgtn.bdimg.com/it/u=3962587452,4101692640&fm=27&gp=0.jpg");
+            article.setTitle("title:" + i);
+            article.setTitle_description("miaoshushsusushusus");
+            articles.add(article);
+        }
+        return articles;
+    }*/
+
     /**
      * 加载最新数据
      * @param refreshLayout
      */
     @Override
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
-        // 在这里加载最新数据
+        final Map<String, String> params = new HashMap<String ,String>(){
+            {
+                put("page", String.valueOf(page));
+                put("page", String.valueOf(size));
+            }
+        };
+
+/*
+        // 请求数据
+        mList = mockData(page, size);
+        // 添加数据给适配器
+        mAdapter.addNewData(mList);     */
+
+        // 延迟两秒
+        new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message msg) {
+                mRefreshLayout.endRefreshing();
+                // 向服务端发送请求（请求方法，维护的访问路径，需要传递的参数，返回值）
+                HttpUtils.doGet(ConstantValue.HI_ARTICLE, params, new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        // 无论请求成功或者失败都要求ListView控件复位，变回原来的状态
+                        mRefreshLayout.endRefreshing();
+                        // 提示用户数据请求失败
+                        ToastUtil.show(getActivity(), "抱歉，数据请求失败,请检查网络~");
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
 
 
+                        // 无论请求成功或者失败都要求ListView控件复位，变回原来的状态
+                        mRefreshLayout.endRefreshing();
 
-//
-//        if (mIsNetworkEnabled) {
-//            // 如果网络可用，则加载网络数据
-//            new AsyncTask<Void, Void, Void>() {
-//
-//                @Override
-//                protected Void doInBackground(Void... params) {
-//                    try {
-//                        Thread.sleep(MainActivity.LOADING_DURATION);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                    return null;
-//                }
-//
-//                @Override
-//                protected void onPostExecute(Void aVoid) {
-//                    // 加载完毕后在 UI 线程结束下拉刷新
-//                    mRefreshLayout.endRefreshing();
-//                    mDatas.addAll(0, DataEngine.loadNewData());
-//                    mAdapter.setDatas(mDatas);
-//                }
-//            }.execute();
-//        } else {
-//            // 网络不可用，结束下拉刷新
-//            Toast.makeText(this, "网络不可用", Toast.LENGTH_SHORT).show();
-//            mRefreshLayout.endRefreshing();
-//        }
+                        /**
+                         *  解析服务器端返回过来的结果
+                         */
+                        Gson gson = new GsonBuilder().create();
+                        // 得到响应体
+                        String json = response.body().string();
+                        // 通过fromJson方法将json数据转化成实体类,用于解析
+                        ResponseObject<List<Article>> object = gson.fromJson(json, new TypeToken<ResponseObject<List<Article>>>() {
+                        }.getType());
+
+                        // 下拉刷新，表示mList重新加载数据，但总数据不变
+                        mList = object.getDatas();
+                        mAdapter.addNewData(mList);
+
+                    }
+                });
+
+                return true;
+            }
+        }).sendEmptyMessageDelayed(0, 2000);
+
     }
 
     /**

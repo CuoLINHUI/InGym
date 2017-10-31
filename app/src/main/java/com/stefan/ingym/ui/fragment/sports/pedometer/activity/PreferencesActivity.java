@@ -35,7 +35,9 @@ import android.preference.PreferenceScreen;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 
 import com.stefan.ingym.R;
@@ -140,6 +142,7 @@ public class PreferencesActivity extends AppCompatPreferenceActivity {
         super.onCreate(savedInstanceState);
         setupActionBar();
     }
+
 
     /**
      * Set up the {@link android.app.ActionBar}, if the API is available.

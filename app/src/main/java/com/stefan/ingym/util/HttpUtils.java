@@ -63,6 +63,23 @@ public class HttpUtils {
      * @param callback
      */
     public static void doGet(String url, Callback callback) {
+        /*Request request = new Request.Builder()
+                .url(url)
+                .addHeader("Content-Type", "application/json;charset=UTF-8")
+                .build();
+        Call call = getInstance().newCall(request);
+        call.enqueue(callback);*/
+        doGet(url, null, callback);
+    }
+
+    public static void doGet(String url, Map<String, String> params, Callback callback){
+        if(params != null && params.size() > 0){
+            url += "?";
+            for (String key : params.keySet()) {
+                url += (key + "=" + params.get(key) + "&");
+            }
+            url = url.substring(0, url.length() - 1);
+        }
         Request request = new Request.Builder()
                 .url(url)
                 .addHeader("Content-Type", "application/json;charset=UTF-8")

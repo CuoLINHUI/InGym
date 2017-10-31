@@ -2,6 +2,7 @@ package com.stefan.ingym.ui.activity.Community;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
@@ -24,9 +25,6 @@ public class GoodsListActivity extends AppCompatActivity implements BGARefreshLa
 
     private String caregory = null;
 
-    @ViewInject(R.id.tv_back)           // 返回按钮
-    private TextView tv_back;
-
     // 下拉刷新上拉加载更多控件
     @ViewInject(R.id.rl_modulename_refresh)
     private BGARefreshLayout mRefreshLayout;
@@ -39,6 +37,9 @@ public class GoodsListActivity extends AppCompatActivity implements BGARefreshLa
         // 初始化，自动将框架与这些变量绑定，相当省略书写findViewById(id)方法
         ViewUtils.inject(this);
 
+        // 初始化Toolbar
+        init_toolbar();
+
         // 获取EquipmentFragment传递过来的分类ID
         Bundle bundle = getIntent().getExtras();
         caregory = bundle.getString("category");
@@ -49,8 +50,25 @@ public class GoodsListActivity extends AppCompatActivity implements BGARefreshLa
     }
 
     /**
-     * 设置用户点击监听事件
+     * toolbar初始化
      */
+    private void init_toolbar(){
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.goods_toolbar);
+
+        mToolbar.setNavigationIcon(R.mipmap.back);
+
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+                overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
+            }
+        });
+    }
+
+    /**
+     * 设置用户点击监听事件
+     *//*
     @OnClick({R.id.tv_back})
     public void onClick(View v) {
         switch (v.getId()) {
@@ -58,7 +76,7 @@ public class GoodsListActivity extends AppCompatActivity implements BGARefreshLa
                 finish();
                 break;
         }
-    }
+    }*/
 
     /**
      * 下拉刷新上拉加载更多控件相关数据开始

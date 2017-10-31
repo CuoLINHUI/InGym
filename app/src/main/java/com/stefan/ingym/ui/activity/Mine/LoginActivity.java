@@ -3,6 +3,7 @@ package com.stefan.ingym.ui.activity.Mine;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -95,13 +96,28 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         // 初始化，自动将框架与这些变量绑定
         ViewUtils.inject(this);
-
+        // 初始化Toolbar
+        init_toolbar();
         // 调用用户登陆选择方法
         initLoginSelection();
 
+    }
+
+    /**
+     * toolbar初始化
+     */
+    private void init_toolbar(){
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.login_toolbar);
+        mToolbar.setNavigationIcon(R.mipmap.back);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+                overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
+            }
+        });
     }
 
     /**
@@ -141,13 +157,9 @@ public class LoginActivity extends AppCompatActivity {
     /**
      * 设置用户点击监听事件
      */
-    @OnClick({R.id.tv_back, R.id.tv_register, R.id.btn_login, R.id.tv_forget_password})
+    @OnClick({R.id.tv_register, R.id.btn_login, R.id.tv_forget_password})
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.tv_back:  //用户点击了回退按钮
-                finish();
-                break;
-
             case R.id.tv_register:  // 用户点击了注册按钮
                 // 跳转到用户注册界面
                 startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
@@ -194,7 +206,7 @@ public class LoginActivity extends AppCompatActivity {
         User user = new User();
         user.setUsername(username);
         user.setLoginPwd(password);
-        // 向服务端发送请求
+        // 向服务端发送请求（请求方法，维护的访问路径，需要传递的参数，返回值）
         com.stefan.ingym.util.HttpUtils.doPost(ConstantValue.USER_ACCOUNT_LOGIN, new Gson().toJson(user), new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -223,7 +235,6 @@ public class LoginActivity extends AppCompatActivity {
                         ToastUtil.show(getApplicationContext(), object.getMsg());
                     }
                 });
-
             }
         });
     }

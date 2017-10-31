@@ -57,6 +57,7 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'cn.hugeterry.coordinatortablayout:coordinatortablayout:1.1.0'
     compile 'cn.bingoogolapple:bga-refreshlayout:1.1.7@aar'
+    compile 'cn.bingoogolapple:bga-adapter:1.1.5@aar'
     compile 'com.squareup.okhttp3:okhttp:3.3.0'
     compile 'com.umeng.analytics:analytics:latest.integration'
     compile 'de.hdodenhof:circleimageview:2.1.0'

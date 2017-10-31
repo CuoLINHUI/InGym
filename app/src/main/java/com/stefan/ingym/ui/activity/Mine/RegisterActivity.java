@@ -2,6 +2,7 @@ package com.stefan.ingym.ui.activity.Mine;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
@@ -35,8 +36,6 @@ import okhttp3.Response;
  */
 public class RegisterActivity extends Activity {
 
-    @ViewInject(R.id.tv_back)               // 返回按钮
-    private TextView tv_back;
     @ViewInject(R.id.register_username)		// 用户注册名
     private EditText register_username;
     @ViewInject(R.id.register_pwd)			// 用户注册密码
@@ -45,30 +44,37 @@ public class RegisterActivity extends Activity {
     private EditText register_confirm_pwd;
     @ViewInject(R.id.register_email)	    // 用户邮箱
     private EditText register_email;
-    @ViewInject(R.id.btn_register)			// 用户注册提交按钮
-    private Button btn_register;
-    @ViewInject(R.id.tv_reset)              // 输入框数据重置按钮
-    private TextView tv_reset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
         ViewUtils.inject(this);
+        // 初始化Toolbar
+        init_toolbar();
+    }
 
+    /**
+     * toolbar初始化
+     */
+    private void init_toolbar(){
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.register_toolbar);
+        mToolbar.setNavigationIcon(R.mipmap.back);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+                overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
+            }
+        });
     }
 
     /**
      * 设置用户点击监听事件
      */
-    @OnClick({R.id.tv_back, R.id.btn_register, R.id.tv_reset})
+    @OnClick({R.id.btn_register, R.id.tv_reset})
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.tv_back:      // 用户点击了回退按钮
-                finish();
-                break;
-
             case R.id.btn_register: // 用户点击了注册按钮
                 // 获取用户注册填入的用户名
                 String username = register_username.getText().toString().trim();
