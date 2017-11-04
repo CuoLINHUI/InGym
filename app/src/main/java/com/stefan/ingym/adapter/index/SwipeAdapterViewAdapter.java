@@ -54,8 +54,8 @@ public class SwipeAdapterViewAdapter extends BGAAdapterViewAdapter<Article> {
 
         viewHolderHelper
                 .setText(R.id.tv_title, model.getTitle())
-                .setText(R.id.tv_agree, model.getAgree_number() + "")
-                .setText(R.id.tv_comments, model.getComments_number() + "")
+                .setText(R.id.tv_agree, model.getAgree_number() + "赞同")
+                .setText(R.id.tv_comments, model.getComments_number() + "评论")
                 .setText(R.id.tv_browse, model.getBrowse_times() + "")
                 .setText(R.id.tv_description, model.getTitle_description());
 

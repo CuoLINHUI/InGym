@@ -4,6 +4,7 @@ package com.stefan.ingym.ui.fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
@@ -67,7 +68,6 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
 
     // 图片轮播布局文件的view
     private View carouselView;
-
     /**
      * 图片轮播的相关全局变量开始
      */
@@ -84,13 +84,29 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
     private String[] titles;		// 创建数组，存放图片下方的标题文字
     private ViewPagerAdapter adapter;
     private ScheduledExecutorService scheduledExecutorService;
+    private Handler os = new Handler(Looper.getMainLooper());
+
+    private void runOnUIThread(Runnable runnable){
+        if(Thread.currentThread() == Looper.getMainLooper().getThread()){
+            runnable.run();
+        }
+        os.post(runnable);
+    }
+
     /**
      * 接收子线程传递过来的数据
      */
     private Handler mHandler = new Handler(){
         public void handleMessage(android.os.Message msg) {
+            // 为图片轮播设置当前Item
             mViewPaper.setCurrentItem(currentItem);
-        };
+
+            // 为资讯数据适配器添加数据
+            mAdapter.addNewData(mList);
+            // 通知资讯数据适配器刷新UI
+            mAdapter.notifyDataSetChanged();
+
+        }
     };
     /**
      * 图片轮播的相关全局变量结束
@@ -117,6 +133,13 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
     // 资讯item
     @ViewInject(R.id.lv_listview_data)
     private ListView listView;
+
+    /*private Handler mHandler = new Handler()  {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    };*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -408,12 +431,7 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
      */
     @Override
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
-        final Map<String, String> params = new HashMap<String ,String>(){
-            {
-                put("page", String.valueOf(page));
-                put("page", String.valueOf(size));
-            }
-        };
+
 
 /*
         // 请求数据
@@ -421,17 +439,33 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
         // 添加数据给适配器
         mAdapter.addNewData(mList);     */
 
+//        mRefreshLayout.endRefreshing();
+
+        // 请求参数
+        final Map<String, String> params = new HashMap<String ,String>(){
+            {
+                put("page", String.valueOf(page));
+                put("size", String.valueOf(size));
+            }
+        };
+
         // 延迟两秒
-        new Handler(new Handler.Callback() {
+        new Thread() {
+
             @Override
-            public boolean handleMessage(Message msg) {
-                mRefreshLayout.endRefreshing();
+            public void run() {
+
                 // 向服务端发送请求（请求方法，维护的访问路径，需要传递的参数，返回值）
                 HttpUtils.doGet(ConstantValue.HI_ARTICLE, params, new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
                         // 无论请求成功或者失败都要求ListView控件复位，变回原来的状态
-                        mRefreshLayout.endRefreshing();
+                        runOnUIThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mRefreshLayout.endRefreshing();
+                            }
+                        });
                         // 提示用户数据请求失败
                         ToastUtil.show(getActivity(), "抱歉，数据请求失败,请检查网络~");
                     }
@@ -439,10 +473,11 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
 
-
-                        // 无论请求成功或者失败都要求ListView控件复位，变回原来的状态
-                        mRefreshLayout.endRefreshing();
-
+                        /*try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }*/
                         /**
                          *  解析服务器端返回过来的结果
                          */
@@ -455,14 +490,29 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
 
                         // 下拉刷新，表示mList重新加载数据，但总数据不变
                         mList = object.getDatas();
-                        mAdapter.addNewData(mList);
-
+//                        mAdapter.addNewData(mList);
+                        // 无论请求成功或者失败都要求ListView控件复位，变回原来的状态
+                        runOnUIThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                /*try {
+                                    Thread.sleep(1000);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }*/
+                                mRefreshLayout.endRefreshing();
+                            }
+                        });
                     }
                 });
 
-                return true;
+//                mHandler.sendEmptyMessageDelayed(0, 2000);
+
             }
-        }).sendEmptyMessageDelayed(0, 2000);
+        }.start();
+
+
+
 
     }
 
