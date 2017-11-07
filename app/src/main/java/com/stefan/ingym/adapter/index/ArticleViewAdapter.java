@@ -11,17 +11,18 @@ import cn.bingoogolapple.androidcommon.adapter.BGAViewHolderHelper;
 
 
 /**
- * 作者:王浩 邮件:bingoogolapple@gmail.com
- * 创建时间:15/5/21 上午12:39
- * 描述:
+ * @ClassName: ArticleViewAdapter
+ * @Description: 资讯数据适配器
+ * @Author Stefan
+ * @Date 2017/11/6 16:17
  */
-public class SwipeAdapterViewAdapter extends BGAAdapterViewAdapter<Article> {
+public class ArticleViewAdapter extends BGAAdapterViewAdapter<Article> {
     /**
      * 当前处于打开状态的item
      */
 //    private List<BGASwipeItemLayout> mOpenedSil = new ArrayList<>();
     private Context context;
-    public SwipeAdapterViewAdapter(Context context) {
+    public ArticleViewAdapter(Context context) {
         super(context, com.stefan.ingym.R.layout.hi_article_item);
         this.context = context;
     }

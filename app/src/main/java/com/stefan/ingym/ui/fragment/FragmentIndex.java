@@ -1,7 +1,7 @@
 package com.stefan.ingym.ui.fragment;
 
 
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,12 +27,13 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnItemClick;
 import com.stefan.ingym.R;
-import com.stefan.ingym.adapter.index.ArticleAdapter;
-import com.stefan.ingym.adapter.index.SwipeAdapterViewAdapter;
+import com.stefan.ingym.adapter.index.ArticleViewAdapter;
 import com.stefan.ingym.custom.IOnSearchClickListener;
 import com.stefan.ingym.pojo.ResponseObject;
 import com.stefan.ingym.pojo.index.Article;
+import com.stefan.ingym.ui.activity.index.ArticleDetailActivity;
 import com.stefan.ingym.util.ConstantValue;
 import com.stefan.ingym.util.HttpUtils;
 import com.stefan.ingym.util.ToastUtil;
@@ -41,7 +43,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -51,9 +52,6 @@ import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
-
-import static android.os.Build.VERSION_CODES.M;
-import static com.stefan.ingym.R.id.lv_listview_data;
 
 /**
  * @ClassName: FragmentIndex
@@ -124,22 +122,15 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
     // 当前页码，获取多少条数据， 多少页
     private int page = 1, size = 10, pageCount = 1;
 
-    // 定义集合
+    // 定义资讯集合
     private List<Article> mList = null;
 
-    // 定义数据适配器
-    private SwipeAdapterViewAdapter mAdapter;
+    // 定义资讯数据适配器
+    private ArticleViewAdapter mAdapter;
 
     // 资讯item
-    @ViewInject(R.id.lv_listview_data)
-    private ListView listView;
-
-    /*private Handler mHandler = new Handler()  {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-        }
-    };*/
+    @ViewInject(R.id.lv_article_item)
+    private ListView articleListView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -168,13 +159,24 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
 
         mList = new ArrayList<>();
 
-        mAdapter = new SwipeAdapterViewAdapter(getContext());
+        mAdapter = new ArticleViewAdapter(getContext());
 
         // 为资讯item设置上数据适配器
-        listView.setAdapter(mAdapter);
+        articleListView.setAdapter(mAdapter);
 
         // 返回布局文件
         return view;
+    }
+
+    @OnItemClick(R.id.lv_article_item)
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        ToastUtil.show(getActivity(), "你选中的资讯ID为： " + mList.get(position).getId());
+        ToastUtil.show(getActivity(), "你选中的资讯标题为： " + mList.get(position).getTitle());
+
+        Intent intent = new Intent(getContext(), ArticleDetailActivity.class);
+        intent.putExtra("article_id", mAdapter.getItem(position)); // 传递被选中的资讯ID到ArticleDetailActivity
+        startActivity(intent);
+
     }
 
     /*
@@ -374,7 +376,6 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
     }
 
 
-
     /**
      * 下拉刷新上拉加载更多控件相关数据开始
      */
@@ -406,6 +407,16 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
         // 设置自定义头部视图（也可以不用设置）     参数1：自定义头部视图（例如广告位）， 参数2：上拉加载更多是否可用
         mRefreshLayout.setCustomHeaderView(carouselView, true);
         // 可选配置  -------------END
+
+        // TODO 进入主界面就进行首次自动加载数据操作
+		new Handler(new Handler.Callback() {
+			@Override
+			public boolean handleMessage(Message msg) {
+                mRefreshLayout.beginRefreshing();
+				return true;
+			}
+		}).sendEmptyMessageDelayed(0, 0);
+
     }
 
    /* private List<Article> mockData(int page, int size){
@@ -432,7 +443,6 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
     @Override
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
 
-
 /*
         // 请求数据
         mList = mockData(page, size);
@@ -449,7 +459,6 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
             }
         };
 
-        // 延迟两秒
         new Thread() {
 
             @Override
@@ -466,18 +475,14 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
                                 mRefreshLayout.endRefreshing();
                             }
                         });
+                        Looper.prepare();
                         // 提示用户数据请求失败
                         ToastUtil.show(getActivity(), "抱歉，数据请求失败,请检查网络~");
+                        Looper.loop();
                     }
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-
-                        /*try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }*/
                         /**
                          *  解析服务器端返回过来的结果
                          */
@@ -495,24 +500,14 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
                         runOnUIThread(new Runnable() {
                             @Override
                             public void run() {
-                                /*try {
-                                    Thread.sleep(1000);
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }*/
                                 mRefreshLayout.endRefreshing();
                             }
                         });
                     }
                 });
 
-//                mHandler.sendEmptyMessageDelayed(0, 2000);
-
             }
         }.start();
-
-
-
 
     }
 

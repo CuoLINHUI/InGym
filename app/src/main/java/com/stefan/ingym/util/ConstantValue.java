@@ -34,4 +34,9 @@ public class ConstantValue {
      */
     public static final String HI_ARTICLE = HOST + "/article/hi_article";
 
+    /**
+     * 用户请求装备商品信息时访问服务器端的访问地址
+     */
+    public static final String EQUIPMENT_GOODS = HOST + "/community/equipment_goods";
+
 }

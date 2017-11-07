@@ -34,13 +34,12 @@
             <!--android:divider="@mipmap/list_divider"-->
             <!-- 内容控件 -->
             <ListView
-                android:id="@+id/lv_listview_data"
+                android:id="@+id/lv_article_item"
                 android:overScrollMode="never"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:scrollbars="none" />
         </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
-
 
 </LinearLayout>

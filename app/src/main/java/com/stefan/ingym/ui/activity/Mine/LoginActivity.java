@@ -1,6 +1,7 @@
 package com.stefan.ingym.ui.activity.Mine;
 
 import android.content.Intent;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -210,7 +211,9 @@ public class LoginActivity extends AppCompatActivity {
         com.stefan.ingym.util.HttpUtils.doPost(ConstantValue.USER_ACCOUNT_LOGIN, new Gson().toJson(user), new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+                Looper.prepare();
                 ToastUtil.show(getApplicationContext(), "抱歉，登陆失败！");
+                Looper.loop();
             }
             @Override
             public void onResponse(Call call, Response response) throws IOException {

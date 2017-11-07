@@ -2,6 +2,7 @@ package com.stefan.ingym.ui.activity.Mine;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
@@ -143,7 +144,9 @@ public class RegisterActivity extends Activity {
         com.stefan.ingym.util.HttpUtils.doPost(ConstantValue.USER_REGISTER, new Gson().toJson(user), new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+                Looper.prepare();
                 ToastUtil.show(getApplicationContext(), "抱歉，注册失败！");
+                Looper.loop();
             }
             @Override
             public void onResponse(Call call, Response response) throws IOException {
