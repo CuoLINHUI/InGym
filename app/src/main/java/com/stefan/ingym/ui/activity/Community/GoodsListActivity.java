@@ -1,10 +1,14 @@
 package com.stefan.ingym.ui.activity.Community;
 
+import android.content.Intent;
+import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -12,11 +16,11 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnItemClick;
 import com.stefan.ingym.R;
 import com.stefan.ingym.adapter.community.GoodsViewAdapter;
 import com.stefan.ingym.pojo.ResponseObject;
 import com.stefan.ingym.pojo.community.Goods;
-import com.stefan.ingym.pojo.index.Article;
 import com.stefan.ingym.util.ConstantValue;
 import com.stefan.ingym.util.HttpUtils;
 import com.stefan.ingym.util.ToastUtil;
@@ -26,7 +30,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import cn.bingoogolapple.refreshlayout.BGAMeiTuanRefreshViewHolder;
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
@@ -61,6 +64,26 @@ public class GoodsListActivity extends AppCompatActivity implements BGARefreshLa
     @ViewInject(R.id.lv_goods_item)
     private ListView goodsListView;
 
+    /**
+     * 接收子线程传递过来的数据
+     */
+    private Handler mHandler = new Handler(Looper.getMainLooper()){
+        public void handleMessage(android.os.Message msg) {
+            // 为资讯数据适配器添加数据
+            mAdapter.addNewData(mList);
+            // 通知资讯数据适配器刷新UI
+            mAdapter.notifyDataSetChanged();
+
+        }
+    };
+
+    private void runOnUIThread(Runnable runnable){
+        if(Thread.currentThread() == Looper.getMainLooper().getThread()){
+            runnable.run();
+        }
+        mHandler.post(runnable);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,10 +113,29 @@ public class GoodsListActivity extends AppCompatActivity implements BGARefreshLa
     }
 
     /**
+     * 商品条目点击事件监听
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
+    @OnItemClick(R.id.lv_goods_item)
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        ToastUtil.show(getApplication(), "你选中的商品ID为： " + mList.get(position).getId());
+
+        Intent intent = new Intent(this, GoodsDetailActivity.class);
+        intent.putExtra("product_id", mAdapter.getItem(position)); // 传递被选中的商品ID到GoodsDetailActivity
+        startActivity(intent);
+
+    }
+
+
+    /**
      * toolbar初始化
      */
     private void init_toolbar(){
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.goods_toolbar);
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.goods_detail_toolbar);
         mToolbar.setNavigationIcon(R.mipmap.back);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,6 +165,15 @@ public class GoodsListActivity extends AppCompatActivity implements BGARefreshLa
         refreshViewHolder.setLoadMoreBackgroundColorRes(R.color.colorAccent);
         // 设置整个加载更多控件的背景 drawable 资源 id
         refreshViewHolder.setLoadMoreBackgroundDrawableRes(R.drawable.bga_refresh_loding);
+
+        // TODO 进入主界面就进行首次自动加载数据操作
+        new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message msg) {
+                mRefreshLayout.beginRefreshing();
+                return true;
+            }
+        }).sendEmptyMessageDelayed(0, 0);
     }
 
        /* private List<Goods> mockData(int page, int size){
@@ -159,38 +210,55 @@ public class GoodsListActivity extends AppCompatActivity implements BGARefreshLa
             }
         };
 
-        // 向服务端发送请求（请求方法，维护的访问路径，需要传递的参数，返回值）
-        HttpUtils.doGet(ConstantValue.EQUIPMENT_GOODS, params, new Callback() {
+        new Thread() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                mRefreshLayout.endRefreshing();
-                Looper.prepare();
-                // 提示用户数据请求失败
-                ToastUtil.show(getApplication(), "抱歉，数据请求失败,请检查网络~");
-                Looper.loop();
+            public void run() {
+                // 向服务端发送请求（请求方法，维护的访问路径，需要传递的参数，返回值）
+                HttpUtils.doGet(ConstantValue.EQUIPMENT_GOODS, params, new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        runOnUIThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mRefreshLayout.endRefreshing();
+                            }
+                        });
+                        Looper.prepare();
+                        // 提示用户数据请求失败
+                        ToastUtil.show(getApplication(), "抱歉，数据请求失败,请检查网络~");
+                        Looper.loop();
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        /**
+                         *  解析服务器端返回过来的结果
+                         */
+                        Gson gson = new GsonBuilder().create();
+                        // 得到响应体
+                        String json = response.body().string();
+                        // 通过fromJson方法将json数据转化成实体类,用于解析
+                        ResponseObject<List<Goods>> object = gson.fromJson(json, new TypeToken<ResponseObject<List<Goods>>>() {
+                        }.getType());
+                        // 获得商品结果集
+                        mList = object.getDatas();
+                        // 为数据适配器设置上结果集数据
+//                        mAdapter.addNewData(mList);
+
+                        runOnUIThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mRefreshLayout.endRefreshing();
+                            }
+                        });
+
+                        // 通知刷新UI
+                        mHandler.sendEmptyMessage(0);
+
+                    }
+                });
             }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                /**
-                 *  解析服务器端返回过来的结果
-                 */
-                Gson gson = new GsonBuilder().create();
-                // 得到响应体
-                String json = response.body().string();
-                // 通过fromJson方法将json数据转化成实体类,用于解析
-                ResponseObject<List<Goods>> object = gson.fromJson(json, new TypeToken<ResponseObject<List<Goods>>>() {
-                }.getType());
-                // 获得商品结果集
-                mList = object.getDatas();
-                // 为数据适配器设置上结果集数据
-                mAdapter.addNewData(mList);
-
-                mRefreshLayout.endRefreshing();
-
-            }
-        });
-
+        }.start();
 
     }
 

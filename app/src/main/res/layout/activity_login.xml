@@ -97,7 +97,7 @@
             android:ems="10"
             android:hint="@string/hint_account_login"
             android:textColor="@color/text_black"
-            android:singleLine="true"
+            android:maxLines="1"
             android:textSize="15sp">
             <!-- 输入框获得焦点 -->
             <requestFocus />
@@ -117,11 +117,11 @@
                 android:hint="@string/hint_login_password"
                 android:textColor="@color/text_black"
                 android:inputType="textPassword"
-                android:singleLine="true"
+                android:maxLines="1"
                 android:textSize="15sp" />
 
             <Button
-                android:id="@+id/btn_vertify"
+                android:id="@+id/btn_verify"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

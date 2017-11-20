@@ -69,7 +69,7 @@
         <!-- 应用程序主页面MainActivity -->
         <activity android:name=".ui.activity.MainActivity" />
 
-        <!--资讯详情activity-->
+        <!-- 资讯详情activity -->
         <activity android:name=".ui.activity.index.ArticleDetailActivity" />
 
         <!-- 登陆activity -->
@@ -147,7 +147,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.fragment.sports.pedometer.activity.WalkingModesActivity" />
         </activity>
-
         <activity android:name=".ui.fragment.sports.pedometer.activity.PedometerAboutActivity" />
 
         <service android:name=".ui.fragment.sports.pedometer.service.AccelerometerStepDetectorService" />
@@ -191,7 +190,7 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-
+        <activity android:name=".ui.activity.Community.GoodsDetailActivity"></activity>
     </application>
 
 </manifest>

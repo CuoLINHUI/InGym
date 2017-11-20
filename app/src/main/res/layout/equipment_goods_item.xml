@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:text="19.8"
                     android:textColor="#E2652D"
-                    android:textSize="25sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/goods_payments"

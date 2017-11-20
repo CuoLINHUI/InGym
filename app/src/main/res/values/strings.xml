@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">InGym</string>
     <string name="index_title">Hi 健身</string>
+    <string name="article_detail">资讯</string>
     <string name="sports_title">立即去动</string>
     <string name="community_title">社区</string>
     <string name="startButton">开始体验</string>
@@ -9,6 +10,7 @@
     <string name="sports">运动</string>
     <string name="community">社区</string>
     <string name="goods_title">商品列表</string>
+    <string name="goods_detail">商品详情</string>
     <string name="mine">我的</string>
     <string name="pic_title">图片标题 </string>
     <string name="account_login">账户登陆</string>f

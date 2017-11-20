@@ -60,8 +60,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText et_username;
     @ViewInject(R.id.et_password)		// 密码输入框
     private EditText et_password;
-    @ViewInject(R.id.btn_vertify)		// 获取验证码按钮
-    private Button btn_vertify;
+    @ViewInject(R.id.btn_verify)		// 获取验证码按钮
+    private Button btn_verify;
 
     /**
      * 申明动画
@@ -139,14 +139,14 @@ public class LoginActivity extends AppCompatActivity {
                 switch (checkedId) {
                     case R.id.rb_account_login:	 // 账户登录
                         fly_view.startAnimation(move_to_left);		// 往左的动画效果
-                        btn_vertify.setVisibility(View.GONE);		// 获取验证码条目不可见
+                        btn_verify.setVisibility(View.GONE);		// 获取验证码条目不可见
                         et_username.setText("用户名/邮箱/手机号");
                         et_password.setText("请输入密码");
                         break;
 
                     case R.id.rb_quick_login:	// 快速登录
                         fly_view.startAnimation(move_to_right);		// 往右的动画效果
-                        btn_vertify.setVisibility(View.VISIBLE);	// 获取验证码条目可见
+                        btn_verify.setVisibility(View.VISIBLE);	// 获取验证码条目可见
                         et_username.setText("请输入手机号");
                         et_password.setText("请输入密码");
                         break;

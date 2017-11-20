@@ -168,6 +168,13 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
         return view;
     }
 
+    /**
+     * 资讯条目点击事件监听
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     @OnItemClick(R.id.lv_article_item)
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         ToastUtil.show(getActivity(), "你选中的资讯ID为： " + mList.get(position).getId());
@@ -460,10 +467,8 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
         };
 
         new Thread() {
-
             @Override
             public void run() {
-
                 // 向服务端发送请求（请求方法，维护的访问路径，需要传递的参数，返回值）
                 HttpUtils.doGet(ConstantValue.HI_ARTICLE, params, new Callback() {
                     @Override

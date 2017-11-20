@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     tools:context="com.stefan.ingym.ui.activity.index.ArticleDetailActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/article_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:text="@string/article_detail"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:gravity="center_vertical" />
+    </android.support.v7.widget.Toolbar>
+
+<!--
     <TextView
         android:id="@+id/article_title"
         android:layout_width="wrap_content"
@@ -14,6 +30,13 @@
         android:text="资讯详情"
         android:textSize="20sp"
         android:textColor="@color/colorPrimary"
+        />-->
+
+    <WebView
+        android:id="@+id/wv1"
+        android:layout_below="@+id/article_toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         />
 
 </RelativeLayout>

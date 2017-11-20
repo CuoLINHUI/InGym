@@ -1,9 +1,3 @@
-/**
- * @ClassName:
- * @Description:
- * @Author Stefan
- * @Date
- */
 package com.stefan.ingym.pojo.community;
 
 import java.io.Serializable;
