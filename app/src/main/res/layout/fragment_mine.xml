@@ -203,7 +203,7 @@
                     android:background="@null"
                     android:drawableTop="@mipmap/collection_icon"
                     android:padding="5dp"
-                    android:textColor="@color/text_black"
+                    android:textColor="@color/text_gray"
                     android:text="@string/mine_collection" />
 
                 <View
@@ -218,7 +218,7 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:drawableTop="@mipmap/memorandum_icon"
-                    android:textColor="@color/text_black"
+                    android:textColor="@color/text_gray"
                     android:text="@string/mine_memorandum" />
 
                 <View
@@ -233,7 +233,7 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:drawableTop="@mipmap/recent_view_icon"
-                    android:textColor="@color/text_black"
+                    android:textColor="@color/text_gray"
                     android:text="@string/recent_browse" />
             </LinearLayout>
 
@@ -256,7 +256,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_weight="1"
-                    android:textColor="@color/text_black"
+                    android:textColor="@color/text_gray"
                     android:text="@string/mine_about" />
 
                 <ImageView
@@ -285,7 +285,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_weight="1"
-                    android:textColor="@color/text_black"
+                    android:textColor="@color/text_gray"
                     android:text="@string/mine_setting" />
 
                 <ImageView

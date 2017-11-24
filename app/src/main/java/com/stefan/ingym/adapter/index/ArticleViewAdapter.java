@@ -9,7 +9,6 @@ import com.stefan.ingym.pojo.index.Article;
 import cn.bingoogolapple.androidcommon.adapter.BGAAdapterViewAdapter;
 import cn.bingoogolapple.androidcommon.adapter.BGAViewHolderHelper;
 
-
 /**
  * @ClassName: ArticleViewAdapter
  * @Description: 资讯数据适配器

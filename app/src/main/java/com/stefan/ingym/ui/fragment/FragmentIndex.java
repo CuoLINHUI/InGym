@@ -34,6 +34,7 @@ import com.stefan.ingym.custom.IOnSearchClickListener;
 import com.stefan.ingym.pojo.ResponseObject;
 import com.stefan.ingym.pojo.index.Article;
 import com.stefan.ingym.ui.activity.index.ArticleDetailActivity;
+import com.stefan.ingym.ui.activity.index.FoodsListActivity;
 import com.stefan.ingym.util.ConstantValue;
 import com.stefan.ingym.util.HttpUtils;
 import com.stefan.ingym.util.ToastUtil;
@@ -179,7 +180,6 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         ToastUtil.show(getActivity(), "你选中的资讯ID为： " + mList.get(position).getId());
         ToastUtil.show(getActivity(), "你选中的资讯标题为： " + mList.get(position).getTitle());
-
         Intent intent = new Intent(getContext(), ArticleDetailActivity.class);
         intent.putExtra("article_id", mAdapter.getItem(position)); // 传递被选中的资讯ID到ArticleDetailActivity
         startActivity(intent);
@@ -379,7 +379,9 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
      */
     @Override
     public void OnSearchClick(String keyword) {
-//        searchInfo.setText(keyword);    // 显示搜索关键词
+        Intent intent = new Intent(getContext(), FoodsListActivity.class);
+        intent.putExtra("search_key", keyword); // 用户输入的搜索key值
+        startActivity(intent);
     }
 
 
@@ -477,13 +479,12 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
                         runOnUIThread(new Runnable() {
                             @Override
                             public void run() {
+                                // 结束加载动画
                                 mRefreshLayout.endRefreshing();
+                                // 提示用户数据请求失败
+                                ToastUtil.show(getActivity(), "抱歉，数据请求失败,请检查网络~");
                             }
                         });
-                        Looper.prepare();
-                        // 提示用户数据请求失败
-                        ToastUtil.show(getActivity(), "抱歉，数据请求失败,请检查网络~");
-                        Looper.loop();
                     }
 
                     @Override

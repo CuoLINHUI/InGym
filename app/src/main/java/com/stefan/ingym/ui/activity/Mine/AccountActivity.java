@@ -1,6 +1,8 @@
 package com.stefan.ingym.ui.activity.Mine;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -8,12 +10,20 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.stefan.ingym.R;
+import com.stefan.ingym.ui.activity.MainActivity;
 import com.stefan.ingym.util.ConstantValue;
+import com.stefan.ingym.util.ImageUtils;
 import com.stefan.ingym.util.SpUtil;
 
+import static com.stefan.ingym.R.id.imageView;
+
 public class AccountActivity extends AppCompatActivity {
+
+    @ViewInject(R.id.civ_mine_head_img)
+    private de.hdodenhof.circleimageview.CircleImageView civ_mine_head_img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,17 +44,65 @@ public class AccountActivity extends AppCompatActivity {
                 finish();
                 break;
 
-            case R.id.btn_exit:             // 用户点击退出登录
-                // 弹出对话框，提示用户是否确定退出当前用户
-                showExitDialog();
-                break;
-
             case R.id.civ_mine_head_img:    // 用户点击更换头像
-
+                // 显示获取照片不同方式对话框
+                ImageUtils.showImagePickDialog(AccountActivity.this);
                 break;
 
             case R.id.tv_save:              // 用户点击保存修改
 
+                break;
+
+            case R.id.btn_exit:             // 用户点击退出登录
+                // 弹出对话框，提示用户是否确定退出当前用户
+                showExitDialog();
+                break;
+        }
+    }
+
+    /**
+     * @param requestCode   确认返回的数据是从哪个Activity返回的
+     * @param resultCode    由子Activity通过其setResult()方法返回
+     * @param data          一个Intent对象，带有返回的数据。
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode){
+            case ImageUtils.REQUEST_CODE_FROM_ALBUM: {
+
+                if (resultCode == RESULT_CANCELED) {   //取消操作
+                    return;
+                }
+
+                Uri imageUri = data.getData();
+                ImageUtils.copyImageUri(this,imageUri);
+                ImageUtils.cropImageUri(this, ImageUtils.getCurrentUri(), 200, 200);
+                break;
+            }
+            case ImageUtils.REQUEST_CODE_FROM_CAMERA: {
+
+                if (resultCode == RESULT_CANCELED) {     //取消操作
+                    ImageUtils.deleteImageUri(this, ImageUtils.getCurrentUri());   //删除Uri
+                }
+
+                ImageUtils.cropImageUri(this, ImageUtils.getCurrentUri(), 200, 200);
+                break;
+            }
+            case ImageUtils.REQUEST_CODE_CROP: {
+
+                if (resultCode == RESULT_CANCELED) {     //取消操作
+                    return;
+                }
+
+                Uri imageUri = ImageUtils.getCurrentUri();
+                if (imageUri != null) {
+                    civ_mine_head_img.setImageURI(imageUri);
+                }
+                break;
+            }
+            default:
                 break;
         }
     }

@@ -1,5 +1,9 @@
 package com.stefan.ingym.util;
 
+import android.os.Environment;
+
+import static android.os.Build.HOST;
+
 /**
  * @ClassName: ConstantValue
  * @Description: 专门用来维护常量的工具类
@@ -9,6 +13,11 @@ package com.stefan.ingym.util;
 public class ConstantValue {
 
     /**
+     *  更换用户头像业务逻辑中维护的
+     */
+    public static String PhotoDir = Environment.getExternalStorageDirectory() + "/PhotoDemo/image/";
+
+    /**
      * 用户登陆名的key
      */
     public static final String LOGIN_USER = "login_user";
@@ -16,7 +25,7 @@ public class ConstantValue {
     /**
      * 定义访问InGym服务器端的路径192.168.134.1
      */
-//    public static final String HOST = "http://192.168.134.1:8080/InGymServer";
+//    public static final String HOST = "http://182.254.137.212:8080/InGymServer";
     public static final String HOST = "http://10.0.2.2:8080/InGymServer";
 
     /**
@@ -32,7 +41,12 @@ public class ConstantValue {
     /**
      * 用户请求资讯时访问服务器端的访问地址
      */
-    public static final String HI_ARTICLE = HOST + "/article/hi_article";
+    public static final String HI_ARTICLE = HOST + "/index/hi_article";
+
+    /**
+     * 用户请求资讯时访问服务器端的访问地址
+     */
+    public static final String HI_FOODS = HOST + "/index/hi_foods";
 
     /**
      * 用户请求装备商品信息时访问服务器端的访问地址

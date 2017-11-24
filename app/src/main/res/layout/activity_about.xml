@@ -87,7 +87,7 @@
                 android:layout_marginTop="10dp"
                 android:text="Author:"
                 android:textSize="20sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 android:id="@+id/textView" />
 
             <TextView
@@ -96,7 +96,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="STEFAN CHEN"
                 android:textSize="20sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
 
             <View
@@ -114,7 +114,7 @@
                 android:layout_marginTop="10dp"
                 android:text="I'm thinking about:"
                 android:textSize="17sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -122,7 +122,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="How people fall in love in mysterious ways"
                 android:textSize="17sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -130,7 +130,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="Maybe just the touch of a hand"
                 android:textSize="17sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -138,7 +138,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="Well me, I fall in love with you every single day"
                 android:textSize="17sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -146,7 +146,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="And I just wanna tell you :"
                 android:textSize="17sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
 
             <TextView
@@ -156,7 +156,7 @@
                 android:layout_marginTop="10dp"
                 android:text="This is my graduation project."
                 android:textSize="17sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
 
             <TextView
@@ -165,7 +165,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="It was my pleasure to meet you!"
                 android:textSize="17sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
 
             <View
@@ -183,7 +183,7 @@
                 android:layout_marginTop="10dp"
                 android:text="If you have any better Suggestions "
                 android:textSize="17sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
 
             <TextView
@@ -192,7 +192,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="and improvements, or find bugs, "
                 android:textSize="17sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -200,7 +200,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="please contact me!"
                 android:textSize="17sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
 
             <View
@@ -218,7 +218,7 @@
                 android:layout_marginTop="10dp"
                 android:text="Email:"
                 android:textSize="20sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
 
             <TextView
@@ -227,7 +227,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="xxxxxxxxxx@xxx.com"
                 android:textSize="20sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
 
 

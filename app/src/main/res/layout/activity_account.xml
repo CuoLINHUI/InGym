@@ -27,7 +27,6 @@
                 android:text="@string/account_editor"
                 android:textSize="20sp"
                 android:textColor="@color/app_white"
-                android:background="@drawable/btn_activate_bg"
                 android:drawableLeft="@mipmap/modify_cancel"
                 android:gravity="center_vertical" />
 
@@ -46,7 +45,6 @@
                 android:drawableRight="@mipmap/modify_save"
                 android:textSize="20sp"
                 android:textColor="@color/app_white"
-                android:background="@drawable/btn_activate_bg"
                 android:gravity="center_vertical" />
         </LinearLayout>
 
@@ -176,7 +174,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/btn_login_bg"
+        android:background="@drawable/button_fullwidth"
         android:text="@string/back_login"
         android:textColor="@color/white"
         android:textSize="18sp" />

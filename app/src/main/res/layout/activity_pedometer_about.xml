@@ -44,7 +44,7 @@
                 android:layout_marginTop="10dp"
                 android:text="该系统的“运动”模块中的所有功能"
                 android:textSize="20sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 android:id="@+id/textView" />
 
             <TextView
@@ -53,7 +53,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="都是基于GitHub上的开源项目"
                 android:textSize="20sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
 
             <TextView
@@ -62,7 +62,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="“privacy-friendly-pedometer-master”"
                 android:textSize="20sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
 
             <TextView
@@ -71,7 +71,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="改编而来。"
                 android:textSize="20sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
 
             <View
@@ -89,7 +89,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="感谢Darmstadt大学的"
                 android:textSize="20sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
 
             <TextView
@@ -98,7 +98,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="The Privacy Friendly Apps 程序组，"
                 android:textSize="20sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
 
             <TextView
@@ -107,7 +107,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="感谢Privacy Friendly Pedometer的作者"
                 android:textSize="20sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
 
             <TextView
@@ -116,7 +116,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="Tobias和Neidig，以及相关的支持者。"
                 android:textSize="20sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
 
             <TextView
@@ -125,7 +125,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="因为有你们，"
                 android:textSize="20sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
 
             <TextView
@@ -134,7 +134,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="使得我能顺利完成毕业设计系统中的"
                 android:textSize="20sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
 
             <TextView
@@ -143,7 +143,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="“运动”模块。"
                 android:textSize="20sp"
-                android:textColor="@color/text_black"
+                android:textColor="@color/text_gray"
                 />
 
             <View

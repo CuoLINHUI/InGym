@@ -18,6 +18,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- 允许程序设置内置sd卡的读取权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 在sdcard中创建/删除文件的权限 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <!-- 获取用户设备的mac地址，在平板设备上，无法通过imei标示设备，我们会将mac地址作为用户的唯一标识 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -190,7 +191,9 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".ui.activity.Community.GoodsDetailActivity"></activity>
+        <activity android:name=".ui.activity.Community.GoodsDetailActivity" />
+        <activity android:name=".ui.activity.index.FoodsListActivity" />
+        <activity android:name=".ui.activity.index.FoodsDetailActivity"></activity>
     </application>
 
 </manifest>

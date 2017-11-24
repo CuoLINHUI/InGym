@@ -6,10 +6,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.TextView;
 
 import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
 import com.stefan.ingym.R;
 import com.stefan.ingym.pojo.index.Article;
 
@@ -28,6 +26,8 @@ public class ArticleDetailActivity extends AppCompatActivity {
 
 //    private String articleID = null;
 
+    private String URL = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,19 +36,21 @@ public class ArticleDetailActivity extends AppCompatActivity {
 
         init_toolbar();
 
-/*        // 接收FragmentIndex传递过来的参数
+        // 接收FragmentIndex传递过来的参数
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) article = (Article) bundle.get("article_id");
 
         // 传递过来的条目ID不为空，渲染数据
         if (article != null) {
-            title.setText(article.getTitle_description());
-        }*/
+//            title.setText(article.getTitle_description());
+            URL = article.getDetail();
 
-        WebView wView = (WebView)findViewById(R.id.wv1);
+        }
+
+        WebView wView = (WebView)findViewById(R.id.wv_arcicle);
         WebSettings wSet = wView.getSettings();
         wSet.setJavaScriptEnabled(true);
-        wView.loadUrl("file:///android_asset/article/▶️【百日变形记】型男教你1分钟学会胸肌最核心训练！.html");
+        wView.loadUrl(URL);
     }
 
     /**

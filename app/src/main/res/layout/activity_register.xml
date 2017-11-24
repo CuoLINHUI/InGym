@@ -39,7 +39,7 @@
             android:layout_margin="5dp"
             android:drawableLeft="@mipmap/icon_account"
             android:hint="@string/hint_count_name"
-            android:textColor="@color/text_black"
+            android:textColor="@color/text_gray"
             android:textSize="15sp" >
         </EditText>
 
@@ -52,7 +52,7 @@
             android:drawableLeft="@mipmap/icon_password"
             android:hint="@string/hint_register_password"
             android:inputType="textPassword"
-            android:textColor="@color/text_black"
+            android:textColor="@color/text_gray"
             android:textSize="15sp" />
 
         <EditText
@@ -64,7 +64,7 @@
             android:drawableLeft="@mipmap/icon_password_confilm"
             android:hint="@string/hint_confilmPwd"
             android:inputType="textPassword"
-            android:textColor="@color/text_black"
+            android:textColor="@color/text_gray"
             android:textSize="15sp" />
 
         <EditText
@@ -76,7 +76,7 @@
             android:drawableLeft="@mipmap/icon_email"
             android:hint="@string/hint_eamil"
             android:inputType="textWebEmailAddress"
-            android:textColor="@color/text_black"
+            android:textColor="@color/text_gray"
             android:textSize="15sp" />
 
     </LinearLayout>
