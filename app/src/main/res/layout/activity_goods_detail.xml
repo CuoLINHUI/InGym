@@ -216,15 +216,6 @@
                         android:textColor="#7D7D7D"
                         />
 
-                   <!-- <ImageView
-                        android:id="@+id/iv_rmb_gray"
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_gravity="center"
-                        android:src="@mipmap/ic_goods_rmb_gray"
-                        />-->
-
                     <TextView
                         android:id="@+id/tv_goods_value"
                         android:layout_width="wrap_content"
@@ -252,8 +243,6 @@
                         android:textColor="#7D7D7D"
                         />
 
-
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -275,77 +264,176 @@
 
                 </LinearLayout>
 
-<!--                <LinearLayout
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_height="10dp"
+                    android:background="#F5F5F5"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
                         android:layout_weight="1"
-                        android:layout_margin="10dp"
-                        android:orientation="vertical" >
+                        android:orientation="horizontal"
+                        >
 
-                        <TextView
-                            android:id="@+id/support"
+                        <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:drawableLeft="@drawable/ic_support"
-                            android:gravity="center_vertical"
-                            android:text="是否支持随时退货"
-                            android:textColor="#ff686767"
-                            android:textSize="13sp" />
+                            android:src="@mipmap/goods_support"
+                            />
 
                         <TextView
-                            android:id="@+id/deadline"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:drawableLeft="@drawable/ic_deadline"
-                            android:gravity="center_vertical"
-                            android:text="3天以上"
-                            android:textColor="#ff686767"
-                            android:textSize="13sp" />
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/text_gray"
+                            android:textSize="17sp"
+                            android:text="7天无理由" />
+
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_margin="10dp"
-                        android:orientation="vertical" >
+                        android:orientation="horizontal"
+                        >
 
-                        <TextView
-                            android:id="@+id/support_back_money"
+                        <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:drawableLeft="@drawable/ic_support"
-                            android:gravity="center_vertical"
-                            android:text="是否支持过期退款"
-                            android:textColor="#7D7D7D"
-                            android:textSize="13sp" />
+                            android:src="@mipmap/goods_support"
+                            />
 
                         <TextView
-                            android:id="@+id/count"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:drawableLeft="@drawable/count"
-                            android:gravity="center_vertical"
-                            android:text="0人购买"
-                            android:textColor="#ff686767"
-                            android:textSize="13sp" />
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/text_gray"
+                            android:textSize="17sp"
+                            android:text="新品" />
+
                     </LinearLayout>
-                </LinearLayout>-->
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        >
 
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/goods_support"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="1"
+                            android:textColor="@color/text_gray"
+                            android:textSize="17sp"
+                            android:text="15天内发货" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:src="@mipmap/enter" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="#F5F5F5"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/text_gray"
+                            android:textSize="17sp"
+                            android:text="选择" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="@color/text_gray"
+                            android:textSize="17sp"
+                            android:text="尺码" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/text_gray"
+                            android:textSize="17sp"
+                            android:text="颜色" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:src="@mipmap/enter" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/more_nutrition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/text_gray"
+                        android:textSize="17sp"
+                        android:text="产品参数" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:src="@mipmap/enter" />
+                </LinearLayout>
 
             </LinearLayout>
 
-           <!-- <include layout="@layout/scenic_spot_detail_shop"/>
-            <include layout="@layout/scenic_spot_detail_layout"/>
-            <include layout="@layout/scenic_spot_detail_warn"/>
-            <include layout="@layout/scenic_spot_detail_comment"/>-->
 
         </LinearLayout>
     </ScrollView>

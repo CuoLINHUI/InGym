@@ -18,8 +18,10 @@ public class Foods implements Serializable{
     private String food_protein;                // 食物每100克的蛋白质
     private String food_carbohydrate;           // 食物每100克的碳水化合物
     private String food_fat;                    // 食物每100克的脂肪
+    private String food_cellulose;              // 食物每100克的纤维素
     private String food_detail;                 // 详情描述
     private String food_recommended_types;      // 推荐类型
+    private String food_cooking_detail;         // 食物烹饪方法
 
     public String getId() {
         return id;
@@ -85,6 +87,14 @@ public class Foods implements Serializable{
         this.food_fat = food_fat;
     }
 
+    public String getFood_cellulose() {
+        return food_cellulose;
+    }
+
+    public void setFood_cellulose(String food_cellulose) {
+        this.food_cellulose = food_cellulose;
+    }
+
     public String getFood_detail() {
         return food_detail;
     }
@@ -99,5 +109,13 @@ public class Foods implements Serializable{
 
     public void setFood_recommended_types(String food_recommended_types) {
         this.food_recommended_types = food_recommended_types;
+    }
+
+    public String getFood_cooking_detail() {
+        return food_cooking_detail;
+    }
+
+    public void setFood_cooking_detail(String food_cooking_detail) {
+        this.food_cooking_detail = food_cooking_detail;
     }
 }

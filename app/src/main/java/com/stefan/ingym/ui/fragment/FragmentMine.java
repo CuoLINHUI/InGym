@@ -17,6 +17,7 @@ import com.google.gson.GsonBuilder;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
+import com.squareup.picasso.Picasso;
 import com.stefan.ingym.R;
 import com.stefan.ingym.ui.activity.Mine.AboutActivity;
 import com.stefan.ingym.ui.activity.Mine.AccountActivity;
@@ -38,10 +39,6 @@ public class FragmentMine extends Fragment {
     // 布局文件的Vew
     private View view;
 
-    @ViewInject(R.id.btn_login)				// 登陆按钮
-    private Button btn_login;
-    @ViewInject(R.id.ll_setting)            // 进入设置界面按钮
-    private LinearLayout ll_setting;
     @ViewInject(R.id.user_info_group)       // 用户信息LinearLayout
     private LinearLayout user_info_group;
     @ViewInject(R.id.to_login_group)       // 用户登陆LinearLayout
@@ -52,6 +49,8 @@ public class FragmentMine extends Fragment {
     private TextView tv_follow;
     @ViewInject(R.id.tv_integral)			// 用户积分信息
     private TextView tv_integral;
+    @ViewInject(R.id.civ_mine_head_img)     // 用户头像
+    private de.hdodenhof.circleimageview.CircleImageView civ_mine_head_img;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -129,12 +128,17 @@ public class FragmentMine extends Fragment {
         if (user != null) {
             to_login_group.setVisibility(View.GONE);		        // 设置登陆条目不可见
             user_info_group.setVisibility(View.VISIBLE);	        // 设置用户信息条目可见
-            tv_username.setText(user.getUsername());			    // 给条目设置上用户名数据
+            tv_username.setText(user.getNickname());			    // 给条目设置上用户名数据
+            // 给条目设置上积分数据
             if (user.getIntegral() != null) {
-                tv_integral.setText(user.getIntegral());	        // 给条目设置上积分数据
+                tv_integral.setText(user.getIntegral());
             } else {
                 tv_integral.setText("0");
             }
+
+            // 设置用户头像
+            Picasso.with(getActivity()).load(user.getHead_url())
+                    .placeholder(R.mipmap.user_icon).into(civ_mine_head_img);
         } else {
             to_login_group.setVisibility(View.VISIBLE);		        // 设置登陆条目可见
             user_info_group.setVisibility(View.GONE);		        // 设置用户信息条目不可见

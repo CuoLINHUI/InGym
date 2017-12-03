@@ -1,5 +1,6 @@
 package com.stefan.ingym.ui.activity.Mine;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -7,55 +8,105 @@ import android.support.v7.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
+import com.squareup.picasso.Picasso;
 import com.stefan.ingym.R;
-import com.stefan.ingym.ui.activity.MainActivity;
+import com.stefan.ingym.pojo.mine.User;
 import com.stefan.ingym.util.ConstantValue;
 import com.stefan.ingym.util.ImageUtils;
 import com.stefan.ingym.util.SpUtil;
 
-import static com.stefan.ingym.R.id.imageView;
-
 public class AccountActivity extends AppCompatActivity {
 
-    @ViewInject(R.id.civ_mine_head_img)
-    private de.hdodenhof.circleimageview.CircleImageView civ_mine_head_img;
+    @ViewInject(R.id.civ_account_head_img)
+    private de.hdodenhof.circleimageview.CircleImageView civ_account_head_img;
+    @ViewInject(R.id.tv_nickname)
+    private TextView tv_nickname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
-
         ViewUtils.inject(this);
+        init_toolbar();
+        initUI();
 
     }
 
     /**
-     * 设置用户点击监听事件
+     * 初始化数据
      */
-    @OnClick({R.id.tv_back, R.id.btn_exit, R.id.civ_mine_head_img, R.id.tv_save})
+    private void initUI() {
+        // 从Sp中获取本地用户名
+        String username = SpUtil.getString(getApplicationContext(), ConstantValue.LOGIN_USER, null);
+        // 将登陆成功的用户信息封装到User实体类中
+        Gson gson = new GsonBuilder().create();
+        User user = gson.fromJson(username, User.class);
+        // 设置用户头像
+        Picasso.with(getApplicationContext()).load(user.getHead_url())
+                .placeholder(R.mipmap.user_icon).into(civ_account_head_img);
+        // 设置用户名
+        tv_nickname.setText(user.getNickname());
+    }
+
+    /**
+     * toolbar初始化
+     */
+    private void init_toolbar() {
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.account_toolbar);
+        mToolbar.setNavigationIcon(R.mipmap.modify_cancel);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+                overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);
+            }
+        });
+    }
+
+    /**
+     * 设置用户点击监听事件s
+     */
+    @OnClick({R.id.btn_exit, R.id.civ_account_head_img, R.id.ll_modify_nickname,
+            R.id.ll_modify_password, R.id.ll_set_payment_password, R.id.ll_bind_phoneNum, R.id.ll_manage_address})
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.tv_back:              // 用户点击了回退按钮
-                finish();
+            case R.id.btn_exit:             // 用户点击退出登录
+                // 弹出对话框，提示用户是否确定退出当前用户
+                showExitDialog();
                 break;
 
-            case R.id.civ_mine_head_img:    // 用户点击更换头像
+            case R.id.civ_account_head_img:    // 用户点击更换头像
                 // 显示获取照片不同方式对话框
                 ImageUtils.showImagePickDialog(AccountActivity.this);
                 break;
 
-            case R.id.tv_save:              // 用户点击保存修改
-
+            case R.id.ll_modify_nickname:      // 用户修改昵称
+//                startActivity(new Intent(getApplication(), ModifyNicknameActivity.class));
                 break;
 
-            case R.id.btn_exit:             // 用户点击退出登录
-                // 弹出对话框，提示用户是否确定退出当前用户
-                showExitDialog();
+            case R.id.ll_modify_password:      // 用户修改登陆密码
+//                startActivity(new Inent(getApplication(), ModifyPasswordActivity.class));
+                break;
+
+            case R.id.ll_set_payment_password: // 用户设置支付密码
+//                startActivity(new Intent(getApplication(), SetPaymentActivity.class));
+                break;
+
+            case R.id.ll_bind_phoneNum:       // 用户绑定手机号
+//                startActivity(new Intent(getApplication(), BindPhoneActivity.class));
+                break;
+
+            case R.id.ll_manage_address:      // 用户管理收货地址
+//                startActivity(new Intent(getApplication(), ManagerAdressActivity.class));
                 break;
         }
     }
@@ -98,7 +149,7 @@ public class AccountActivity extends AppCompatActivity {
 
                 Uri imageUri = ImageUtils.getCurrentUri();
                 if (imageUri != null) {
-                    civ_mine_head_img.setImageURI(imageUri);
+                    civ_account_head_img.setImageURI(imageUri);
                 }
                 break;
             }

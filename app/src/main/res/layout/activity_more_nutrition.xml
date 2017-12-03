@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_more_nutrition"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.stefan.ingym.ui.activity.index.MoreNutritionActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/more_nutrition_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+        <TextView
+            android:id="@+id/tv_more_nutrition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="更多营养元素"
+            android:textSize="20sp"
+            android:textColor="@color/app_white"
+            android:gravity="center_vertical" />
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/ll_nutrition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="11dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimary"
+            android:textSize="19sp"
+            android:text="营养元素" />
+
+        <TextView
+            android:id="@+id/tv_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="19sp"
+            android:text="每100g" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F5F5F5"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center"
+        android:padding="7dp"
+        android:text="营养素"
+        android:textSize="17sp"
+        android:textColor="@color/text_black"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_cal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="11dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_weight="1"
+            android:textColor="@color/text_gray"
+            android:textSize="19sp"
+            android:text="热量" />
+
+        <TextView
+            android:id="@+id/tv_cal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/text_gray"
+            android:textSize="19sp"
+            android:text="96大卡" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1.2dp"
+        android:layout_marginTop="0.3dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:background="#CDCDCD"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_fat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="11dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_weight="1"
+            android:textColor="@color/text_gray"
+            android:textSize="19sp"
+            android:text="脂肪" />
+
+        <TextView
+            android:id="@+id/tv_fat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/text_gray"
+            android:textSize="19sp"
+            android:text="1.4克" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1.2dp"
+        android:layout_marginTop="0.3dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:background="#CDCDCD"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_carbohydrate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="11dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_weight="1"
+            android:textColor="@color/text_gray"
+            android:textSize="19sp"
+            android:text="碳水化合物" />
+
+        <TextView
+            android:id="@+id/tv_carbohydrate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/text_gray"
+            android:textSize="19sp"
+            android:text="3.2克" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1.2dp"
+        android:layout_marginTop="0.3dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:background="#CDCDCD"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_protein"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="11dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_weight="1"
+            android:textColor="@color/text_gray"
+            android:textSize="19sp"
+            android:text="蛋白质" />
+
+        <TextView
+            android:id="@+id/tv_protein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/text_gray"
+            android:textSize="19sp"
+            android:text="17.6克" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1.2dp"
+        android:layout_marginTop="0.3dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:background="#CDCDCD"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F5F5F5"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center"
+        android:padding="7dp"
+        android:text="维生素"
+        android:textSize="17sp"
+        android:textColor="@color/text_black"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_cellulose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="11dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_weight="1"
+            android:textColor="@color/text_gray"
+            android:textSize="19sp"
+            android:text="纤维素" />
+
+        <TextView
+            android:id="@+id/tv_cellulose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/text_gray"
+            android:textSize="19sp"
+            android:text="0克" />
+    </LinearLayout>
+
+</LinearLayout>

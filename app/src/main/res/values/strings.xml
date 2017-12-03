@@ -5,6 +5,7 @@
     <string name="article_detail">资讯</string>
     <string name="sports_title">立即去动</string>
     <string name="community_title">社区</string>
+    <string name="mine_title">我</string>
     <string name="startButton">开始体验</string>
     <string name="search_detail">搜索详情</string>
     <string name="body_building">健身</string>
@@ -30,7 +31,7 @@
     <string name="reset">重置</string>
     <string name="modify_pwd">修改登录密码</string>
     <string name="set_pay_pwd">设置支付密码</string>
-    <string name="bind_phone">已绑定手机号</string>
+    <string name="bind_phoneNum">已绑定手机号</string>
     <string name="manage_address">管理收获地址</string>
     <string name="back_login">退出登录</string>
     <string name="account_editor"> 账号编辑</string>
@@ -38,7 +39,7 @@
     <string name="please_login">您还没有登录哦~</string>
     <string name="login_now">马上登录</string>
     <string name="your_name">你的名字</string>
-    <string name="mine_collection">收藏</string>
+    <string name="mine_collection">我的收藏</string>
     <string name="mine_memorandum">备忘录</string>
     <string name="recent_browse">最近浏览</string>
     <string name="mine_setting">设置</string>
@@ -263,7 +264,7 @@
     <!-- /Will be removed on next update -->
 
     <string name="training_overview_empty">看起来你还没有使用过训练功能。是时候开始你的训练了！</string>
-    <string name="training_input_message" />
+    <string name="training_input_message"/>
     <string name="training_input_title">训练期</string>
     <string name="activity_title_training">训练</string>
     <string name="hint_training_description">类型</string>

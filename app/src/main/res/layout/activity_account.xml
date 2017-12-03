@@ -8,6 +8,23 @@
     tools:context=".ui.activity.Mine.AccountActivity">
 
     <android.support.v7.widget.Toolbar
+        android:id="@+id/account_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/account_editor"
+            android:textSize="20sp"
+            android:textColor="@color/app_white"
+            android:gravity="center_vertical" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v7.widget.Toolbar
         android:id="@+id/tb_mine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,7 +75,7 @@
         android:layout_marginTop="20dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civ_mine_head_img"
+            android:id="@+id/civ_account_head_img"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:src="@mipmap/user_icon" />
@@ -83,18 +100,47 @@
 
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/modify_pwd"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@mipmap/filter_line" />
+
+    <LinearLayout
+        android:id="@+id/ll_modify_nickname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="10dp"
-        android:drawableLeft="@mipmap/ico_setting_modify"
-        android:drawablePadding="20dp"
-        android:drawableRight="@mipmap/arrow_right_my_gray"
         android:padding="10dp"
-        android:text="@string/modify_pwd" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/icon_modify_nickname"
+            android:drawablePadding="20dp"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:text="昵称" />
+
+        <TextView
+            android:id="@+id/tv_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_grey"
+            android:textSize="17sp"
+            android:text="昵称" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/arrow_right_my_gray" />
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
@@ -104,18 +150,33 @@
         android:layout_marginTop="5dp"
         android:background="@mipmap/filter_line" />
 
-    <TextView
-        android:id="@+id/set_pay_pwd"
+    <LinearLayout
+        android:id="@+id/ll_modify_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="10dp"
-        android:drawableLeft="@mipmap/ico_setting_lock"
-        android:drawablePadding="20dp"
-        android:drawableRight="@mipmap/arrow_right_my_gray"
         android:padding="10dp"
-        android:text="@string/set_pay_pwd" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/icon_modify_password"
+            android:drawablePadding="20dp"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:text="@string/modify_pwd" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/arrow_right_my_gray" />
+    </LinearLayout>
+
 
     <View
         android:layout_width="match_parent"
@@ -125,18 +186,32 @@
         android:layout_marginTop="5dp"
         android:background="@mipmap/filter_line" />
 
-    <TextView
-        android:id="@+id/bind_phone"
+    <LinearLayout
+        android:id="@+id/ll_set_payment_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="10dp"
-        android:drawableLeft="@mipmap/ico_setting_tel"
-        android:drawablePadding="20dp"
-        android:drawableRight="@mipmap/arrow_right_my_gray"
         android:padding="10dp"
-        android:text="@string/bind_phone" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/icon_set_payment_password"
+            android:drawablePadding="20dp"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:text="@string/set_pay_pwd" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/arrow_right_my_gray" />
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
@@ -146,18 +221,67 @@
         android:layout_marginTop="5dp"
         android:background="@mipmap/filter_line" />
 
-    <TextView
-        android:id="@+id/manage_address"
+    <LinearLayout
+        android:id="@+id/ll_bind_phoneNum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
+        android:padding="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/icon_set_phone_number"
+            android:drawablePadding="20dp"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:text="@string/bind_phoneNum" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/arrow_right_my_gray" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
-        android:drawableLeft="@mipmap/ico_setting_bus"
-        android:drawablePadding="20dp"
-        android:drawableRight="@mipmap/arrow_right_my_gray"
+        android:background="@mipmap/filter_line" />
+
+    <LinearLayout
+        android:id="@+id/ll_manage_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="@string/manage_address" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:drawableLeft="@mipmap/icon_set_address"
+            android:drawablePadding="20dp"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:text="@string/manage_address" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/arrow_right_my_gray" />
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"

@@ -168,7 +168,7 @@ public class FoodsListActivity extends AppCompatActivity implements BGARefreshLa
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
 
         // 请求参数
-        final Map<String, String> params = new HashMap<String ,String>(){
+        final Map<String, String> params = new HashMap<String ,String>() {
             {
                 put("page", String.valueOf(page));
                 put("size", String.valueOf(size));

@@ -42,8 +42,6 @@ import okhttp3.Response;
  */
 public class LoginActivity extends AppCompatActivity {
 
-    @ViewInject(R.id.tv_back)           // 返回按钮
-    private TextView tv_back;
     @ViewInject(R.id.tv_register)       // 注册按钮
     private  TextView tv_register;
     @ViewInject(R.id.fly_view)			// 登陆方法切换的view

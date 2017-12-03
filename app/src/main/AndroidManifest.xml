@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.stefan.ingym">
+          package="com.stefan.ingym">
 
     <supports-screens
         android:anyDensity="true"
@@ -8,45 +8,45 @@
         android:normalScreens="true"
         android:resizeable="true"
         android:smallScreens="true"
-        android:xlargeScreens="true" />
+        android:xlargeScreens="true"/>
 
     <!-- 允许程序打开网络套接字 -->
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <!-- 允许程序获取网络状态 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <!-- 允许程序设置内置sd卡的写权限 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <!-- 允许程序设置内置sd卡的读取权限 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <!-- 在sdcard中创建/删除文件的权限 -->
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
     <!-- 获取用户设备的mac地址，在平板设备上，无法通过imei标示设备，我们会将mac地址作为用户的唯一标识 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <!-- 获取用户设备的IMEI，通过IMEI和mac来唯一的标识用户 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_PROFILE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <!-- 用于进行网络定位 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <!-- 用于访问GPS定位 -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <!-- 用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <!-- 用于申请调用A-GPS模块 -->
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
     <!-- 用于申请获取蓝牙信息进行室内定位 -->
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
     <!-- 用于申请获取使用相机 -->
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <application
         android:allowBackup="true"
@@ -58,48 +58,48 @@
         <!-- 启动页面 -->
         <activity android:name=".ui.activity.WelcomeActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
         <!-- 初次启动的导航activity -->
-        <activity android:name=".ui.activity.WhatNewsActivity" />
+        <activity android:name=".ui.activity.WhatNewsActivity"/>
 
         <!-- 应用程序主页面MainActivity -->
-        <activity android:name=".ui.activity.MainActivity" />
+        <activity android:name=".ui.activity.MainActivity"/>
 
         <!-- 资讯详情activity -->
-        <activity android:name=".ui.activity.index.ArticleDetailActivity" />
+        <activity android:name=".ui.activity.index.ArticleDetailActivity"/>
 
         <!-- 登陆activity -->
-        <activity android:name=".ui.activity.Mine.LoginActivity" />
+        <activity android:name=".ui.activity.Mine.LoginActivity"/>
 
         <!-- 用户注册activity -->
-        <activity android:name=".ui.activity.Mine.RegisterActivity" />
+        <activity android:name=".ui.activity.Mine.RegisterActivity"/>
 
         <!-- 商品列表activity -->
-        <activity android:name=".ui.activity.Community.GoodsListActivity" />
-        <activity android:name=".ui.activity.Mine.SettingActivity" />
+        <activity android:name=".ui.activity.Community.GoodsListActivity"/>
+        <activity android:name=".ui.activity.Mine.SettingActivity"/>
 
         <!-- 账号信息activity -->
-        <activity android:name=".ui.activity.Mine.AccountActivity" />
+        <activity android:name=".ui.activity.Mine.AccountActivity"/>
 
         <!-- 关于activity -->
-        <activity android:name=".ui.activity.Mine.AboutActivity" />
+        <activity android:name=".ui.activity.Mine.AboutActivity"/>
 
         <!-- 备忘录部分activity -->
-        <activity android:name=".ui.fragment.mine.memorandum.MemorandumActivity" />
-        <activity android:name=".ui.fragment.mine.memorandum.activity.BaseActivity" />
-        <activity android:name=".ui.fragment.mine.memorandum.activity.ContentActivity" />
-        <activity android:name=".ui.fragment.mine.memorandum.activity.CreateActivity" />
-        <activity android:name=".ui.fragment.mine.memorandum.activity.FilesActivity" />
-        <activity android:name=".ui.fragment.mine.memorandum.activity.QuickCreateActivity" />
+        <activity android:name=".ui.fragment.mine.memorandum.MemorandumActivity"/>
+        <activity android:name=".ui.fragment.mine.memorandum.activity.BaseActivity"/>
+        <activity android:name=".ui.fragment.mine.memorandum.activity.ContentActivity"/>
+        <activity android:name=".ui.fragment.mine.memorandum.activity.CreateActivity"/>
+        <activity android:name=".ui.fragment.mine.memorandum.activity.FilesActivity"/>
+        <activity android:name=".ui.fragment.mine.memorandum.activity.QuickCreateActivity"/>
 
         <!-- 直播部分activity -->
-        <activity android:name=".ui.fragment.community.live.activity.LiveActivity" />
-        <activity android:name=".ui.fragment.community.live.activity.LiveWatchActivity" />
+        <activity android:name=".ui.fragment.community.live.activity.LiveActivity"/>
+        <activity android:name=".ui.fragment.community.live.activity.LiveWatchActivity"/>
 
         <!-- 计步器部分 -->
         <activity
@@ -108,16 +108,16 @@
             android:parentActivityName=".ui.activity.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.activity.MainActivity" />
+                android:value=".ui.activity.MainActivity"/>
         </activity>
-        <activity android:name=".ui.fragment.sports.pedometer.activity.PreferencesActivity" />
+        <activity android:name=".ui.fragment.sports.pedometer.activity.PreferencesActivity"/>
         <activity
             android:name=".ui.fragment.sports.pedometer.activity.TrainingActivity"
             android:label="@string/activity_title_training"
             android:parentActivityName=".ui.fragment.sports.pedometer.activity.TrainingOverviewActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.fragment.sports.pedometer.activity.TrainingOverviewActivity" />
+                android:value=".ui.fragment.sports.pedometer.activity.TrainingOverviewActivity"/>
         </activity>
         <activity
             android:name=".ui.fragment.sports.pedometer.activity.TrainingOverviewActivity"
@@ -125,7 +125,7 @@
             android:parentActivityName=".ui.activity.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.activity.MainActivity" />
+                android:value=".ui.activity.MainActivity"/>
         </activity>
 
         <!-- <activity android:name=".activity.WalkingModesActivity"/> -->
@@ -136,7 +136,7 @@
             android:parentActivityName=".ui.fragment.sports.pedometer.activity.PreferencesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.fragment.sports.pedometer.activity.PreferencesActivity" />
+                android:value=".ui.fragment.sports.pedometer.activity.PreferencesActivity"/>
         </activity>
 
         <!-- <activity android:name=".activity.WalkingModeLearningActivity"/> -->
@@ -146,54 +146,58 @@
             android:parentActivityName=".ui.fragment.sports.pedometer.activity.WalkingModesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.fragment.sports.pedometer.activity.WalkingModesActivity" />
+                android:value=".ui.fragment.sports.pedometer.activity.WalkingModesActivity"/>
         </activity>
-        <activity android:name=".ui.fragment.sports.pedometer.activity.PedometerAboutActivity" />
+        <activity android:name=".ui.fragment.sports.pedometer.activity.PedometerAboutActivity"/>
 
-        <service android:name=".ui.fragment.sports.pedometer.service.AccelerometerStepDetectorService" />
-        <service android:name=".ui.fragment.sports.pedometer.service.HardwareStepCounterService" />
-        <service android:name=".ui.fragment.sports.pedometer.service.MovementSpeedService" />
+        <service android:name=".ui.fragment.sports.pedometer.service.AccelerometerStepDetectorService"/>
+        <service android:name=".ui.fragment.sports.pedometer.service.HardwareStepCounterService"/>
+        <service android:name=".ui.fragment.sports.pedometer.service.MovementSpeedService"/>
         <!-- 防止杀害该service -->
         <service
             android:name=".ui.fragment.sports.pedometer.service.HardwareStepDetectorService"
-            android:stopWithTask="false" />
+            android:stopWithTask="false"/>
 
         <receiver
             android:name=".ui.fragment.sports.pedometer.receiver.StepCountPersistenceReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.stefan.pedometer.WALKING_MODE_CHANGED" />
+                <action android:name="com.stefan.pedometer.WALKING_MODE_CHANGED"/>
             </intent-filter>
         </receiver>
         <receiver android:name=".ui.fragment.sports.pedometer.receiver.WidgetReceiver">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/appwidget_provider" />
+                android:resource="@xml/appwidget_provider"/>
         </receiver>
-        <receiver android:name=".ui.fragment.sports.pedometer.receiver.MotivationAlertReceiver" />
-        <receiver android:name=".ui.fragment.sports.pedometer.receiver.HardwareStepCountReceiver" />
+        <receiver android:name=".ui.fragment.sports.pedometer.receiver.MotivationAlertReceiver"/>
+        <receiver android:name=".ui.fragment.sports.pedometer.receiver.HardwareStepCountReceiver"/>
 
         <!-- 友盟统计的Key -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="59dc7320e88bad5d7c000539" />
+            android:value="59dc7320e88bad5d7c000539"/>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="U_InGym" />
+            android:value="U_InGym"/>
         <!-- 友盟自动更新 -->
 
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+            android:value="@integer/google_play_services_version"/>
 
-        <activity android:name=".ui.activity.Community.GoodsDetailActivity" />
-        <activity android:name=".ui.activity.index.FoodsListActivity" />
-        <activity android:name=".ui.activity.index.FoodsDetailActivity"></activity>
+        <activity android:name=".ui.activity.Community.GoodsDetailActivity"/>
+        <activity android:name=".ui.activity.index.FoodsListActivity"/>
+        <activity android:name=".ui.activity.index.FoodsDetailActivity"/>
+        <activity android:name=".ui.activity.index.MoreNutritionActivity">
+        </activity>
+        <activity android:name=".ui.activity.index.CookingActivity">
+        </activity>
     </application>
 
 </manifest>

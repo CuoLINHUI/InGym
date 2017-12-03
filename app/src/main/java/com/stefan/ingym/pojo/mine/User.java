@@ -15,6 +15,8 @@ public class User {
     private String email;       // 邮箱
     private String tel;         // 电话
     private String integral;    // 积分
+    private String head_url;    // 用户头像地址
+    private String nickname;    // 用户昵称
 
     public String getId() {
         return id;
@@ -78,6 +80,22 @@ public class User {
 
     public void setIntegral(String integral) {
         this.integral = integral;
+    }
+
+    public String getHead_url() {
+        return head_url;
+    }
+
+    public void setHead_url(String head_url) {
+        this.head_url = head_url;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
 }

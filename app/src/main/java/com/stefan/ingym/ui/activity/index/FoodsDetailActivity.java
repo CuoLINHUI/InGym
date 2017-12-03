@@ -1,5 +1,6 @@
 package com.stefan.ingym.ui.activity.index;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -9,11 +10,10 @@ import android.widget.TextView;
 
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.squareup.picasso.Picasso;
 import com.stefan.ingym.R;
 import com.stefan.ingym.pojo.index.Foods;
-
-import static com.stefan.ingym.R.id.food_calorie;
 
 public class FoodsDetailActivity extends AppCompatActivity {
 
@@ -46,7 +46,13 @@ public class FoodsDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_foods_detail);
         ViewUtils.inject(this);
         init_toolbar();
+        initData();
+    }
 
+    /**
+     * 初始化数据
+     */
+    private void initData() {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) food = (Foods) bundle.get("food_id");
 
@@ -64,7 +70,6 @@ public class FoodsDetailActivity extends AppCompatActivity {
             food_recommended_type.setText(food.getFood_recommended_types());
             food_recommended_detail.setText(food.getFood_detail());
         }
-
     }
 
     /**
@@ -81,6 +86,26 @@ public class FoodsDetailActivity extends AppCompatActivity {
             }
         });
     }
+
+    @OnClick({R.id.more_nutrition, R.id.ll_cuisine, R.id.ll_materials_practices})
+    public void Onclick(View view) {
+        switch (view.getId()) {
+            case R.id.more_nutrition:           // 更多营养元素
+                Intent intent = new Intent(this, MoreNutritionActivity.class);
+                intent.putExtra("more_nutrition", food);
+                startActivity(intent);
+                break;
+            case R.id.ll_cuisine:               // 食物分类
+
+                break;
+            case R.id.ll_materials_practices:   // 食物的烹饪方法
+                Intent methodIntent = new Intent(this, CookingActivity.class);
+                methodIntent.putExtra("food_id", food.getId());
+                startActivity(methodIntent);
+                break;
+        }
+    }
+
 
 }
 
