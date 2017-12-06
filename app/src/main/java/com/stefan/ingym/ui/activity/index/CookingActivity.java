@@ -62,19 +62,20 @@ public class CookingActivity extends AppCompatActivity {
         if (food != null) {
             tv_food_cooking.setText(food.getFood_name());
             WebSettings cookingSetting = wv_food_cooking_detail.getSettings();
+            cookingSetting.setJavaScriptEnabled(true);       // 设置支持javascript脚本
+            cookingSetting.setBuiltInZoomControls(true);     // 设置显示缩放按钮
+            cookingSetting.setSupportZoom(true);             // 支持缩放
             // 把所有内容放大WebView等宽的一列中
-            cookingSetting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS.SINGLE_COLUMN);
+            cookingSetting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
             //向webview加载数据
-            String[] cookingData = htmlSub(food.getFood_cooking_detail());
-            wv_food_cooking_detail.loadDataWithBaseURL("", cookingData[0], "text/html", "utf-8", "");
+//            String[] cookingData = htmlSub(food.getFood_cooking_detail());
+            // String baseUrl, String data,String mimeType, String encoding, String historyUrl
+            wv_food_cooking_detail.loadDataWithBaseURL("", food.getFood_cooking_detail(), "text/html", "utf-8", "");
         }
     }
 
-    /**
-     *从一大段的景点描述中截取出本单详情和温馨提示
-     * @param html 一大段的景点描述
-     */
-    public String[] htmlSub(String html){
+    /*public String[] htmlSub(String html){
+        // 将字符串对象中的字符转换为一个字符数组
         char[] str=html.toCharArray();
         int len=str.length;
         System.out.println(len);
@@ -98,7 +99,7 @@ public class CookingActivity extends AppCompatActivity {
 
         }
         return data;
-    }
+    }*/
 
     /**
      * toolbar初始化

@@ -198,6 +198,8 @@
         </activity>
         <activity android:name=".ui.activity.index.CookingActivity">
         </activity>
+        <activity android:name=".ui.activity.index.CuisineActivity">
+        </activity>
     </application>
 
 </manifest>

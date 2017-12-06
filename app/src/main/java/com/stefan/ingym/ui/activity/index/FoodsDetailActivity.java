@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lidroid.xutils.ViewUtils;
@@ -14,6 +15,8 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.squareup.picasso.Picasso;
 import com.stefan.ingym.R;
 import com.stefan.ingym.pojo.index.Foods;
+
+import static com.stefan.ingym.R.id.ll_cuisine;
 
 public class FoodsDetailActivity extends AppCompatActivity {
 
@@ -37,6 +40,10 @@ public class FoodsDetailActivity extends AppCompatActivity {
     private TextView food_recommended_type;
     @ViewInject(R.id.food_recommended_detail)   // 食物推荐详情
     private TextView food_recommended_detail;
+    @ViewInject(R.id.tv_food_cuisine)           // 菜品条目文字
+    private TextView tv_food_cuisine;
+    @ViewInject(R.id.ll_materials_practices)    // 食物菜菜品做法条目
+    private LinearLayout ll_materials_practices;
 
     private Foods food;
 
@@ -55,7 +62,6 @@ public class FoodsDetailActivity extends AppCompatActivity {
     private void initData() {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) food = (Foods) bundle.get("food_id");
-
         // 不为空，则渲染数据
         if (food != null) {
             Picasso.with(getApplicationContext()).load(food.getFood_pic())
@@ -69,6 +75,9 @@ public class FoodsDetailActivity extends AppCompatActivity {
             food_fat.setText(food.getFood_fat());
             food_recommended_type.setText(food.getFood_recommended_types());
             food_recommended_detail.setText(food.getFood_detail());
+            tv_food_cuisine.setText(food.getFood_cuisine());
+            // 若查询出的菜品做法为空的话，则在该食物详情页面隐藏该条目
+            if (food.getFood_cooking_detail() == null) ll_materials_practices.setVisibility(View.GONE);
         }
     }
 
@@ -87,7 +96,7 @@ public class FoodsDetailActivity extends AppCompatActivity {
         });
     }
 
-    @OnClick({R.id.more_nutrition, R.id.ll_cuisine, R.id.ll_materials_practices})
+    @OnClick({R.id.more_nutrition, ll_cuisine, R.id.ll_materials_practices})
     public void Onclick(View view) {
         switch (view.getId()) {
             case R.id.more_nutrition:           // 更多营养元素
@@ -95,12 +104,14 @@ public class FoodsDetailActivity extends AppCompatActivity {
                 intent.putExtra("more_nutrition", food);
                 startActivity(intent);
                 break;
-            case R.id.ll_cuisine:               // 食物分类
-
+            case ll_cuisine:                    // 食物分类
+                Intent cuisineIntent = new Intent(this, CuisineActivity.class);
+                cuisineIntent.putExtra("food_id", food);
+                startActivity(cuisineIntent);
                 break;
             case R.id.ll_materials_practices:   // 食物的烹饪方法
                 Intent methodIntent = new Intent(this, CookingActivity.class);
-                methodIntent.putExtra("food_id", food.getId());
+                methodIntent.putExtra("food_id", food);
                 startActivity(methodIntent);
                 break;
         }
