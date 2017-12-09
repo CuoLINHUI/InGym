@@ -1,12 +1,14 @@
 package com.stefan.ingym.pojo.mine;
 
+import java.io.Serializable;
+
 /**
  * @ClassName: User
  * @Description: 用户的实体类，用来封装用户数据
  * @Author Stefan
  * @Date 2017/9/28 9:57
  */
-public class User {
+public class User implements Serializable {
     private String id;          // 用户ID
     private String username;    // 用户名
     private String loginPwd;    // 登录密码
@@ -15,7 +17,7 @@ public class User {
     private String email;       // 邮箱
     private String tel;         // 电话
     private String integral;    // 积分
-    private String head_url;    // 用户头像地址
+    private String headUrl;    // 用户头像地址
     private String nickname;    // 用户昵称
 
     public String getId() {
@@ -82,12 +84,12 @@ public class User {
         this.integral = integral;
     }
 
-    public String getHead_url() {
-        return head_url;
+    public String getHeadUrl() {
+        return headUrl;
     }
 
-    public void setHead_url(String head_url) {
-        this.head_url = head_url;
+    public void setHeadUrl(String headUrl) {
+        this.headUrl = headUrl;
     }
 
     public String getNickname() {

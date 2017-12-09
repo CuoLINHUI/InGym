@@ -34,7 +34,8 @@
     <string name="bind_phoneNum">已绑定手机号</string>
     <string name="manage_address">管理收获地址</string>
     <string name="back_login">退出登录</string>
-    <string name="account_editor"> 账号编辑</string>
+    <string name="account_editor">账号编辑</string>
+    <string name="set_nickname">设置名字</string>
     <string name="edit_save">保存 </string>
     <string name="please_login">您还没有登录哦~</string>
     <string name="login_now">马上登录</string>

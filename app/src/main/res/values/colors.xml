@@ -9,6 +9,7 @@
     <color name="price_color">#E2652D</color>
     <color name="value_color">#7D7D7D</color>
     <color name="description_text">#363636</color>
+    <color name="blank_background">#F5F5F5</color>
 
     <color name="colorWhite">#FFF</color>
     <color name="transparent">#0000</color>

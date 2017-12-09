@@ -1,6 +1,5 @@
 package com.stefan.ingym.ui.activity.Mine;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -9,6 +8,7 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -31,6 +31,10 @@ public class AccountActivity extends AppCompatActivity {
     @ViewInject(R.id.tv_nickname)
     private TextView tv_nickname;
 
+    private User user;
+
+    private String modified_nickname;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,12 +50,13 @@ public class AccountActivity extends AppCompatActivity {
      */
     private void initUI() {
         // 从Sp中获取本地用户名
-        String username = SpUtil.getString(getApplicationContext(), ConstantValue.LOGIN_USER, null);
+        String username = SpUtil.getString(getApplicationContext(), ConstantValue.IDENTIFIED_USER, null);
+
         // 将登陆成功的用户信息封装到User实体类中
         Gson gson = new GsonBuilder().create();
-        User user = gson.fromJson(username, User.class);
+        user = gson.fromJson(username, User.class);
         // 设置用户头像
-        Picasso.with(getApplicationContext()).load(user.getHead_url())
+        Picasso.with(getApplicationContext()).load(user.getHeadUrl())
                 .placeholder(R.mipmap.user_icon).into(civ_account_head_img);
         // 设置用户名
         tv_nickname.setText(user.getNickname());
@@ -73,7 +78,7 @@ public class AccountActivity extends AppCompatActivity {
     }
 
     /**
-     * 设置用户点击监听事件s
+     * 设置用户点击监听事件
      */
     @OnClick({R.id.btn_exit, R.id.civ_account_head_img, R.id.ll_modify_nickname,
             R.id.ll_modify_password, R.id.ll_set_payment_password, R.id.ll_bind_phoneNum, R.id.ll_manage_address})
@@ -90,7 +95,9 @@ public class AccountActivity extends AppCompatActivity {
                 break;
 
             case R.id.ll_modify_nickname:      // 用户修改昵称
-//                startActivity(new Intent(getApplication(), ModifyNicknameActivity.class));
+                Intent nicknameIntent = new Intent(this, ModifyNicknameActivity.class);
+                nicknameIntent.putExtra("user_nickname", user);
+                startActivityForResult(nicknameIntent, 1);
                 break;
 
             case R.id.ll_modify_password:      // 用户修改登陆密码
@@ -132,6 +139,7 @@ public class AccountActivity extends AppCompatActivity {
                 ImageUtils.cropImageUri(this, ImageUtils.getCurrentUri(), 200, 200);
                 break;
             }
+            
             case ImageUtils.REQUEST_CODE_FROM_CAMERA: {
 
                 if (resultCode == RESULT_CANCELED) {     //取消操作
@@ -141,6 +149,7 @@ public class AccountActivity extends AppCompatActivity {
                 ImageUtils.cropImageUri(this, ImageUtils.getCurrentUri(), 200, 200);
                 break;
             }
+            
             case ImageUtils.REQUEST_CODE_CROP: {
 
                 if (resultCode == RESULT_CANCELED) {     //取消操作
@@ -153,6 +162,27 @@ public class AccountActivity extends AppCompatActivity {
                 }
                 break;
             }
+            
+            case ModifyNicknameActivity.MODIFIED_NICKNAME:
+                if (resultCode == RESULT_CANCELED) {
+                    return;
+                } else {
+                    modified_nickname = data.getStringExtra("modified_nickname");
+                    // 获取保存在Sp中的保存在本地的用户数据
+                    String identified_user = SpUtil.getString(this, ConstantValue.IDENTIFIED_USER, null);
+
+                    // 将登陆成功的保存在本地的用户信息封装到User实体类中
+                    Gson gson = new GsonBuilder().create();
+                    User user = gson.fromJson(identified_user, User.class);
+                    // 修改原Sp中的nickname
+                    user.setNickname(modified_nickname);
+                    // 修改好之后重新保存
+                    SpUtil.putString(this, ConstantValue.IDENTIFIED_USER, gson.toJson(user));
+                    // 设置上新的nickname
+                    tv_nickname.setText(modified_nickname);
+                }
+                break;
+            
             default:
                 break;
         }
@@ -174,7 +204,7 @@ public class AccountActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // 清除之前保存在Sp中的用户数据
-                SpUtil.remove(getApplicationContext(), ConstantValue.LOGIN_USER);
+                SpUtil.remove(getApplicationContext(), ConstantValue.IDENTIFIED_USER);
                 // 结束当前页面
                 finish();
             }

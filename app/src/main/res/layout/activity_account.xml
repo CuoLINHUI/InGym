@@ -24,50 +24,6 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_mine"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="right"
-            >
-
-            <!--设置返回点击事件-->
-            <TextView
-                android:id="@+id/tv_back"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="@string/account_editor"
-                android:textSize="20sp"
-                android:textColor="@color/app_white"
-                android:drawableLeft="@mipmap/modify_cancel"
-                android:gravity="center_vertical" />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
-
-            <!--点击响应注册事件-->
-            <TextView
-                android:id="@+id/tv_save"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginRight="15dp"
-                android:text="@string/edit_save"
-                android:drawableRight="@mipmap/modify_save"
-                android:textSize="20sp"
-                android:textColor="@color/app_white"
-                android:gravity="center_vertical" />
-        </LinearLayout>
-
-    </android.support.v7.widget.Toolbar>
-
-
     <RelativeLayout
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -112,6 +68,7 @@
         android:id="@+id/ll_modify_nickname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
         android:padding="10dp"
         android:gravity="center_vertical"
         android:orientation="horizontal" >
@@ -154,6 +111,7 @@
         android:id="@+id/ll_modify_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
         android:padding="10dp"
         android:gravity="center_vertical"
         android:orientation="horizontal" >
@@ -190,6 +148,7 @@
         android:id="@+id/ll_set_payment_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
         android:padding="10dp"
         android:gravity="center_vertical"
         android:orientation="horizontal" >
@@ -225,6 +184,7 @@
         android:id="@+id/ll_bind_phoneNum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
         android:padding="10dp"
         android:gravity="center_vertical"
         android:orientation="horizontal" >
@@ -260,6 +220,7 @@
         android:id="@+id/ll_manage_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
         android:padding="10dp"
         android:gravity="center_vertical"
         android:orientation="horizontal" >

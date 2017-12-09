@@ -200,6 +200,8 @@
         </activity>
         <activity android:name=".ui.activity.index.CuisineActivity">
         </activity>
+        <activity android:name=".ui.activity.Mine.ModifyNicknameActivity">
+        </activity>
     </application>
 
 </manifest>

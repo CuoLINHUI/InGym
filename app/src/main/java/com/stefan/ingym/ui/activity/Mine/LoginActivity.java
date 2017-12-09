@@ -221,10 +221,11 @@ public class LoginActivity extends AppCompatActivity {
                 System.out.println(json);
 
                 final ResponseObject<User> object = gson.fromJson(json, new TypeToken<ResponseObject<User>>(){}.getType());
+
                 // 对解析结果进行判断（服务器端传过来的状态码为1表示成功）
                 if (object.getState() == 1) {
-                    // 保存用户名到本地
-                    SpUtil.putString(getApplicationContext(), ConstantValue.LOGIN_USER, gson.toJson(object.getDatas()));
+                    // 保存服务端验证通过的用户对象数据到本地
+                    SpUtil.putString(getApplicationContext(), ConstantValue.IDENTIFIED_USER, gson.toJson(object.getDatas()));
                     // 登陆成功就关闭当前页面
                     finish();
                 }

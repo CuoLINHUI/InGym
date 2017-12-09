@@ -4,11 +4,9 @@ package com.stefan.ingym.ui.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -118,13 +116,14 @@ public class FragmentMine extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        // 从Sp中获取本地用户名
-        String username = SpUtil.getString(getActivity(), ConstantValue.LOGIN_USER, null);
+        // 从Sp中获取保存在本地的用户数据
+        String identified_user = SpUtil.getString(getActivity(), ConstantValue.IDENTIFIED_USER, null);
 
-        // 将登陆成功的用户信息封装到User实体类中
+        // 将登陆成功的保存在本地的用户信息封装到User实体类中
         Gson gson = new GsonBuilder().create();
-        User user = gson.fromJson(username, User.class);
+        User user = gson.fromJson(identified_user, User.class);
 
+        // 渲染数据
         if (user != null) {
             to_login_group.setVisibility(View.GONE);		        // 设置登陆条目不可见
             user_info_group.setVisibility(View.VISIBLE);	        // 设置用户信息条目可见
@@ -135,9 +134,8 @@ public class FragmentMine extends Fragment {
             } else {
                 tv_integral.setText("0");
             }
-
             // 设置用户头像
-            Picasso.with(getActivity()).load(user.getHead_url())
+            Picasso.with(getActivity()).load(user.getHeadUrl())
                     .placeholder(R.mipmap.user_icon).into(civ_mine_head_img);
         } else {
             to_login_group.setVisibility(View.VISIBLE);		        // 设置登陆条目可见

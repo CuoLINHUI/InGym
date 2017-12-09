@@ -20,7 +20,7 @@ public class ConstantValue {
     /**
      * 用户登陆名的key
      */
-    public static final String LOGIN_USER = "login_user";
+    public static final String IDENTIFIED_USER = "identified_user";
 
     /**
      * 定义访问InGym服务器端的路径192.168.134.1
@@ -52,5 +52,10 @@ public class ConstantValue {
      * 用户请求装备商品信息时访问服务器端的访问地址
      */
     public static final String EQUIPMENT_GOODS = HOST + "/community/equipment_goods";
+
+    /**
+     * 用户请求请求服务端更新数据库的用户昵称
+     */
+    public static final String MODIFY_NICKNAME = HOST + "/user/modify_nickname";
 
 }
