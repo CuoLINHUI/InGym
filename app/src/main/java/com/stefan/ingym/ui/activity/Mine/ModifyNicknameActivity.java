@@ -60,7 +60,7 @@ public class ModifyNicknameActivity extends AppCompatActivity {
 
     private void intiData() {
         Bundle bundle = getIntent().getExtras();
-        user = (User) bundle.get("user_nickname");
+        user = (User) bundle.get("nickname_modify");
         // 给输入框中设置上用户原有昵称
         et_set_nickname.setText(user.getNickname());
     }
@@ -107,11 +107,7 @@ public class ModifyNicknameActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 final Gson gson = new GsonBuilder().create();
                 String json = response.body().string();
-
-                Log.i("ModifyNicknameActivity:", "*********" + json);
-
                 final ResponseObject<User> object = gson.fromJson(json, new TypeToken<ResponseObject<User>>(){}.getType());
-
                 // UI更新需要放在主线程（UI线程）中完成。
                 runOnUiThread(new Runnable() {
                     @Override
@@ -119,15 +115,10 @@ public class ModifyNicknameActivity extends AppCompatActivity {
                         // 对解析结果进行判断（服务器端传过来的状态码为1表示成功）
                         if (object.getState() == 1) {
                             et_set_nickname.setText(newNickname);
-
-                            Log.i("ModifyNicknameActivity:", gson.toJson(object.getDatas()));
-
-                            // 更新用户数据到本地
-//                            SpUtil.putString(getApplicationContext(), ConstantValue.IDENTIFIED_USER, gson.toJson(object.getDatas()));
+//                            Log.i("ModifyNicknameActivity:", gson.toJson(object.getDatas()));
                             ToastUtil.show(getApplicationContext(), "修改成功！");
-
+                            // 在返回AccountActivity的时候带回修改好的nickname数据
                             setResult(RESULT_OK, new Intent().putExtra("modified_nickname", newNickname));
-
                             finish();
                         } else {
                             // 提示服务器端返回的信息

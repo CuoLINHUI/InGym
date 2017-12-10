@@ -43,7 +43,8 @@
 
     <color name="blue">#38ADFF</color>
     <color name="light_blue">#5bc0de</color>
-    <color name="green">#5cb85c</color>
+    <color name="green">#0eba0e</color>
+    <color name="deep_green">#0a400a</color>
     <color name="red">#d9534f</color>
     <color name="deep_red">#FF4040</color>
     <color name="live_color">#E0454B</color>

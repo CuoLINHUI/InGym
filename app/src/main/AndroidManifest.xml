@@ -202,6 +202,8 @@
         </activity>
         <activity android:name=".ui.activity.Mine.ModifyNicknameActivity">
         </activity>
+        <activity android:name=".ui.activity.Mine.ModifyPasswordActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -96,12 +96,14 @@ public class AccountActivity extends AppCompatActivity {
 
             case R.id.ll_modify_nickname:      // 用户修改昵称
                 Intent nicknameIntent = new Intent(this, ModifyNicknameActivity.class);
-                nicknameIntent.putExtra("user_nickname", user);
+                nicknameIntent.putExtra("nickname_modify", user);
                 startActivityForResult(nicknameIntent, 1);
                 break;
 
             case R.id.ll_modify_password:      // 用户修改登陆密码
-//                startActivity(new Inent(getApplication(), ModifyPasswordActivity.class));
+                Intent passwordIntent = new Intent(this, ModifyPasswordActivity.class);
+                passwordIntent.putExtra("password_modify", user);
+                startActivity(passwordIntent);
                 break;
 
             case R.id.ll_set_payment_password: // 用户设置支付密码

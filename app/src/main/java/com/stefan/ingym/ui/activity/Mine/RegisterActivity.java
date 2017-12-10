@@ -145,7 +145,7 @@ public class RegisterActivity extends Activity {
             @Override
             public void onFailure(Call call, IOException e) {
                 Looper.prepare();
-                ToastUtil.show(getApplicationContext(), "抱歉，注册失败！");
+                ToastUtil.show(getApplicationContext(), "注册失败！请检查网络！");
                 Looper.loop();
             }
             @Override
