@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,9 +22,12 @@ import com.stefan.ingym.R;
 import com.stefan.ingym.pojo.ResponseObject;
 import com.stefan.ingym.pojo.mine.User;
 import com.stefan.ingym.util.ConstantValue;
+import com.stefan.ingym.util.Md5Util;
 import com.stefan.ingym.util.ToastUtil;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -117,7 +121,10 @@ public class RegisterActivity extends Activity {
                  * 以上条件都满足，则向服务器端发送注册请求
                  * 这里调用请求服务端注册方法
                  */
-                register(username, password);
+                // 给密码MD5加密
+                String encoderPW = Md5Util.encoder(password);
+//                Log.i("密码加密：", encoderPW);
+                register(username, encoderPW);
                 break;
 
             case R.id.tv_reset: // 用户点击了重置按钮
@@ -135,11 +142,12 @@ public class RegisterActivity extends Activity {
      * @param username
      * @param password
      */
-    private void register(String username, String password) {
+    private void register(final String username, final String password) {
         // 封装用户注册填写的用户名和密码到User中
         User user = new User();
         user.setUsername(username);
         user.setLoginPwd(password);
+
         // 向服务端发送请求
         com.stefan.ingym.util.HttpUtils.doPost(ConstantValue.USER_REGISTER, new Gson().toJson(user), new Callback() {
             @Override
@@ -154,7 +162,7 @@ public class RegisterActivity extends Activity {
                  * 若用户名存在，提示用户该用户名已经存在
                  */
                 String json = response.body().string();
-//                System.out.println(json);
+//                System.out.println("RegisterActivity:::" + json);
                 // 解析服务器端返回过来的结果
                final ResponseObject<String> object = new GsonBuilder().create().fromJson(json, new TypeToken<ResponseObject<String>>(){}.getType());
                 // UI更新需要放在主线程（UI线程）中完成。

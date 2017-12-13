@@ -103,7 +103,7 @@ public class AccountActivity extends AppCompatActivity {
             case R.id.ll_modify_password:      // 用户修改登陆密码
                 Intent passwordIntent = new Intent(this, ModifyPasswordActivity.class);
                 passwordIntent.putExtra("password_modify", user);
-                startActivity(passwordIntent);
+                startActivityForResult(passwordIntent, 2);
                 break;
 
             case R.id.ll_set_payment_password: // 用户设置支付密码
@@ -128,6 +128,15 @@ public class AccountActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        /**
+         * 用户修改相应信息之后返回修改信息，这里需要修改Sp中的数据时用到。
+         */
+        // 获取保存在Sp中的保存在本地的用户数据
+        String identified_user = SpUtil.getString(this, ConstantValue.IDENTIFIED_USER, null);
+        // 将登陆成功的保存在本地的用户信息封装到User实体类中
+        Gson gson = new GsonBuilder().create();
+        User user = gson.fromJson(identified_user, User.class);
 
         switch (requestCode){
             case ImageUtils.REQUEST_CODE_FROM_ALBUM: {
@@ -170,18 +179,34 @@ public class AccountActivity extends AppCompatActivity {
                     return;
                 } else {
                     modified_nickname = data.getStringExtra("modified_nickname");
-                    // 获取保存在Sp中的保存在本地的用户数据
-                    String identified_user = SpUtil.getString(this, ConstantValue.IDENTIFIED_USER, null);
-
-                    // 将登陆成功的保存在本地的用户信息封装到User实体类中
-                    Gson gson = new GsonBuilder().create();
-                    User user = gson.fromJson(identified_user, User.class);
+//                    // 获取保存在Sp中的保存在本地的用户数据
+//                    String identified_user = SpUtil.getString(this, ConstantValue.IDENTIFIED_USER, null);
+//                    // 将登陆成功的保存在本地的用户信息封装到User实体类中
+//                    Gson gson = new GsonBuilder().create();
+//                    User user = gson.fromJson(identified_user, User.class);
                     // 修改原Sp中的nickname
                     user.setNickname(modified_nickname);
                     // 修改好之后重新保存
                     SpUtil.putString(this, ConstantValue.IDENTIFIED_USER, gson.toJson(user));
                     // 设置上新的nickname
                     tv_nickname.setText(modified_nickname);
+                }
+                break;
+
+            case ModifyPasswordActivity.MODIFIED_PASSWORD:
+                if (resultCode == RESULT_CANCELED) {
+                    return;
+                } else {
+                    String modified_password = data.getStringExtra("modified_password");
+//                    // 获取保存在Sp中的保存在本地的用户数据
+//                    String identified_user = SpUtil.getString(this, ConstantValue.IDENTIFIED_USER, null);
+//                    // 将登陆成功的保存在本地的用户信息封装到User实体类中
+//                    Gson gson = new GsonBuilder().create();
+//                    User user = gson.fromJson(identified_user, User.class);
+                    // 修改原Sp中的nickname
+                    user.setLoginPwd(modified_password);
+                    // 修改好之后重新保存
+                    SpUtil.putString(this, ConstantValue.IDENTIFIED_USER, gson.toJson(user));
                 }
                 break;
             

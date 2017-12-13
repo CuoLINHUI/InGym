@@ -17,7 +17,7 @@ public class User implements Serializable {
     private String email;       // 邮箱
     private String tel;         // 电话
     private String integral;    // 积分
-    private String headUrl;    // 用户头像地址
+    private String headUrl;     // 用户头像地址
     private String nickname;    // 用户昵称
 
     public String getId() {

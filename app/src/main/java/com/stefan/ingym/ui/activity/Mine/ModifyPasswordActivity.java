@@ -1,5 +1,6 @@
 package com.stefan.ingym.ui.activity.Mine;
 
+import android.content.Intent;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.text.Editable;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,6 +26,7 @@ import com.stefan.ingym.pojo.mine.User;
 import com.stefan.ingym.ui.fragment.mine.memorandum.util.StringUtil;
 import com.stefan.ingym.util.ConstantValue;
 import com.stefan.ingym.util.HttpUtils;
+import com.stefan.ingym.util.Md5Util;
 import com.stefan.ingym.util.SpUtil;
 import com.stefan.ingym.util.ToastUtil;
 
@@ -45,6 +48,8 @@ import static okhttp3.Protocol.get;
  */
 
 public class ModifyPasswordActivity extends AppCompatActivity {
+
+    public static final int MODIFIED_PASSWORD = 2;
 
     @ViewInject(R.id.show_username)          // 显示用户名
     private TextView show_username;
@@ -100,15 +105,27 @@ public class ModifyPasswordActivity extends AppCompatActivity {
                     confirm_new_password.setError("请再次输入新密码!");
                     return;
                 }
-                // 判断两次密码输入是否一致
+
+                Log.i("打印密码：", Md5Util.encoder(oldPassword));
+                Log.i("打印ID：", user.getId());
+
+                // 判断旧密码是否正确，不正确则不允许继续往下执行
+                if (!user.getLoginPwd().equals(Md5Util.encoder(oldPassword))) {
+                    ToastUtil.show(getApplicationContext(), "旧密码输入有误");
+                    return;
+                }
+                // 判断两次密码输入是否一致，不一致则不允许继续往下执行
                 if (!newPassword.equals(confirmPassword)) {
                     confirm_new_password.setError(Html.fromHtml("<font color=red>确认密码不一致！</font>"));
+                    return;
                 }
                 /**
                  * 以上条件都满足，则向服务器端发送注册请求
                  * 这里调用请求服务端注册方法
                  */
-                modifyPassword(user.getId(), oldPassword, newPassword);
+                // 给密码MD5加密
+                String encoderNewPW = Md5Util.encoder(confirmPassword);
+                modifyPassword(user.getId(), encoderNewPW);
                 break;
 
             case R.id.forgot_old_password:      // 该功能未完成
@@ -120,20 +137,24 @@ public class ModifyPasswordActivity extends AppCompatActivity {
 
     /**
      * 请求服务端修改用户登陆密码
-     * @param oldPassword
+     * @param userID
      * @param newPassword
      */
-    private void modifyPassword(final String userID, final String oldPassword, final String newPassword) {
+    private void modifyPassword(String userID, final String newPassword) {
 
-        Map<String, String> params = new HashMap<String, String>() {
-            {
-                put("user_id", String.valueOf(userID));
-                put("old_password", String.valueOf(oldPassword));
-                put("new_password", String.valueOf(newPassword));
-            }
-        };
+//        Map<String, String> params = new HashMap<String, String>() {
+//            {
+//                put("user_id", String.valueOf(userID));
+//                put("new_password", String.valueOf(newPassword));
+//            }
+//        };
 
-        HttpUtils.doPost(ConstantValue.MODIFY_PASSWORD, new Gson().toJson(params), new Callback() {
+        // 封装用户注册填写的用户名和密码到User中
+        User user = new User();
+        user.setId(userID);
+        user.setLoginPwd(newPassword);
+
+        HttpUtils.doPost(ConstantValue.MODIFY_PASSWORD, new Gson().toJson(user), new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Looper.prepare();
@@ -155,8 +176,8 @@ public class ModifyPasswordActivity extends AppCompatActivity {
                         if (object.getState() == 1) {
                             // 提示用户密码修改成功
                             ToastUtil.show(getApplication(), "修改成功！");
-                            // 清除之前保存在Sp中的用户数据
-                            SpUtil.remove(getApplicationContext(), ConstantValue.IDENTIFIED_USER);
+                            // 在返回AccountActivity的时候带回修改好的nickname数据
+                            setResult(RESULT_OK, new Intent().putExtra("modified_password", newPassword));
                             finish();
                         } else {
                             // 提示服务器端返回的信息

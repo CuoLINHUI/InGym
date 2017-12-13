@@ -25,6 +25,7 @@ import com.stefan.ingym.R;
 import com.stefan.ingym.pojo.ResponseObject;
 import com.stefan.ingym.pojo.mine.User;
 import com.stefan.ingym.util.ConstantValue;
+import com.stefan.ingym.util.Md5Util;
 import com.stefan.ingym.util.SpUtil;
 import com.stefan.ingym.util.ToastUtil;
 
@@ -185,7 +186,9 @@ public class LoginActivity extends AppCompatActivity {
                  * 以上条件都满足，则向服务器端发送登录请求
                  * 这里调用请求服务端账号密码登录方法
                  */
-                userAccountLogin(username, password);
+                // MD5加密
+                String encoderPW = Md5Util.encoder(password);
+                userAccountLogin(username, encoderPW);
                 break;
 
             case R.id.tv_forget_password:   // 用户点击了忘记密码
