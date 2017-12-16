@@ -37,9 +37,6 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-import static com.umeng.analytics.a.p;
-import static com.umeng.analytics.pro.dm.i;
-
 public class FoodsListActivity extends AppCompatActivity implements BGARefreshLayout.BGARefreshLayoutDelegate {
 
     // 下拉刷新上拉加载更多控件

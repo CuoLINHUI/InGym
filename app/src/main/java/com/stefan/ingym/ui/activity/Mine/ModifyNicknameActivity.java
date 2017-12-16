@@ -75,7 +75,10 @@ public class ModifyNicknameActivity extends AppCompatActivity {
             case R.id.tv_save_modify:           // 更新数据库昵称
                 String newNickname = et_set_nickname.getText().toString().trim();
                 String userID = user.getId();
-                if (newNickname.isEmpty()) ToastUtil.show(this, "昵称不能为空！");
+                if (newNickname.isEmpty()) {
+                    ToastUtil.show(this, "昵称不能为空！");
+                    return;
+                }
                 updateNickname(newNickname, userID);
                 break;
 

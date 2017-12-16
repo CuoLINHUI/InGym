@@ -111,6 +111,9 @@ public class AccountActivity extends AppCompatActivity {
                 break;
 
             case R.id.ll_bind_phoneNum:       // 用户绑定手机号
+                Intent bindPhoneIntent = new Intent(this, BindPhoneActivity.class);
+                bindPhoneIntent.putExtra("bind_phone", user);
+                startActivityForResult(bindPhoneIntent, 4);
 //                startActivity(new Intent(getApplication(), BindPhoneActivity.class));
                 break;
 
@@ -179,11 +182,6 @@ public class AccountActivity extends AppCompatActivity {
                     return;
                 } else {
                     modified_nickname = data.getStringExtra("modified_nickname");
-//                    // 获取保存在Sp中的保存在本地的用户数据
-//                    String identified_user = SpUtil.getString(this, ConstantValue.IDENTIFIED_USER, null);
-//                    // 将登陆成功的保存在本地的用户信息封装到User实体类中
-//                    Gson gson = new GsonBuilder().create();
-//                    User user = gson.fromJson(identified_user, User.class);
                     // 修改原Sp中的nickname
                     user.setNickname(modified_nickname);
                     // 修改好之后重新保存
@@ -198,17 +196,25 @@ public class AccountActivity extends AppCompatActivity {
                     return;
                 } else {
                     String modified_password = data.getStringExtra("modified_password");
-//                    // 获取保存在Sp中的保存在本地的用户数据
-//                    String identified_user = SpUtil.getString(this, ConstantValue.IDENTIFIED_USER, null);
-//                    // 将登陆成功的保存在本地的用户信息封装到User实体类中
-//                    Gson gson = new GsonBuilder().create();
-//                    User user = gson.fromJson(identified_user, User.class);
                     // 修改原Sp中的nickname
                     user.setLoginPwd(modified_password);
                     // 修改好之后重新保存
                     SpUtil.putString(this, ConstantValue.IDENTIFIED_USER, gson.toJson(user));
                 }
                 break;
+
+
+
+            case BindPhoneActivity.BIND_PHONE_UNMBER:
+                if (resultCode == RESULT_CANCELED) {
+                    return;
+                } else {
+                    String bind_phone = data.getStringExtra("bind_phone");
+                    // 将绑定的手机号保存到Sp中
+                    user.setTel(bind_phone);
+                    // 重新保存更新完成的Sp
+                    SpUtil.putString(this, ConstantValue.IDENTIFIED_USER, gson.toJson(user));
+                }
             
             default:
                 break;

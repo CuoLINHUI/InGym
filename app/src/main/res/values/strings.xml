@@ -47,6 +47,10 @@
     <string name="confirm_new_input_password">请再次输入新密码</string>
     <string name="modify_password_tips">密码必须至少8个字符，而且同时包含字母和数字。</string>
     <string name="forget_old_password">忘记旧密码？</string>
+    <string name="bind_phone_number">绑定手机号</string>
+    <string name="bind_phone_tips">请输入您的手机号码进行绑定</string>
+    <string name="bind_phone_hint">输入手机号</string>
+
     <string name="please_login">您还没有登录哦~</string>
     <string name="login_now">马上登录</string>
     <string name="your_name">你的名字</string>

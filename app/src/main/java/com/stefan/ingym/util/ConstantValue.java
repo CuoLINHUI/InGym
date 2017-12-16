@@ -54,13 +54,18 @@ public class ConstantValue {
     public static final String EQUIPMENT_GOODS = HOST + "/community/equipment_goods";
 
     /**
-     * 用户请求请求服务端更新数据库的用户昵称
+     * 用户请求服务端更新数据库的用户昵称
      */
     public static final String MODIFY_NICKNAME = HOST + "/user/modify_nickname";
 
     /**
-     * 用户请求请求服务端更新数据库的用户登陆密码
+     * 用户请求服务端更新数据库的用户登陆密码
      */
     public static final String MODIFY_PASSWORD = HOST + "/user/modify_password";
+
+    /**
+     * 用户请求服务端绑定手机号码
+     */
+    public static final String BIND_PHONE = HOST + "/user/bind_phone";
 
 }

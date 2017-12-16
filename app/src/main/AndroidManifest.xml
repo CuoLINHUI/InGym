@@ -204,6 +204,8 @@
         </activity>
         <activity android:name=".ui.activity.Mine.ModifyPasswordActivity">
         </activity>
+        <activity android:name=".ui.activity.Mine.BindPhoneActivity">
+        </activity>
     </application>
 
 </manifest>

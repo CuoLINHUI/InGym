@@ -106,8 +106,8 @@ public class ModifyPasswordActivity extends AppCompatActivity {
                     return;
                 }
 
-                Log.i("打印密码：", Md5Util.encoder(oldPassword));
-                Log.i("打印ID：", user.getId());
+//                Log.i("打印密码：", Md5Util.encoder(oldPassword));
+//                Log.i("打印ID：", user.getId());
 
                 // 判断旧密码是否正确，不正确则不允许继续往下执行
                 if (!user.getLoginPwd().equals(Md5Util.encoder(oldPassword))) {
