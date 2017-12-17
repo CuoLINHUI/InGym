@@ -107,14 +107,15 @@ public class AccountActivity extends AppCompatActivity {
                 break;
 
             case R.id.ll_set_payment_password: // 用户设置支付密码
-//                startActivity(new Intent(getApplication(), SetPaymentActivity.class));
+                Intent setPaymentIntent = new Intent(this, SetPaymentActivity.class);
+                setPaymentIntent.putExtra("set_payment", user);
+                startActivityForResult(setPaymentIntent, 3);
                 break;
 
             case R.id.ll_bind_phoneNum:       // 用户绑定手机号
                 Intent bindPhoneIntent = new Intent(this, BindPhoneActivity.class);
                 bindPhoneIntent.putExtra("bind_phone", user);
                 startActivityForResult(bindPhoneIntent, 4);
-//                startActivity(new Intent(getApplication(), BindPhoneActivity.class));
                 break;
 
             case R.id.ll_manage_address:      // 用户管理收货地址
@@ -203,7 +204,17 @@ public class AccountActivity extends AppCompatActivity {
                 }
                 break;
 
-
+            case SetPaymentActivity.SET_PAYMENT:
+                if (resultCode == RESULT_CANCELED) {
+                    return;
+                } else {
+                    String setPayment = data.getStringExtra("set_payment_ok");
+                    // 将设置好的payment保存到Sp中
+                    user.setPayPwd(setPayment);
+                    // 重新保存更新完成的Sp
+                    SpUtil.putString(this, ConstantValue.IDENTIFIED_USER, gson.toJson(user));
+                }
+                break;
 
             case BindPhoneActivity.BIND_PHONE_UNMBER:
                 if (resultCode == RESULT_CANCELED) {
@@ -215,6 +226,7 @@ public class AccountActivity extends AppCompatActivity {
                     // 重新保存更新完成的Sp
                     SpUtil.putString(this, ConstantValue.IDENTIFIED_USER, gson.toJson(user));
                 }
+                break;
             
             default:
                 break;

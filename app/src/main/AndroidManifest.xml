@@ -206,6 +206,8 @@
         </activity>
         <activity android:name=".ui.activity.Mine.BindPhoneActivity">
         </activity>
+        <activity android:name=".ui.activity.Mine.SetPaymentActivity">
+        </activity>
     </application>
 
 </manifest>

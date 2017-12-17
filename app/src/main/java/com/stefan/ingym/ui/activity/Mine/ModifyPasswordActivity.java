@@ -176,7 +176,7 @@ public class ModifyPasswordActivity extends AppCompatActivity {
                         if (object.getState() == 1) {
                             // 提示用户密码修改成功
                             ToastUtil.show(getApplication(), "修改成功！");
-                            // 在返回AccountActivity的时候带回修改好的nickname数据
+                            // 在返回AccountActivity的时候带回修改好的password数据
                             setResult(RESULT_OK, new Intent().putExtra("modified_password", newPassword));
                             finish();
                         } else {

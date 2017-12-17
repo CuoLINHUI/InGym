@@ -68,4 +68,9 @@ public class ConstantValue {
      */
     public static final String BIND_PHONE = HOST + "/user/bind_phone";
 
+    /**
+     * 用户请求服务端设置支付密码
+     */
+    public static final String SET_PAYMENT = HOST + "/user/set_payment";
+
 }

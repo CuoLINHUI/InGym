@@ -47,6 +47,14 @@
     <string name="confirm_new_input_password">请再次输入新密码</string>
     <string name="modify_password_tips">密码必须至少8个字符，而且同时包含字母和数字。</string>
     <string name="forget_old_password">忘记旧密码？</string>
+
+    <string name="set_payment">设置支付密码</string>
+    <string name="input_payment">设置</string>
+    <string name="confirm_payment">确认</string>
+    <string name="input_payment_hint">填写支付密码</string>
+    <string name="confirm_payment_hint">确认支付密码</string>
+    <string name="set_payment_tips">设置您的支付密码，以方便您在购买商品时方便支付。</string>
+
     <string name="bind_phone_number">绑定手机号</string>
     <string name="bind_phone_tips">请输入您的手机号码进行绑定</string>
     <string name="bind_phone_hint">输入手机号</string>
