@@ -216,6 +216,12 @@
         android:layout_marginTop="5dp"
         android:background="@mipmap/filter_line" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="@color/blank_background"
+        />
+
     <LinearLayout
         android:id="@+id/ll_manage_address"
         android:layout_width="match_parent"

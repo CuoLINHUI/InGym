@@ -49,7 +49,7 @@ import static okhttp3.Protocol.get;
 
 public class ModifyPasswordActivity extends AppCompatActivity {
 
-    public static final int MODIFIED_PASSWORD = 2;
+    public static final int MODIFIED_PASSWORD = 20000;
 
     @ViewInject(R.id.show_username)          // 显示用户名
     private TextView show_username;

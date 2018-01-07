@@ -90,7 +90,7 @@ public class FoodsListActivity extends AppCompatActivity implements BGARefreshLa
 
         // 初始化下拉刷新，下拉加载更多控件
         initRefreshLayout();
-        // 创建装备商品集合
+        // 创建集合
         mList = new ArrayList<>();
         mAdapter = new FoodsViewAdapter(getApplicationContext(), keyword);
         // 为资讯item设置上数据适配器
@@ -208,6 +208,9 @@ public class FoodsListActivity extends AppCompatActivity implements BGARefreshLa
                         runOnUIThread(new Runnable() {
                             @Override
                             public void run() {
+//                                if (mList == null)
+//                                    ToastUtil.show(getApplication(), "抱歉没有搜索到相关数据！");
+
                                 mRefreshLayout.endRefreshing();
                             }
                         });

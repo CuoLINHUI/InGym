@@ -10,6 +10,9 @@
     <color name="value_color">#7D7D7D</color>
     <color name="description_text">#363636</color>
     <color name="blank_background">#F5F5F5</color>
+    <color name="text_blue">#026499</color>
+    <color name="add2cart">#FFAA01</color>
+
 
     <color name="colorWhite">#FFF</color>
     <color name="transparent">#0000</color>

@@ -208,6 +208,14 @@
         </activity>
         <activity android:name=".ui.activity.Mine.SetPaymentActivity">
         </activity>
+        <activity android:name=".ui.activity.Mine.AddressManagementActivity">
+        </activity>
+        <activity android:name=".ui.activity.Mine.AddAddressActivity">
+        </activity>
+        <activity android:name=".ui.activity.Mine.ContactListActivity">
+        </activity>
+        <activity android:name=".ui.activity.Mine.AddressUpdateActivity">
+        </activity>
     </application>
 
 </manifest>

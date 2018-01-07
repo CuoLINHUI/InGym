@@ -34,7 +34,7 @@ import static com.stefan.ingym.R.id.et_set_nickname;
 
 public class BindPhoneActivity extends AppCompatActivity {
 
-    public static final int BIND_PHONE_UNMBER = 4;
+    public static final int BIND_PHONE_NUMBER = 40000;
 
     @ViewInject(R.id.bind_phone_number)
     private EditText bind_phone_number;

@@ -55,6 +55,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:layout_gravity="center_vertical"
             android:padding="5dp"
             android:text="191.00"
@@ -78,21 +79,44 @@
             android:textColor="@color/gray"
             android:textSize="15sp" />
 
-        <View
+        <!--<View-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1" />-->
+
+        <!--fixme-->
+
+        <Button
+            android:id="@+id/my_ticket"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:drawableTop="@mipmap/goods_collection"
+            android:padding="5dp"
+            android:textColor="@color/text_gray"
+            android:text="收藏" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_add2cart"
+            android:gravity="center_vertical"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:text="加入购物车"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/goods_detail_buy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:background="@drawable/button_fullwidth"
             android:gravity="center_vertical"
             android:paddingBottom="10dp"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:paddingTop="10dp"
             android:text="立即购买"
             android:textColor="@color/white" />

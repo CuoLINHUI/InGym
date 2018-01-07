@@ -41,7 +41,7 @@ import okhttp3.Response;
 
 public class ModifyNicknameActivity extends AppCompatActivity {
 
-    public static final int MODIFIED_NICKNAME = 1;
+    public static final int MODIFIED_NICKNAME = 10000;
 
     @ViewInject(R.id.et_set_nickname)       // 设置昵称
     private EditText et_set_nickname;

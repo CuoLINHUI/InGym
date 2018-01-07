@@ -32,7 +32,7 @@ import okhttp3.Response;
 
 public class SetPaymentActivity extends AppCompatActivity {
 
-    public static final int SET_PAYMENT = 3;
+    public static final int SET_PAYMENT = 30000;
 
     @ViewInject(R.id.set_payment)       // 输入支付密码
     private EditText set_payment;

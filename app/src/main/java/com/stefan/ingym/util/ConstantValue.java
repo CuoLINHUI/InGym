@@ -23,6 +23,11 @@ public class ConstantValue {
     public static final String IDENTIFIED_USER = "identified_user";
 
     /**
+     * 联系人号码
+     */
+    public static final String CONTACT_PHONE = "contact_phone";
+
+    /**
      * 定义访问InGym服务器端的路径192.168.134.1
      */
 //    public static final String HOST = "http://182.254.137.212:8080/InGymServer";

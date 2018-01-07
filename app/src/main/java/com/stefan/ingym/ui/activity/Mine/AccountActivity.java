@@ -8,7 +8,6 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -97,29 +96,32 @@ public class AccountActivity extends AppCompatActivity {
             case R.id.ll_modify_nickname:      // 用户修改昵称
                 Intent nicknameIntent = new Intent(this, ModifyNicknameActivity.class);
                 nicknameIntent.putExtra("nickname_modify", user);
-                startActivityForResult(nicknameIntent, 1);
+                startActivityForResult(nicknameIntent, 10000);
                 break;
 
             case R.id.ll_modify_password:      // 用户修改登陆密码
                 Intent passwordIntent = new Intent(this, ModifyPasswordActivity.class);
                 passwordIntent.putExtra("password_modify", user);
-                startActivityForResult(passwordIntent, 2);
+                startActivityForResult(passwordIntent, 20000);
                 break;
 
             case R.id.ll_set_payment_password: // 用户设置支付密码
                 Intent setPaymentIntent = new Intent(this, SetPaymentActivity.class);
                 setPaymentIntent.putExtra("set_payment", user);
-                startActivityForResult(setPaymentIntent, 3);
+                startActivityForResult(setPaymentIntent, 30000);
                 break;
 
             case R.id.ll_bind_phoneNum:       // 用户绑定手机号
                 Intent bindPhoneIntent = new Intent(this, BindPhoneActivity.class);
                 bindPhoneIntent.putExtra("bind_phone", user);
-                startActivityForResult(bindPhoneIntent, 4);
+                startActivityForResult(bindPhoneIntent, 40000);
                 break;
 
             case R.id.ll_manage_address:      // 用户管理收货地址
-//                startActivity(new Intent(getApplication(), ManagerAdressActivity.class));
+                Intent addressIntent = new Intent(this, AddressManagementActivity.class);
+                addressIntent.putExtra("address_management", user);
+                startActivityForResult(addressIntent, 50000);
+//                startActivity(new Intent(getApplication(), AddressManagementActivity.class));
                 break;
         }
     }
@@ -216,7 +218,7 @@ public class AccountActivity extends AppCompatActivity {
                 }
                 break;
 
-            case BindPhoneActivity.BIND_PHONE_UNMBER:
+            case BindPhoneActivity.BIND_PHONE_NUMBER:
                 if (resultCode == RESULT_CANCELED) {
                     return;
                 } else {

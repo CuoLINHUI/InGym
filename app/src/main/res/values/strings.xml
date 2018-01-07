@@ -57,7 +57,11 @@
 
     <string name="bind_phone_number">绑定手机号</string>
     <string name="bind_phone_tips">请输入您的手机号码进行绑定</string>
-    <string name="bind_phone_hint">输入手机号</string>
+    <string name="bind_phone_hint">11位手机号</string>
+
+    <string name="my_address">我的地址</string>
+    <string name="add_new_address">新增地址</string>
+    <string name="set_address">设置地址</string>
 
     <string name="please_login">您还没有登录哦~</string>
     <string name="login_now">马上登录</string>
