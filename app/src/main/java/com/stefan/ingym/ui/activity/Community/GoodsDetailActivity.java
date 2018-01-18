@@ -58,7 +58,7 @@ public class GoodsDetailActivity extends AppCompatActivity {
     @ViewInject(R.id.goods_collection)      // 收藏按钮
     private Button goods_collection;
 
-    private Goods goods;
+    private Goods goods; 
 
     private String unselectedStr = "收藏";
     private String selectedStr = "已收藏";
