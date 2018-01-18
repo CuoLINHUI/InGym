@@ -59,6 +59,21 @@ public class ConstantValue {
     public static final String EQUIPMENT_GOODS = HOST + "/community/equipment_goods";
 
     /**
+     * 用户请求收藏商品时访问服务器端的访问地址
+     */
+    public static final String COLLECTION_GOODS = HOST + "/community/collection_goods";
+
+    /**
+     * 用户请求取消收藏商品时访问服务器端的访问地址
+     */
+    public static final String COLLECTION_CANCEL = HOST + "/community/collection_cancel";
+
+    /**
+     * 用户请求取消收藏商品时访问服务器端的访问地址
+     */
+    public static final String LOAD_COLLECTION = HOST + "/community/load_collection";
+
+    /**
      * 用户请求服务端更新数据库的用户昵称
      */
     public static final String MODIFY_NICKNAME = HOST + "/user/modify_nickname";

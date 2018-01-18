@@ -35,14 +35,6 @@
                 android:paddingRight="20dp"
                 android:src="@mipmap/ic_goods_share" />
 
-            <ImageView
-                android:id="@+id/id_goods_collection"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginRight="30dp"
-                android:src="@mipmap/ic_goods_collection" />
-
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
@@ -58,6 +50,7 @@
             android:layout_marginLeft="5dp"
             android:layout_gravity="center_vertical"
             android:padding="5dp"
+            android:layout_weight="1"
             android:text="191.00"
             android:textColor="#f00"
             android:textSize="20sp" />
@@ -67,6 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="/"
+            android:layout_weight="1"
             android:textColor="@color/black"
             android:textSize="30sp" />
 
@@ -75,32 +69,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:text="￥239.00"
             android:textColor="@color/gray"
             android:textSize="15sp" />
 
-        <!--<View-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="0dp"-->
-            <!--android:layout_weight="1" />-->
-
-        <!--fixme-->
-
         <Button
-            android:id="@+id/my_ticket"
+            android:id="@+id/goods_collection"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:drawableTop="@mipmap/goods_collection"
+            android:drawableTop="@mipmap/goods_collection_unselected"
             android:padding="5dp"
             android:textColor="@color/text_gray"
-            android:text="收藏" />
+            android:layout_weight="1"
+            android:text="收藏"
+            />
+
+
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_add2cart"
-            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
             android:paddingBottom="10dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -113,7 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_fullwidth"
-            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
             android:paddingBottom="10dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -268,6 +260,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/product_payments"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -458,6 +451,7 @@
 
             </LinearLayout>
 
+            <include layout="@layout/goods_detail_webview" />
 
         </LinearLayout>
     </ScrollView>

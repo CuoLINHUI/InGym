@@ -17,7 +17,7 @@ import cn.bingoogolapple.androidcommon.adapter.BGAViewHolderHelper;
 
 /**
  * @ClassName: GoodsViewAdapter
- * @Description: 商品数据适配器
+ * @Description: 渲染商品条目数据适配器
  * @Author Stefan
  * @Date 2017/11/6 16:21
  */

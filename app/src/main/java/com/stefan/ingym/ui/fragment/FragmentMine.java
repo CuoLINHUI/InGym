@@ -19,6 +19,7 @@ import com.squareup.picasso.Picasso;
 import com.stefan.ingym.R;
 import com.stefan.ingym.ui.activity.Mine.AboutActivity;
 import com.stefan.ingym.ui.activity.Mine.AccountActivity;
+import com.stefan.ingym.ui.activity.Mine.GoodsCollectionActivity;
 import com.stefan.ingym.ui.activity.Mine.LoginActivity;
 import com.stefan.ingym.ui.activity.Mine.SettingActivity;
 import com.stefan.ingym.pojo.mine.User;
@@ -78,7 +79,7 @@ public class FragmentMine extends Fragment {
     /**
      * 用户点击事件的监听
      */
-    @OnClick({R.id.btn_login, R.id.ll_setting, R.id.user_info_group, R.id.ll_about, R.id.btn_memorandum})
+    @OnClick({R.id.btn_login, R.id.ll_setting, R.id.user_info_group, R.id.ll_about, R.id.btn_memorandum, R.id.my_collection})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:    // 用户点击了登陆按钮
@@ -99,6 +100,10 @@ public class FragmentMine extends Fragment {
 
             case R.id.btn_memorandum:    // 用户点击了记事本
                 startActivity(new Intent(getActivity(), MemorandumActivity.class));
+                break;
+
+            case R.id.my_collection:
+                startActivity(new Intent(getActivity(), GoodsCollectionActivity.class));
                 break;
 
         }

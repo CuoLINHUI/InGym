@@ -133,7 +133,7 @@ public class BindPhoneActivity extends AppCompatActivity {
                             setResult(RESULT_OK, new Intent().putExtra("bind_phone", phoneNumber));
                             finish();
                         } else {
-                            // 提示服务器端返回的信息
+                            // 提示服务器端返回错误的信息
                             ToastUtil.show(getApplicationContext(), object.getMsg());
                         }
                     }

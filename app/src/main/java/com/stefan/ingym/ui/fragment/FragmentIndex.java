@@ -117,7 +117,7 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
     private SearchFragment searchFragment;
 
     // 下拉刷新上拉加载更多控件
-    @ViewInject(R.id.rl_modulename_refresh)
+    @ViewInject(R.id.load_articles_refresh)
     private BGARefreshLayout mRefreshLayout;
 
     // 当前页码，获取多少条数据， 多少页

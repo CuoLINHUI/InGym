@@ -117,6 +117,5 @@ public class FoodsDetailActivity extends AppCompatActivity {
         }
     }
 
-
 }
 

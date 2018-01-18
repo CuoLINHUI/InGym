@@ -216,6 +216,8 @@
         </activity>
         <activity android:name=".ui.activity.Mine.AddressUpdateActivity">
         </activity>
+        <activity android:name=".ui.activity.Mine.GoodsCollectionActivity">
+        </activity>
     </application>
 
 </manifest>

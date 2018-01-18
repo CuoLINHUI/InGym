@@ -58,7 +58,7 @@ public class GoodsListActivity extends AppCompatActivity implements BGARefreshLa
     private List<Goods> mList = null;
 
     // 下拉刷新上拉加载更多控件
-    @ViewInject(R.id.rl_modulename_refresh)
+    @ViewInject(R.id.load_goods_refresh)
     private BGARefreshLayout mRefreshLayout;
 
     @ViewInject(R.id.lv_goods_item)
@@ -92,6 +92,14 @@ public class GoodsListActivity extends AppCompatActivity implements BGARefreshLa
         ViewUtils.inject(this);
         // 初始化Toolbar
         init_toolbar();
+        // 初始化数据
+        initData();
+    }
+
+    /**
+     * 初始化数据
+     */
+    private void initData() {
         // 获取EquipmentFragment传递过来的分类ID
         Bundle bundle = getIntent().getExtras();
         category = bundle.getString("category");
@@ -113,13 +121,11 @@ public class GoodsListActivity extends AppCompatActivity implements BGARefreshLa
      */
     @OnItemClick(R.id.lv_goods_item)
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-        ToastUtil.show(getApplication(), "你选中的商品ID为： " + mList.get(position).getId());
-
+//        ToastUtil.show(getApplication(), "你选中的商品ID为： " + mList.get(position).getId());
         Intent intent = new Intent(this, GoodsDetailActivity.class);
-        intent.putExtra("product_id", mAdapter.getItem(position)); // 传递被选中的商品ID到GoodsDetailActivity
+        // 传递被选中的商品所有数据到GoodsDetailActivity（前提Goods实体类要实现序列化接口）
+        intent.putExtra("product_item", mAdapter.getItem(position));
         startActivity(intent);
-
     }
 
 
@@ -212,13 +218,12 @@ public class GoodsListActivity extends AppCompatActivity implements BGARefreshLa
                         runOnUIThread(new Runnable() {
                             @Override
                             public void run() {
+                                // 结束刷新动画
                                 mRefreshLayout.endRefreshing();
+                                // 提示用户数据请求失败
+                                ToastUtil.show(getApplication(), "抱歉，数据请求失败,请检查网络~");
                             }
                         });
-                        Looper.prepare();
-                        // 提示用户数据请求失败
-                        ToastUtil.show(getApplication(), "抱歉，数据请求失败,请检查网络~");
-                        Looper.loop();
                     }
 
                     @Override

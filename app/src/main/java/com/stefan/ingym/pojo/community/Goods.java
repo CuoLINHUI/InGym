@@ -14,6 +14,7 @@ public class Goods implements Serializable {    // 继承可序列类，使得Go
     private String title;                   // 商品标题
     private String sort_title;              // 标题描述
     private String imageURL;                // 条目展示图片路径
+    private String bigPicURL;               // 商品详情大图展示
     private String value;                   // 商品原价（价值）
     private String price;                   // 商品现价（价格）
     private String payments;                // 付款人数（商品销量）
@@ -59,6 +60,14 @@ public class Goods implements Serializable {    // 继承可序列类，使得Go
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    public String getBigPicURL() {
+        return bigPicURL;
+    }
+
+    public void setBigPicURL(String bigPicURL) {
+        this.bigPicURL = bigPicURL;
     }
 
     public String getValue() {
