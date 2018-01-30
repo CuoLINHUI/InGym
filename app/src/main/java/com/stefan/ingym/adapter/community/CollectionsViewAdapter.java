@@ -33,8 +33,8 @@ public class CollectionsViewAdapter extends BGAAdapterViewAdapter<Collections>{
         viewHolderHelper
                 .setText(R.id.tv_title, model.getGoods().getTitle())                   // 标题
                 .setText(R.id.tv_description, model.getGoods().getSort_title())        // 描述
-                .setText(R.id.goods_price, model.getGoods().getPrice())                // 价格
-                .setText(R.id.goods_payments, model.getGoods().getPayments());         // 购买人数
+                .setText(R.id.goods_price, "" + model.getGoods().getPrice())                // 价格
+                .setText(R.id.goods_payments, "" +model.getGoods().getPayments());         // 购买人数
 
     }
 

@@ -18,7 +18,7 @@ public class ConstantValue {
     public static String PhotoDir = Environment.getExternalStorageDirectory() + "/PhotoDemo/image/";
 
     /**
-     * 用户登陆名的key
+     * 用户成功登陆保存用户数据的key
      */
     public static final String IDENTIFIED_USER = "identified_user";
 
@@ -26,6 +26,16 @@ public class ConstantValue {
      * 联系人号码
      */
     public static final String CONTACT_PHONE = "contact_phone";
+
+    /**
+     * 用户默认地址
+     */
+    public static final String DEFAULT_ADDRESS = "default_address";
+
+    /**
+     * 用户默认地址条目position
+     */
+    public static final String ADDRESS_POSITION = "address_position";
 
     /**
      * 定义访问InGym服务器端的路径192.168.134.1

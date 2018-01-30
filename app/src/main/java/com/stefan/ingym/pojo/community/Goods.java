@@ -15,9 +15,9 @@ public class Goods implements Serializable {    // 继承可序列类，使得Go
     private String sort_title;              // 标题描述
     private String imageURL;                // 条目展示图片路径
     private String bigPicURL;               // 商品详情大图展示
-    private String value;                   // 商品原价（价值）
-    private String price;                   // 商品现价（价格）
-    private String payments;                // 付款人数（商品销量）
+    private double value;                   // 商品原价（价值）
+    private double price;                   // 商品现价（价格）
+    private int payments;                   // 付款人数（商品销量）
     private String stock;                   // 商品库存量
     private String details;                 // 商品详情
     private String integral;                // 商品所需的积分
@@ -70,27 +70,27 @@ public class Goods implements Serializable {    // 继承可序列类，使得Go
         this.bigPicURL = bigPicURL;
     }
 
-    public String getValue() {
+    public double getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(double value) {
         this.value = value;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public String getPayments() {
+    public int getPayments() {
         return payments;
     }
 
-    public void setPayments(String payments) {
+    public void setPayments(int payments) {
         this.payments = payments;
     }
 

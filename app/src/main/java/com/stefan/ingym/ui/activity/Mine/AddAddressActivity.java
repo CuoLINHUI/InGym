@@ -58,7 +58,7 @@ public class AddAddressActivity extends AppCompatActivity implements OnAddressSe
     @ViewInject(R.id.address_detail)
     private EditText address_detail;
 
-    private User user;
+//    private User user;
     private AddressDao mDao;
 
     @Override
@@ -75,8 +75,8 @@ public class AddAddressActivity extends AppCompatActivity implements OnAddressSe
      */
     private void initUI() {
         // 获取AccountActivity传递过来的数据
-        Bundle bundle = getIntent().getExtras();
-        user = (User) bundle.get("add_address");
+//        Bundle bundle = getIntent().getExtras();
+//        user = (User) bundle.get("add_address");
 
         // 城市选择器初始化
         AddressSelector selector = new AddressSelector(this);

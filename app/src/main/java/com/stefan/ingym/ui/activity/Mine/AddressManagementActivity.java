@@ -1,36 +1,42 @@
 package com.stefan.ingym.ui.activity.Mine;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.stefan.ingym.R;
 import com.stefan.ingym.db.dao.AddressDao;
 import com.stefan.ingym.pojo.mine.Address;
-import com.stefan.ingym.pojo.mine.User;
-import com.stefan.ingym.util.ToastUtil;
+import com.stefan.ingym.util.ConstantValue;
+import com.stefan.ingym.util.SpUtil;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.R.attr.mode;
-import static com.stefan.ingym.R.mipmap.add_address;
+import static android.media.CamcorderProfile.get;
+import static com.stefan.ingym.R.id.set_default_address;
+import static com.stefan.ingym.R.id.tv_address;
+import static com.stefan.ingym.util.ConstantValue.ADDRESS_POSITION;
+import static com.stefan.ingym.util.SpUtil.getInt;
+import static com.umeng.analytics.a.p;
 
 /**
  * @ClassName: AddressManagementActivity
@@ -51,7 +57,7 @@ public class AddressManagementActivity extends AppCompatActivity {
     private List<Address> mAddressLists;
     private int mCount;
     private MyAdapter mAdapter;
-    private User user;
+    private Address newAddress;
 
     private Handler mHandler = new Handler() {
         @Override
@@ -73,17 +79,14 @@ public class AddressManagementActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address_management);
         ViewUtils.inject(this);
-        // 获取AccountActivity传递过来的数据
-        Bundle bundle = getIntent().getExtras();
-        user = (User) bundle.get("address_management");
-
         init_toolbar();
-
         initData();
-
     }
 
     private void initData() {
+        // 设置ListView条目间距
+        address_list.setDividerHeight(10);
+
         // 获取数据库中的所有地址（耗时操作，开线程）
         new Thread() {
             @Override
@@ -103,9 +106,10 @@ public class AddressManagementActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.ll_add_address:       // 添加新地址
                 Intent addAddressIntent = new Intent(this, AddAddressActivity.class);
-                addAddressIntent.putExtra("add_address", user);
+//                addAddressIntent.putExtra("add_address", user);
                 startActivityForResult(addAddressIntent, 60000);
                 break;
+
         }
     }
 
@@ -114,7 +118,7 @@ public class AddressManagementActivity extends AppCompatActivity {
      */
     private void init_toolbar() {
         Toolbar mToolbar = (Toolbar) findViewById(R.id.address_management_toolbar);
-        mToolbar.setNavigationIcon(R.mipmap.modify_cancel);
+        mToolbar.setNavigationIcon(R.mipmap.back);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -182,7 +186,7 @@ public class AddressManagementActivity extends AppCompatActivity {
             return;
         } else {
             // 获取新增的Address Bean 数据
-            Address newAddress = (Address) data.getSerializableExtra("add_address");
+            newAddress = (Address) data.getSerializableExtra("add_address");
 //            Log.i("新增的地址：", newAddress.getConsignee());
             // 手动将新添加的数据插入到集合的最顶部
             mAddressLists.add(0, newAddress);
@@ -191,7 +195,13 @@ public class AddressManagementActivity extends AppCompatActivity {
         }
     }
 
+    private void aa() {
+        mAdapter.notifyDataSetChanged();
+    }
+
     class MyAdapter extends BaseAdapter {
+
+//        private int index = 1;
 
         @Override
         public int getCount() {
@@ -226,7 +236,8 @@ public class AddressManagementActivity extends AppCompatActivity {
                 holder = new ViewHolder();
                 // 复用ViewHolder 步骤四：
                 holder.tv_addressee = (TextView) convertView.findViewById(R.id.tv_addressee);
-                holder.tv_address = (TextView) convertView.findViewById(R.id.tv_address);
+                holder.tv_address = (TextView) convertView.findViewById(tv_address);
+                holder.addressee_phone = (TextView) convertView.findViewById(R.id.addressee_phone);
                 // 复用ViewHolder 步骤五：
                 convertView.setTag(holder);
             } else {
@@ -235,24 +246,73 @@ public class AddressManagementActivity extends AppCompatActivity {
             }
             // 设置收件人名称
             holder.tv_addressee.setText(mAddressLists.get(position).getConsignee());
+            // 设置收件人联系方式
+            holder.addressee_phone.setText(mAddressLists.get(position).getPhone());
             // 设置收件人地址
             String finalAddress = mAddressLists.get(position).getProvince() + mAddressLists.get(position).getDetail();
             holder.tv_address.setText(finalAddress);
 
-            ImageView enter_address_info = (ImageView) convertView.findViewById(R.id.enter_address_info);
-            // 点击进入相应的地址详情
-            enter_address_info.setOnClickListener(new View.OnClickListener() {
+            holder.edit_address = (LinearLayout) convertView.findViewById(R.id.edit_address);
+            // 点击进入相应的地址详情（修改）
+            holder.edit_address.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     // mAddressLists.get(position)包含了所有数据
                     Address itemAddress = mAddressLists.get(position);
-                    ToastUtil.show(getApplicationContext(), mAddressLists.get(position) + "");
+//                    ToastUtil.show(getApplicationContext(), mAddressLists.get(position) + "");
                     // 跳转到修改页面
                     Intent addressUpdate = new Intent(getApplicationContext(), AddressUpdateActivity.class);
                     addressUpdate.putExtra("address_update", itemAddress);
                     startActivityForResult(addressUpdate, 001);
                 }
             });
+
+            holder.delete_address = (LinearLayout) convertView.findViewById(R.id.delete_address);
+            // 点击删除该条目（删除）
+            holder.delete_address.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // 弹出对话框，提示用户是否确定删除该条记录
+                    showDeleteDialog(position);
+                }
+            });
+
+            // set_default_address
+            holder.set_default_address = (ImageView)convertView.findViewById(set_default_address);
+            holder.tv_set_default = (TextView) convertView.findViewById(R.id.tv_set_default);
+            // 设置图片状态
+            int index = SpUtil.getInt(getApplicationContext(), ConstantValue.ADDRESS_POSITION, -1);
+            if (index != -1) {
+                if (position == index) {
+                    holder.set_default_address.setImageResource(R.mipmap.address_default_set);
+                    holder.tv_set_default.setText("默认地址");
+                    holder.tv_set_default.setTextColor(getResources().getColor(R.color.address_set_color));
+                } else {
+                    holder.set_default_address.setImageResource(R.mipmap.address_default_unset);
+                    holder.tv_set_default.setText("设为默认");
+                    holder.tv_set_default.setTextColor(getResources().getColor(R.color.address_default_color));
+                }
+            }
+
+            // 设为默认地址
+            holder.set_default_address.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    int index = position;
+                    SpUtil.putInt(getApplicationContext(), ADDRESS_POSITION, index);
+
+                    // 获取当前选中条目地址数据
+                    Address addressData = mAddressLists.get(position);
+                    // 转成gson字符串保存到Sp
+                    Gson gson = new GsonBuilder().create();
+                    SpUtil.putString(getApplicationContext(), ConstantValue.DEFAULT_ADDRESS, gson.toJson(addressData));
+
+                    mAdapter.notifyDataSetChanged();
+
+                }
+            });
+
             return convertView;
         }
     }
@@ -264,6 +324,58 @@ public class AddressManagementActivity extends AppCompatActivity {
     static class ViewHolder {
         TextView tv_addressee;
         TextView tv_address;
+        TextView addressee_phone;
+        LinearLayout edit_address;
+        LinearLayout delete_address;
+        ImageView set_default_address;
+        TextView tv_set_default;
+    }
+
+    /**
+     * 对话框：是否删除该地址
+     * @param position
+     */
+    protected void showDeleteDialog(final int position) {
+        // 对话框是依赖于activity存在的!!!!!!!!!
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);  // 这里如果把this换成getApplicationContext()就会报错！
+        // 设置对话框标题
+        builder.setTitle("提示");
+        //设置对话框标题
+        builder.setMessage("确定删除此地址？");
+        // 设定对话框“确定”按钮
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            // 用户选择了“确定”按钮
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // 1、删除数据库中的该条记录
+                mDao.delete(mAddressLists.get(position).getId());
+                // 2、删除数据集合中的该条记录
+                mAddressLists.remove(position);
+                // 3、通知数据适配器刷新UI
+                if (mAdapter != null) {
+                    mAdapter.notifyDataSetChanged();
+                }
+            }
+        });
+        // 设定对话框“取消”按钮
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            // 用户选择了“取消”按钮
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // 隐藏对话框
+                dialog.dismiss();
+            }
+        });
+        // 用户点击取消的事件监听
+        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                // 即使用户对话框中的什么按钮都不点击，也要让用户进入应用程序
+                dialog.dismiss();
+            }
+        });
+        // 显示对话框
+        builder.show();
     }
 
 }

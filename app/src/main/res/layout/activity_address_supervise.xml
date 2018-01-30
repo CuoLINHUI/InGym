@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_address_supervise"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.stefan.ingym.ui.activity.Community.AddressSuperviseActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/address_management_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/supervise_address"
+            android:textSize="20sp"
+            android:textColor="@color/app_white"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/manager_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="15dp"
+            android:text="@string/address_supervise"
+            android:textSize="20sp"
+            android:textColor="@color/app_white"
+            android:gravity="center_vertical" />
+    </android.support.v7.widget.Toolbar>
+
+    <ListView
+        android:id="@+id/address_supervise_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+</LinearLayout>

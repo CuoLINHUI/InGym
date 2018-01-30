@@ -44,35 +44,30 @@
         android:layout_alignParentBottom="true"
         android:background="#F0F8FF" >
 
-        <TextView
+        <Button
+            android:id="@+id/goods_shop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:drawableTop="@mipmap/goods_shop"
             android:padding="5dp"
+            android:textColor="@color/text_gray"
             android:layout_weight="1"
-            android:text="191.00"
-            android:textColor="#f00"
-            android:textSize="20sp" />
+            android:text="店铺"
+            />
 
-        <TextView
+        <Button
+            android:id="@+id/goods_custom_service"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="/"
+            android:background="@null"
+            android:drawableTop="@mipmap/goods_custom_service"
+            android:padding="5dp"
+            android:textColor="@color/text_gray"
             android:layout_weight="1"
-            android:textColor="@color/black"
-            android:textSize="30sp" />
+            android:text="客服"
+            />
 
-        <TextView
-            android:id="@+id/goods_old_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:text="￥239.00"
-            android:textColor="@color/gray"
-            android:textSize="15sp" />
 
         <Button
             android:id="@+id/goods_collection"
@@ -86,9 +81,8 @@
             android:text="收藏"
             />
 
-
-
         <Button
+            android:id="@+id/add_to_cart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_add2cart"
@@ -98,10 +92,11 @@
             android:paddingRight="20dp"
             android:paddingTop="10dp"
             android:text="加入购物车"
+            android:textSize="18sp"
             android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/goods_detail_buy"
+            android:id="@+id/purchase_immediately"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_fullwidth"
@@ -111,6 +106,7 @@
             android:paddingRight="20dp"
             android:paddingTop="10dp"
             android:text="立即购买"
+            android:textSize="18sp"
             android:textColor="@color/white" />
     </LinearLayout>
 
@@ -131,12 +127,14 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                >
 
                 <ImageView
                     android:id="@+id/goods_image"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="350dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/default_pic" />
 
@@ -155,7 +153,8 @@
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:orientation="vertical" >
 
                 <TextView

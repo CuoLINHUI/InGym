@@ -126,7 +126,7 @@ public class GoodsListActivity extends AppCompatActivity implements BGARefreshLa
         // 传递被选中的商品所有数据到GoodsDetailActivity（前提Goods实体类要实现序列化接口）
         intent.putExtra("product_item", mAdapter.getItem(position));
         startActivity(intent);
-    }
+     }
 
 
     /**

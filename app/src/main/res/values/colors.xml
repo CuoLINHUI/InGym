@@ -7,12 +7,16 @@
     <color name="gray">#565151</color>
     <color name="starry_sky">#053043</color>
     <color name="price_color">#E2652D</color>
+    <color name="total_price">#f00</color>
+    <color name="reminder_color">#E3AE5E</color>
     <color name="value_color">#7D7D7D</color>
     <color name="description_text">#363636</color>
     <color name="blank_background">#F5F5F5</color>
+    <color name="background_gray">#FAFAFA</color>
     <color name="text_blue">#026499</color>
     <color name="add2cart">#FFAA01</color>
-
+    <color name="address_default_color">#707070</color>
+    <color name="address_set_color">#E2652D</color>
 
     <color name="colorWhite">#FFF</color>
     <color name="transparent">#0000</color>

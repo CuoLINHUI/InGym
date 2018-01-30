@@ -1,5 +1,6 @@
 package com.stefan.ingym.ui.activity.Community;
 
+import android.content.Intent;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
@@ -36,6 +37,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+import static android.R.attr.breadCrumbShortTitle;
 import static android.R.attr.data;
 import static android.R.attr.id;
 
@@ -58,7 +60,7 @@ public class GoodsDetailActivity extends AppCompatActivity {
     @ViewInject(R.id.goods_collection)      // 收藏按钮
     private Button goods_collection;
 
-    private Goods goods; 
+    private Goods goods;
 
     private String unselectedStr = "收藏";
     private String selectedStr = "已收藏";
@@ -87,11 +89,11 @@ public class GoodsDetailActivity extends AppCompatActivity {
                     .placeholder(R.drawable.default_pic).into(goods_image);
             goods_title.setText(goods.getTitle());
             goods_desc.setText(goods.getSort_title());
-            goods_price.setText(goods.getPrice());
-            tv_goods_value.setText(goods.getValue());
+            goods_price.setText("" + goods.getPrice());
+            tv_goods_value.setText("" + goods.getValue());
             // 设置商品原价的划线并加清晰显示
             tv_goods_value.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG|Paint.ANTI_ALIAS_FLAG);
-            product_payments.setText(goods.getPayments());
+            product_payments.setText("月销" + goods.getPayments() + "笔");
             // 向WebView加载商品详情数据
             WebSettings goodSettings = goods_view.getSettings();
             goodSettings.setJavaScriptEnabled(true);    // 支持JS脚本
@@ -139,10 +141,10 @@ public class GoodsDetailActivity extends AppCompatActivity {
         });
     }
 
-    @OnClick({R.id.goods_collection})
+    @OnClick({R.id.goods_collection, R.id.add_to_cart, R.id.purchase_immediately})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.goods_collection:     // 点击收藏
+            case R.id.goods_collection:         // 点击收藏
                 // 从Sp中获取保存在本地的用户数据 TODO: 2018/1/7
                 String identify_user = SpUtil.getString(getApplicationContext(), ConstantValue.IDENTIFIED_USER, null);
                 // 保存在本地的用户信息封装到User实体类中
@@ -156,9 +158,7 @@ public class GoodsDetailActivity extends AppCompatActivity {
                 // 获取按钮当前状态
                 boolean flag = (boolean) goods_collection.getTag();
                 if(!flag) {     // 点击收藏
-
-                    ToastUtil.show(this, "已收藏");
-
+//                    ToastUtil.show(this, "已收藏");
                     // 设置上端初始图片为选中状态
                     Drawable drawable = getResources().getDrawable(R.mipmap.goods_collection_selected);
                     // x:组件在容器X轴上的起点 y:组件在容器Y轴上的起点 width:组件的长度 height:组件的高度
@@ -172,9 +172,7 @@ public class GoodsDetailActivity extends AppCompatActivity {
                     // 将收藏请求提交到数据库
                     goodsCollection(userID, goodsID);
                 } else {       // 点击取消收藏
-
-                    ToastUtil.show(this, "未收藏");
-
+//                    ToastUtil.show(this, "未收藏");
                     // 设置上端初始图片为未选中状态状态
                     Drawable drawable = getResources().getDrawable(R.mipmap.goods_collection_unselected);
                     // x:组件在容器X轴上的起点 y:组件在容器Y轴上的起点 width:组件的长度 height:组件的高度
@@ -189,6 +187,17 @@ public class GoodsDetailActivity extends AppCompatActivity {
                     goodsCollectionCancel(userID, goodsID);
                 }
                 break;
+
+            case R.id.add_to_cart:              // 加入购物车
+
+                break;
+
+            case R.id.purchase_immediately:     // 立即购买
+                Intent intent = new Intent(this, GoodsPurchaseActivity.class);
+                intent.putExtra("goods_info", goods);
+                startActivity(intent);
+                break;
+
         }
     }
 
@@ -241,6 +250,7 @@ public class GoodsDetailActivity extends AppCompatActivity {
                 });
                 // 将该商品被收藏的信息保存在Sp中（true）
                 SpUtil.putBoolean(getApplicationContext(), goodsSpName, true);
+
             }
         });
 

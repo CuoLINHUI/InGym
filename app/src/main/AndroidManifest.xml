@@ -218,6 +218,10 @@
         </activity>
         <activity android:name=".ui.activity.Mine.GoodsCollectionActivity">
         </activity>
+        <activity android:name=".ui.activity.Community.GoodsPurchaseActivity">
+        </activity>
+        <activity android:name=".ui.activity.Community.AddressSuperviseActivity">
+        </activity>
     </application>
 
 </manifest>
