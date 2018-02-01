@@ -23,6 +23,7 @@ import com.stefan.ingym.ui.activity.Mine.GoodsCollectionActivity;
 import com.stefan.ingym.ui.activity.Mine.LoginActivity;
 import com.stefan.ingym.ui.activity.Mine.SettingActivity;
 import com.stefan.ingym.pojo.mine.User;
+import com.stefan.ingym.ui.activity.Mine.ShoppingMallActivity;
 import com.stefan.ingym.ui.fragment.mine.memorandum.MemorandumActivity;
 import com.stefan.ingym.util.ConstantValue;
 import com.stefan.ingym.util.SpUtil;
@@ -79,7 +80,8 @@ public class FragmentMine extends Fragment {
     /**
      * 用户点击事件的监听
      */
-    @OnClick({R.id.btn_login, R.id.ll_setting, R.id.user_info_group, R.id.ll_about, R.id.btn_memorandum, R.id.my_collection})
+    @OnClick({R.id.btn_login, R.id.ll_setting, R.id.user_info_group, R.id.ll_about,
+            R.id.btn_memorandum, R.id.my_collection, R.id.ll_shopping_mall})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:    // 用户点击了登陆按钮
@@ -104,6 +106,10 @@ public class FragmentMine extends Fragment {
 
             case R.id.my_collection:
                 startActivity(new Intent(getActivity(), GoodsCollectionActivity.class));
+                break;
+
+            case R.id.ll_shopping_mall:
+                startActivity(new Intent(getActivity(), ShoppingMallActivity.class));
                 break;
 
         }

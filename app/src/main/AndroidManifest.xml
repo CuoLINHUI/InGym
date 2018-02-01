@@ -179,12 +179,12 @@
         <receiver android:name=".ui.fragment.sports.pedometer.receiver.HardwareStepCountReceiver"/>
 
         <!-- 友盟统计的Key -->
-        <meta-data
+      <!--  <meta-data
             android:name="UMENG_APPKEY"
             android:value="59dc7320e88bad5d7c000539"/>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="U_InGym"/>
+            android:value="U_InGym"/>-->
         <!-- 友盟自动更新 -->
 
         <meta-data
@@ -223,6 +223,8 @@
         <activity android:name=".ui.activity.Community.AddressSuperviseActivity">
         </activity>
         <activity android:name=".ui.activity.Mine.ModifyPaymentActivity">
+        </activity>
+        <activity android:name=".ui.activity.Mine.ShoppingMallActivity">
         </activity>
     </application>
 

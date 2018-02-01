@@ -69,6 +69,11 @@ public class ConstantValue {
     public static final String EQUIPMENT_GOODS = HOST + "/community/equipment_goods";
 
     /**
+     * 用户请求装备商品信息时访问服务器端的访问地址
+     */
+    public static final String SHOPPING_MALL = HOST + "/community/shopping_mall";
+
+    /**
      * 用户请求收藏商品时访问服务器端的访问地址
      */
     public static final String COLLECTION_GOODS = HOST + "/community/collection_goods";
