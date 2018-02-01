@@ -13,6 +13,7 @@
     <color name="description_text">#363636</color>
     <color name="blank_background">#F5F5F5</color>
     <color name="background_gray">#FAFAFA</color>
+    <color name="for_button_blue">#0092C4</color>
     <color name="text_blue">#026499</color>
     <color name="add2cart">#FFAA01</color>
     <color name="address_default_color">#707070</color>

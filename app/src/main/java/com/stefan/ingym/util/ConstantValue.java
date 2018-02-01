@@ -94,6 +94,11 @@ public class ConstantValue {
     public static final String MODIFY_PASSWORD = HOST + "/user/modify_password";
 
     /**
+     * 用户请求服务端更新数据库的用户支付密码
+     */
+    public static final String MODIFY_PAYMENT = HOST + "/user/modify_payment";
+
+    /**
      * 用户请求服务端绑定手机号码
      */
     public static final String BIND_PHONE = HOST + "/user/bind_phone";
@@ -102,5 +107,10 @@ public class ConstantValue {
      * 用户请求服务端设置支付密码
      */
     public static final String SET_PAYMENT = HOST + "/user/set_payment";
+
+    /**
+     * 用户请求服务端更新用户积分
+     */
+    public static final String UPDATE_INTEGRAL = HOST + "/user/update_integral";
 
 }

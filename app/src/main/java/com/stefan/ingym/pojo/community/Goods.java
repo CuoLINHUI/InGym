@@ -20,7 +20,7 @@ public class Goods implements Serializable {    // 继承可序列类，使得Go
     private int payments;                   // 付款人数（商品销量）
     private String stock;                   // 商品库存量
     private String details;                 // 商品详情
-    private String integral;                // 商品所需的积分
+    private int integral;                // 商品所需的积分
 
     public String getId() {
         return id;
@@ -110,11 +110,11 @@ public class Goods implements Serializable {    // 继承可序列类，使得Go
         this.details = details;
     }
 
-    public String getIntegral() {
+    public int getIntegral() {
         return integral;
     }
 
-    public void setIntegral(String integral) {
+    public void setIntegral(int integral) {
         this.integral = integral;
     }
 }

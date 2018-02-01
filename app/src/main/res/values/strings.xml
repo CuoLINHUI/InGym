@@ -38,7 +38,8 @@
     <string name="back_login">退出登录</string>
     <string name="account_editor">账号编辑</string>
     <string name="set_nickname">设置名字</string>
-    <string name="modify_password">设置密码</string>
+    <string name="modify_password">修改密码</string>
+    <string name="modify_payment">修改支付密码</string>
     <string name="edit_save">完成</string>
     <string name="address_supervise">管理</string>
     <string name="user_nickname">你的昵称</string>

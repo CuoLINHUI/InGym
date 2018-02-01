@@ -31,6 +31,7 @@ public class AccountActivity extends AppCompatActivity {
     private TextView tv_nickname;
 
     private User user;
+    private Gson gson;
 
     private String modified_nickname;
 
@@ -52,7 +53,7 @@ public class AccountActivity extends AppCompatActivity {
         String username = SpUtil.getString(getApplicationContext(), ConstantValue.IDENTIFIED_USER, null);
 
         // 将登陆成功的用户信息封装到User实体类中
-        Gson gson = new GsonBuilder().create();
+        gson = new GsonBuilder().create();
         user = gson.fromJson(username, User.class);
         // 设置用户头像
         Picasso.with(getApplicationContext()).load(user.getHeadUrl())
@@ -106,9 +107,18 @@ public class AccountActivity extends AppCompatActivity {
                 break;
 
             case R.id.ll_set_payment_password: // 用户设置支付密码
-                Intent setPaymentIntent = new Intent(this, SetPaymentActivity.class);
-                setPaymentIntent.putExtra("set_payment", user);
-                startActivityForResult(setPaymentIntent, 30000);
+                // 判断用户是否设置过支付密码
+                if (user.getPayPwd() == null) {
+                    // 进入设置页
+                    Intent setPaymentIntent = new Intent(this, SetPaymentActivity.class);
+                    setPaymentIntent.putExtra("set_payment", user);
+                    startActivityForResult(setPaymentIntent, 30000);
+                } else {
+                    // 进入更改页
+                    Intent paymentIntent = new Intent(this, ModifyPaymentActivity.class);
+                    paymentIntent.putExtra("payment_modify", user);
+                    startActivityForResult(paymentIntent, 31000);
+                }
                 break;
 
             case R.id.ll_bind_phoneNum:       // 用户绑定手机号
@@ -138,11 +148,6 @@ public class AccountActivity extends AppCompatActivity {
         /**
          * 用户修改相应信息之后返回修改信息，这里需要修改Sp中的数据时用到。
          */
-        // 获取保存在Sp中的保存在本地的用户数据
-        String identified_user = SpUtil.getString(this, ConstantValue.IDENTIFIED_USER, null);
-        // 将登陆成功的保存在本地的用户信息封装到User实体类中
-        Gson gson = new GsonBuilder().create();
-        User user = gson.fromJson(identified_user, User.class);
 
         switch (requestCode){
             case ImageUtils.REQUEST_CODE_FROM_ALBUM: {
@@ -211,6 +216,18 @@ public class AccountActivity extends AppCompatActivity {
                     return;
                 } else {
                     String setPayment = data.getStringExtra("set_payment_ok");
+                    // 将设置好的payment保存到Sp中
+                    user.setPayPwd(setPayment);
+                    // 重新保存更新完成的Sp
+                    SpUtil.putString(this, ConstantValue.IDENTIFIED_USER, gson.toJson(user));
+                }
+                break;
+
+            case ModifyPaymentActivity.MODIFY_PAYMENT:
+                if (resultCode == RESULT_CANCELED) {
+                    return;
+                } else {
+                    String setPayment = data.getStringExtra("modified_payment_ok");
                     // 将设置好的payment保存到Sp中
                     user.setPayPwd(setPayment);
                     // 重新保存更新完成的Sp

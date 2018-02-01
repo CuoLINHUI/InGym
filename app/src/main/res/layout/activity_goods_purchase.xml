@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_goods_purchase"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
     tools:context="com.stefan.ingym.ui.activity.Community.GoodsPurchaseActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/goods_purchase"
+        android:id="@+id/goods_purchase_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary">
@@ -26,197 +25,194 @@
             android:textSize="20sp"/>
     </android.support.v7.widget.Toolbar>
 
-    <RelativeLayout
+
+    <LinearLayout
+        android:id="@+id/purchase_bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#F0F8FF"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="#F5F5F5"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:padding="5dp"
+            android:text="合计金额："
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="￥"
+            android:textColor="@color/total_price"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/total_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="15dp"
+            android:text="222.00"
+            android:textColor="@color/total_price"
+            android:textSize="18sp"/>
+
+
+        <Button
+            android:id="@+id/submit_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@drawable/button_fullwidth"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:text="提交订单"
+            android:textColor="@color/white"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/detail_center_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/purchase_bottom"
+        android:layout_below="@+id/goods_purchase_toolbar"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="#F0F8FF"
-            android:orientation="horizontal">
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/choose_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:src="@mipmap/address_location"
+                    android:id="@+id/imageView7"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        >
+
+                        <TextView
+                            android:id="@+id/tv_addressee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="收件人:"
+                            android:textColor="@color/text_dark"
+                            android:textSize="17sp"/>
+
+                        <TextView
+                            android:id="@+id/addressee_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|center_vertical"
+                            android:layout_alignParentRight="true"
+                            android:text="17858956180"
+                            android:textColor="@color/text_dark"
+                            android:textSize="17sp"/>
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/tv_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="收件地址："
+                        android:textColor="@color/text_dark"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:singleLine="true"
+                        android:text="（签收不便时，可选择免费代收服务）"
+                        android:textColor="@color/reminder_color"
+                        android:textSize="15sp"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/enter_address_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:src="@mipmap/enter"/>
+
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="1"
+                android:layout_height="10dp"
                 android:background="#F5F5F5"
                 />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="5dp"
-                android:padding="5dp"
-                android:text="合计金额："
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="￥"
-                android:textColor="@color/total_price"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:id="@+id/total_money"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="15dp"
-                android:text="222.00"
-                android:textColor="@color/total_price"
-                android:textSize="18sp"/>
-
-
-            <Button
-                android:id="@+id/submit_order"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:background="@drawable/button_fullwidth"
-                android:paddingBottom="10dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingTop="10dp"
-                android:text="提交订单"
-                android:textColor="@color/white"
-                android:textSize="18sp"/>
-        </LinearLayout>
-
-        <ScrollView
-            android:id="@+id/detail_center_bar"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/detail_bottom_bar"
-            android:layout_below="@+id/goods_detail_toolbar"
-            >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#ffffff"
-                android:orientation="vertical">
+                android:padding="10dp"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:id="@+id/choose_address"
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorWhite"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
+                    android:layout_marginLeft="10dp"
+                    android:src="@mipmap/t_mall"/>
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:src="@mipmap/address_location"
-                        android:id="@+id/imageView7"/>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            >
-
-                            <TextView
-                                android:id="@+id/tv_addressee"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="收件人:"
-                                android:textColor="@color/text_dark"
-                                android:textSize="17sp"/>
-
-                            <TextView
-                                android:id="@+id/addressee_phone"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center|center_vertical"
-                                android:layout_alignParentRight="true"
-                                android:text="17858956180"
-                                android:textColor="@color/text_dark"
-                                android:textSize="17sp"/>
-
-                        </RelativeLayout>
-
-                        <TextView
-                            android:id="@+id/tv_address"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:text="收件地址："
-                            android:textColor="@color/text_dark"
-                            android:textSize="16sp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:singleLine="true"
-                            android:text="（签收不便时，可选择免费代收服务）"
-                            android:textColor="@color/reminder_color"
-                            android:textSize="15sp"/>
-
-                    </LinearLayout>
-
-                    <ImageView
-                        android:id="@+id/enter_address_info"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:src="@mipmap/enter"/>
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:background="#F5F5F5"
+                <TextView
+                    android:id="@+id/goods_shop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center_vertical"
+                    android:layout_marginLeft="15dp"
+                    android:text="stefan旗舰店"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_dark"
                     />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:layout_marginTop="6dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:src="@mipmap/t_mall"/>
-
-                    <TextView
-                        android:id="@+id/goods_shop"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center|center_vertical"
-                        android:layout_marginLeft="15dp"
-                        android:text="stefan旗舰店"
-                        android:textSize="16sp"
-                        android:textColor="@color/text_dark"
-                        />
-                </LinearLayout>
-
-                <include layout="@layout/purchase_goods_item" />
-
-                <include layout="@layout/purchase_goods_list" />
-
             </LinearLayout>
-        </ScrollView>
 
-    </RelativeLayout>
+            <include layout="@layout/purchase_goods_item" />
 
-</LinearLayout>
+            <include layout="@layout/purchase_goods_list" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>
