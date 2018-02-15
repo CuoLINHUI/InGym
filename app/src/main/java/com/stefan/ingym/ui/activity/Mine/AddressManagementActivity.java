@@ -31,12 +31,9 @@ import com.stefan.ingym.util.SpUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.media.CamcorderProfile.get;
 import static com.stefan.ingym.R.id.set_default_address;
 import static com.stefan.ingym.R.id.tv_address;
 import static com.stefan.ingym.util.ConstantValue.ADDRESS_POSITION;
-import static com.stefan.ingym.util.SpUtil.getInt;
-import static com.umeng.analytics.a.p;
 
 /**
  * @ClassName: AddressManagementActivity

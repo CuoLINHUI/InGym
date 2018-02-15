@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -185,6 +186,9 @@ public class LoginActivity extends AppCompatActivity {
                 // MD5加密
                 String encoderPW = Md5Util.encoder(password);
                 userAccountLogin(username, encoderPW);
+
+//                Log.i("Md5Util", "onClick: " + Md5Util.encoder("111111"));
+
                 break;
 
             case R.id.tv_forget_password:   // 用户点击了忘记密码

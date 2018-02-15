@@ -118,4 +118,19 @@ public class ConstantValue {
      */
     public static final String UPDATE_INTEGRAL = HOST + "/user/update_integral";
 
+    /**
+     * 请求服务端的moments数据
+     */
+    public static final String MOMENTS = HOST + "/community/moments";
+
+    /**
+     * 请求上传动态内容到服务端
+     */
+    public static final String UPLOAD_MOMENTS = HOST + "/community/upload_moments";
+
+    /**
+     * 请求上传动态图片到服务端
+     */
+    public static final String UPLOAD_PIC = HOST + "/community/upload_pic";
+
 }

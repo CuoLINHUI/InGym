@@ -1,6 +1,7 @@
 package com.stefan.ingym.ui.fragment;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,6 +12,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -133,11 +135,18 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
     @ViewInject(R.id.lv_article_item)
     private ListView articleListView;
 
+    private static final String TAG = "FragmentIndex";
+
+    private Context mContext;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        mContext = getActivity();
+        Log.i(TAG, "onCreateView: " + mContext);
+
         // 加载FragmentIndex的布局文件 Inflate the layout for this fragment
-        view = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_index, null);
+        view = LayoutInflater.from(mContext).inflate(R.layout.fragment_index, null);
 
         // 加载图片轮播布局文件
         carouselView = LayoutInflater.from(getActivity()).inflate(R.layout.picture_carousel, null);
@@ -451,15 +460,6 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
      */
     @Override
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
-
-/*
-        // 请求数据
-        mList = mockData(page, size);
-        // 添加数据给适配器
-        mAdapter.addNewData(mList);     */
-
-//        mRefreshLayout.endRefreshing();
-
         // 请求参数
         final Map<String, String> params = new HashMap<String ,String>(){
             {
@@ -482,7 +482,7 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
                                 // 结束加载动画
                                 mRefreshLayout.endRefreshing();
                                 // 提示用户数据请求失败
-                                ToastUtil.show(getActivity(), "抱歉，数据请求失败,请检查网络~");
+                                ToastUtil.show(mContext, "抱歉，数据请求失败,请检查网络~");
                             }
                         });
                     }
@@ -499,8 +499,14 @@ public class FragmentIndex extends Fragment implements Toolbar.OnMenuItemClickLi
                         ResponseObject<List<Article>> object = gson.fromJson(json, new TypeToken<ResponseObject<List<Article>>>() {
                         }.getType());
 
-                        // 下拉刷新，表示mList重新加载数据，但总数据不变
-                        mList = object.getDatas();
+                        if (object != null) {
+                            // 下拉刷新，表示mList重新加载数据，但总数据不变
+                            mList = object.getDatas();
+                        } else {
+                            ToastUtil.show(mContext, "数据请求失败！");
+                        }
+
+
 //                        mAdapter.addNewData(mList);
                         // 无论请求成功或者失败都要求ListView控件复位，变回原来的状态
                         runOnUIThread(new Runnable() {

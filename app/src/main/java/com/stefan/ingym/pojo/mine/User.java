@@ -21,6 +21,17 @@ public class User implements Serializable {
     private String nickname;    // 用户昵称
     private String address;     // 用户收货地址
 
+    public User() {     // 无参构造方法
+
+    }
+
+    public User(String id, String name, String headUrl){
+        this.id = id;
+        this.nickname = name;
+        this.headUrl = headUrl;
+    }
+
+
     public String getId() {
         return id;
     }

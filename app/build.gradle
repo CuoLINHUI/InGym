@@ -8,6 +8,7 @@ android {
         applicationId "com.stefan.ingym"
         minSdkVersion 15
         targetSdkVersion 25
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -40,17 +41,8 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    /*选项卡*/
-    /*refresh*/
-    /*okhttp*/
-    /*友盟*/
-    /*圆形头像*/
-    
-
     /*直播*/
     compile files('libs/pldroid-media-streaming-2.1.3.jar')
-    
-    /*计步器*/
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'com.android.support:support-v4:25.3.1'
@@ -58,8 +50,7 @@ dependencies {
     compile 'cn.hugeterry.coordinatortablayout:coordinatortablayout:1.1.0'
     compile 'cn.bingoogolapple:bga-refreshlayout:1.1.7@aar'
     compile 'cn.bingoogolapple:bga-adapter:1.1.5@aar'
-    compile 'com.squareup.okhttp3:okhttp:3.3.0'
-    compile 'com.umeng.analytics:analytics:latest.integration'
+//    compile 'com.squareup.okhttp3:okhttp:3.3.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.getbase:floatingactionbutton:1.10.1'
     compile 'com.baoyz.swipemenulistview:library:1.3.0'
@@ -72,6 +63,21 @@ dependencies {
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'
     compile 'com.google.android.gms:play-services-appindexing:9.8.0'
     testCompile 'junit:junit:4.12'
-
     compile project(':library')
+    compile 'com.commit451:PhotoView:1.2.4'
+    compile 'com.malinskiy:superrecyclerview:1.1.4'
+    compile 'com.mikhaellopez:circularprogressbar:1.1.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+//    compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    //    compile 'com.google.code.gson:gson:2.2.4'
+//    compile('com.github.bumptech.glide:okhttp3-integration:1.4.0') {
+//        exclude group: 'glide-parent'
+//    }
+    compile 'pub.devrel:easypermissions:0.2.1'
+    compile 'com.zzti.fengyongge:imagepicker:1.2.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile files('libs/cos-android-sdk-V5.4.3.jar')
+    compile files('libs/okhttp-3.8.1.jar')
+    compile files('libs/okio-1.13.0.jar')
+    compile files('libs/qcloud-foundation.1.3.0.jar')
 }

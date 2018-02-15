@@ -40,9 +40,6 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-import static com.umeng.analytics.pro.x.U;
-
-
 /**
  * @ClassName: GoodsPurchaseActivity
  * @Description: 商品购买确认页面（确认订单）

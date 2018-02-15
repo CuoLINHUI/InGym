@@ -1,22 +1,29 @@
 package com.stefan.ingym.ui.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.stefan.ingym.R;
 import com.stefan.ingym.adapter.community.MyPagerAdapter;
-import com.stefan.ingym.ui.fragment.community.DiscoverFragment;
+import com.stefan.ingym.ui.activity.MainActivity;
+import com.stefan.ingym.ui.fragment.community.MomentsFragment;
 import com.stefan.ingym.ui.fragment.community.EquipmentFragment;
 import com.stefan.ingym.ui.fragment.community.live.LiveListFragment;
+import com.stefan.ingym.ui.fragment.community.post.PostMomentsActivity;
+import com.stefan.ingym.util.ToastUtil;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import cn.hugeterry.coordinatortablayout.CoordinatorTabLayout;
 
@@ -86,7 +93,7 @@ public class FragmentCommunity extends Fragment {
         };
         // 为选项卡控件设置相关属性
         mCoordinatorTabLayout.setTransulcentStatusBar(getActivity())
-                .setTitle(getResources().getString(R.string.community_title))      // 设置标题
+                .setTitle("")      // 设置标题
                 .setBackEnable(false)       // 是否设置返回箭头
                 .setImageArray(mImageArray, mColorArray)
                 .setupWithViewPager(mViewPager);
@@ -97,7 +104,7 @@ public class FragmentCommunity extends Fragment {
      */
     private void initFragments() {
         mFragments = new ArrayList<>();
-        mFragments.add(new DiscoverFragment());
+        mFragments.add(new MomentsFragment());
         mFragments.add(new EquipmentFragment());
         mFragments.add(new LiveListFragment());
     }
@@ -112,5 +119,45 @@ public class FragmentCommunity extends Fragment {
         mViewPager.setAdapter(new MyPagerAdapter(getChildFragmentManager(), mFragments, mTitles));
     }
 
+    @OnClick({R.id.post_moments})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.post_moments:
+                Intent intent = new Intent(getActivity(), PostMomentsActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                intent.putExtra("limit", 9 );//number是选择图片的数量(设置图片选择数量)
+                startActivityForResult(intent, 0);
+                break;
+        }
+    }
+
+    private static final String TAG = "FragmentCommunity";
+
+
+
+    //    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        switch (requestCode) {
+//            case 0:
+//                if (data != null) {
+//                    //path是选择拍照或者图片的地址数组
+//                    List<String> paths = (List<String>) data.getExtras().getSerializable("photos");
+//                    // 获取moment content
+//                    String momentContent = data.getStringExtra("moment_content");
+//
+//                    Log.i(TAG, "onActivityResult: " + "图片路径：" + paths);
+//                    Log.i(TAG, "onActivityResult: " + "内容：" + momentContent);
+//
+//                    ToastUtil.show(getActivity(), "图片路径：" + paths + "内容：" + momentContent);
+//
+//                    //处理代码
+//
+//                }
+//                break;
+//            default:
+//                break;
+//        }
+//        super.onActivityResult(requestCode, resultCode, data);
+//    }
 
 }

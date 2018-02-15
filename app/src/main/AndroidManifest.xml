@@ -48,7 +48,13 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
     <application
+        android:name="com.stefan.ingym.ui.fragment.community.moments.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -178,18 +184,15 @@
         <receiver android:name=".ui.fragment.sports.pedometer.receiver.MotivationAlertReceiver"/>
         <receiver android:name=".ui.fragment.sports.pedometer.receiver.HardwareStepCountReceiver"/>
 
-        <!-- 友盟统计的Key -->
-      <!--  <meta-data
-            android:name="UMENG_APPKEY"
-            android:value="59dc7320e88bad5d7c000539"/>
-        <meta-data
-            android:name="UMENG_CHANNEL"
-            android:value="U_InGym"/>-->
-        <!-- 友盟自动更新 -->
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version"/>
+
+        <meta-data
+            android:name="com.stefan.ingym.ui.fragment.community.moments.MyGlideModule"
+            android:value="GlideModule" />
+
+        <activity android:name="com.stefan.ingym.ui.fragment.community.moments.activity.ImagePagerActivity"/>
 
         <activity android:name=".ui.activity.Community.GoodsDetailActivity"/>
         <activity android:name=".ui.activity.index.FoodsListActivity"/>
@@ -226,6 +229,11 @@
         </activity>
         <activity android:name=".ui.activity.Mine.ShoppingMallActivity">
         </activity>
+
+        <activity android:name="com.zzti.fengyongge.imagepicker.PhotoSelectorActivity"></activity>//选择图片
+        <activity android:name="com.zzti.fengyongge.imagepicker.PhotoPreviewActivity"></activity>//预览图片
+        <activity android:name="com.stefan.ingym.ui.fragment.community.post.PostMomentsActivity" />
+
     </application>
 
 </manifest>

@@ -20,7 +20,6 @@ import com.stefan.ingym.ui.fragment.FragmentSports;
 import com.stefan.ingym.ui.fragment.sports.pedometer.fragment.DailyReportFragment;
 import com.stefan.ingym.ui.fragment.sports.pedometer.fragment.MonthlyReportFragment;
 import com.stefan.ingym.ui.fragment.sports.pedometer.fragment.WeeklyReportFragment;
-import com.umeng.analytics.MobclickAgent;
 
 /**
  * @ClassName: MainActivity
@@ -88,8 +87,6 @@ public class MainActivity extends AppCompatActivity implements DailyReportFragme
     // 为使开始就触发onCheckedChanged事件，默认进入"健身"模块显示
     protected void onResume() {
         super.onResume();
-        // 友盟启动统计的初始化
-        MobclickAgent.onResume(this);
         // 如果界面已经初始化过了就不要在初始化了（这样可以保证当用户在FragmentMine.java中登陆完成，结束登陆界面后，还是停留在FragmentMine.java界面中）
         if (!isInit) {
             bottom_bar.check(R.id.body_building_rb0);
@@ -99,9 +96,7 @@ public class MainActivity extends AppCompatActivity implements DailyReportFragme
 
     protected void onPause() {
         super.onPause();
-        // 暂停时调用(使用友盟统计该App一天启动了多少次，有多少人使用等信息)
-        MobclickAgent.onPause(this);
-    };
+    }
 
     /**
      * 创建一个Fragment适配器，用于管理这四个fragment的变化

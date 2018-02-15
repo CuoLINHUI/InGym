@@ -1,9 +1,3 @@
-/**
- * @ClassName:
- * @Description:
- * @Author Stefan
- * @Date
- */
 package com.stefan.ingym.adapter.community;
 
 import android.content.Context;

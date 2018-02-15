@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.net.FileNameMap;
 import java.net.URLConnection;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -29,7 +30,7 @@ public class HttpUtils {
         if (client == null) {
             synchronized (HttpUtils.class) {
                 if (client == null)
-                    client = new OkHttpClient();
+                    client = new OkHttpClient().newBuilder().connectTimeout(5,TimeUnit.SECONDS).build();
             }
         }
         return client;

@@ -1,13 +1,6 @@
-/**
- * @ClassName:
- * @Description:
- * @Author Stefan
- * @Date
- */
 package com.stefan.ingym.util;
 
 import android.content.Context;
-import android.os.Looper;
 import android.widget.Toast;
 
 /**
